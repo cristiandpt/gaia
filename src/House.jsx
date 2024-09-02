@@ -18,14 +18,14 @@ const House = () => {
                 <meshStandardMaterial color={"white"} />
             </mesh>
 
-            <mesh position={[-2.3, 0, 0.8]} rotation={[0, 0, Math.PI / 2]} name="LeftEarEnd">
+            <mesh position={[-2.7, -0.5, 0.6]} rotation={[0, 0, Math.PI / 2]} name="LeftEarEnd">
                 <sphereGeometry args={[0.509, 32, 32]} />
                 <meshStandardMaterial color={"white"} />
             </mesh>
-<mesh position={[2.3, 0, 0.8]} rotation={[0, 0, Math.PI / 2]} name="RightEarEnd">
-    <sphereGeometry args={[0.509, 32, 32]} />
-    <meshStandardMaterial color={"white"} />
-</mesh>
+            <mesh position={[2.3, 0, 0.8]} rotation={[0, 0, Math.PI / 2]} name="RightEarEnd">
+                <sphereGeometry args={[0.509, 32, 32]} />
+                <meshStandardMaterial color={"white"} />
+            </mesh>
             
             
         </>    
