@@ -4,7 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import './index.css';
 import Cinnamoroll from './pages/Cinnamoroll/Cinnamoroll.jsx';
 import Login from './pages/Login/Login.jsx';
-import Home from './pages/Home/Home.
+import Home from './pages/Home/Home.jsx';
 
 const router = createBrowserRouter([
   {

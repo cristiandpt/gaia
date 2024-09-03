@@ -15,7 +15,8 @@ const Home = () => {
         </p>
         <div className="button-container">
           <Link to="/login" className="button">Iniciar sesión</Link>
-          <Link to="/signup" className="button">Crear cuenta</Link>
+          {/* <Link to="/signup" className="button">Crear cuenta</Link> */}
+          <Link to="/Cinnamoroll" className="button">Crear cuenta</Link>
         </div>
       </div>
       <footer className="footer">
