@@ -2,13 +2,15 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import Login from './Login'
+import Login from './pages/Login/Login';
+import Figura from './pages/Figura/Figura';
 
 function App() {
   //const [count, setCount] = useState(0)
 
   return (
-    <Login />
+    //<Login />
+    <Figura/>
   )
 {/* 
   return (
