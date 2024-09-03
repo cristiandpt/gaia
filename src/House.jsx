@@ -22,7 +22,7 @@ const House = () => {
                 <sphereGeometry args={[0.55, 32, 32]} />
                 <meshStandardMaterial color={"white"} />
             </mesh>
-            <mesh position={[2.5, 0.8, 0.5]} rotation={[0, 0, Math.PI / 2]} name="RightEarEnd">
+            <mesh position={[2.5, -0.8, 0.5]} rotation={[0, 0, Math.PI / 2]} name="RightEarEnd">
                 <sphereGeometry args={[0.55, 32, 32]} />
                 <meshStandardMaterial color={"white"} />
             </mesh>
