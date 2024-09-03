@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import './Login.css'; // Asegúrate de tener estilos adecuados en Login.css
 import useAuthStore from '../../stores/use-auth-store'; // Asegúrate de que este hook esté correctamente configurado
-import UserDAO from '../../daos/UserDAO'; // Asegúrate de que UserDAO esté configurado para manejar datos de usuario
+import UserDAO from '../../daos/user-DAO'; // Asegúrate de que UserDAO esté configurado para manejar datos de usuario
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
