@@ -1,6 +1,7 @@
 import { OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import House from "./House";
+import * as THREE from 'three';
 
 const Cinnamoroll = () => {
     return (
