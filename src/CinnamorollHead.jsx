@@ -2,7 +2,7 @@
 
 const CinnamorollHead = () => {
     return (
-        <>
+        <group>
             <mesh position={[0, 0, 0]} rotation={[0, 0, Math.PI / 2]} name="HeadBase">
             <capsuleGeometry args={[0.8, 1.2, 32, 64]} />
             <meshToonMaterial color={"white"} />
@@ -37,12 +37,12 @@ const CinnamorollHead = () => {
                 <meshToonMaterial color={"blue"} />
             </mesh>
 
-            <mesh position={[-0.7, 0, 0.7]} name="RigthChek">
+            <mesh position={[-0.7, 0, 0.7]} name="RigthCheek">
                 <sphereGeometry args={[0.18, 32, 32]} />
                 <meshToonMaterial color={"pink"} />
             </mesh>
 
-            <mesh position={[0.7, 0, 0.7]} name="LeftChek">
+            <mesh position={[0.7, 0, 0.7]} name="LeftCheek">
                 <sphereGeometry args={[0.18, 32, 32]} />
                 <meshToonMaterial color={"pink"} />
             </mesh>
@@ -52,7 +52,7 @@ const CinnamorollHead = () => {
                 <meshToonMaterial color={"blue"} />
             </mesh>
             
-        </>    
+        </group>    
     );
 };
 export default CinnamorollHead;

@@ -5,14 +5,14 @@ import CinnamorollHead from "./CinnamorollHead";
 const Cinnamoroll = () => {
     return (
         <>
-        <h1 className="title">Cinnamoroll</h1>
+        <h1 className="title"> Cinnamoroll</h1>
         <Canvas
             camera={{
                 position: [2, 0, 5]
             }}
         >
             <OrbitControls />
-            <ambientLight intensity={1.2} />
+            <ambientLight intensity={1.4} />
             <directionalLight position={[0, 10, 10]} />
         <CinnamorollHead/>
         </Canvas>
