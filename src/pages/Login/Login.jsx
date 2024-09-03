@@ -1,16 +1,15 @@
-import React, { useState, useCallback, useEffect } from 'react';
-import './Login.css'; // Asegúrate de tener estilos adecuados en Login.css
-import useAuthStore from '../../stores/use-auth-store'; // Asegúrate de que este hook esté correctamente configurado
-import UserDAO from '../../daos/user-DAO'; // Asegúrate de que UserDAO esté configurado para manejar datos de usuario
-import { useNavigate } from 'react-router-dom';
+// src/components/Login.jsx
+import "./Login.css";
+import { useCallback, useEffect } from "react";
+import useAuthStore from "../../stores/use-auth-store";
+import UserDAO from "../../daos/user-DAO";
+import { useNavigate } from "react-router-dom";
+import logo from '../../../Imagenes/a1.jpeg'; // Importa tu imagen aquí
 
 const Login = () => {
-  const { user, loginGoogleWithPopUp, logout, observeAuthState, loading, signUpWithEmailPassword } = useAuthStore();
-  
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  
+  const { user, loginGoogleWithPopUp, logout, observeAuthState, loading } =
+    useAuthStore();
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -25,7 +24,7 @@ const Login = () => {
         photo: user.photoURL,
       };
       UserDAO.createUser(newUser);
-      navigate('/Quiz');
+      navigate("/Cinnamoroll");
     }
   }, [user, navigate]);
 
@@ -37,25 +36,13 @@ const Login = () => {
     logout();
   }, [logout]);
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    setError('');
-
-    try {
-      // Autenticación con email y contraseña
-      await signUpWithEmailPassword(email, password);
-      alert('Registro exitoso!');
-    } catch (err) {
-      setError(err.message);
-    }
-  };
-
   if (loading) {
     return <p className="loading-text">Cargando...</p>;
   }
 
   return (
     <div className="container-login">
+      <img src={logo} alt="Logo" className="logo" />
       {user ? (
         <>
           <p className="welcome-text">Bienvenido, {user.displayName}</p>
@@ -64,36 +51,7 @@ const Login = () => {
           </button>
         </>
       ) : (
-        <>
-          <h2>Iniciar sesión</h2>
-          <form onSubmit={handleSubmit}>
-            <div className="form-group">
-              <label htmlFor="email">Email:</label>
-              <input
-                type="email"
-                id="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="password">Contraseña:</label>
-              <input
-                type="password"
-                id="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-            </div>
-            {error && <p className="error-text">{error}</p>}
-            <button type="submit">Crear cuenta</button>
-          </form>
-          <button className="button-google" onClick={handleLogin}>
-            Iniciar sesión con Google
-          </button>
-        </>
+        <button onClick={handleLogin}>Iniciar sesión con Google</button>
       )}
     </div>
   );

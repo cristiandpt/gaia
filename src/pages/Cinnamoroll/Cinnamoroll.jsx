@@ -1,4 +1,5 @@
 /* eslint-disable react/no-unknown-property */
+import './Cinnamoroll.css';
 import { Canvas } from "@react-three/fiber";
 import { TrackballControls } from "@react-three/drei";
 import CinnamorollHead from "./CinnamorollHead";
