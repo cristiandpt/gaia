@@ -1,7 +1,6 @@
 import { OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import House from "./House";
-import * as THREE from 'three';
+import CinnamorollHead from "./CinnamorollHead";
 
 const Cinnamoroll = () => {
     return (
@@ -15,7 +14,7 @@ const Cinnamoroll = () => {
             <OrbitControls />
             <ambientLight intensity={1.2} />
             <directionalLight position={[0, 10, 10]} />
-        <House/>
+        <CinnamorollHead/>
         </Canvas>
         </>
     );

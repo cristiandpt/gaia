@@ -1,8 +1,6 @@
-import * as THREE from 'three';
 
 
-
-const House = () => {
+const CinnamorollHead = () => {
     return (
         <>
             <mesh position={[0, 0, 0]} rotation={[0, 0, Math.PI / 2]} name="HeadBase">
@@ -57,4 +55,4 @@ const House = () => {
         </>    
     );
 };
-export default House;
+export default CinnamorollHead;
