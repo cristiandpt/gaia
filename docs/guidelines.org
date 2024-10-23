@@ -21,7 +21,7 @@ Por otro lado, a la persona que subió la tarea le deje los comentarios persona
 + Usar "affordances" para guiar al usuario en las interacciones, como tooltips, el cambio del cursor a una mano, entre otros indicadores visuales que sugieren qué acción realizar.
 #+END_QUOTE
 
-** How to an user story
+** How to do an user story
 #+BEGIN_QUOTE
 Por favor tener en cuenta lo siguiente:
 
