@@ -1,0 +1,3 @@
++ tailwind docs at https://tailwindcss.com
++ shadcn docs at https://ui.shadcn.com/docs
++ cypress at https://www.cypress.io/
