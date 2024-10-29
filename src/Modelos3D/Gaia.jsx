@@ -2,26 +2,28 @@ import React from 'react';
 import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 import { Environment, OrbitControls, useGLTF } from "@react-three/drei";
-import "./Gaia.css"
+import "./Gaia.css";
 
-function Globe() {
+function Gaiam() {
   const gltf = useGLTF('3D-models/GAIA.glb'); 
-  return <primitive object={gltf.scene} scale={2.5} />;
+  return <primitive object={gltf.scene} scale={4} position={[0, -1, 0]} />;
 }
 
-const Gaia = () => {
+const Gaia = ({ name }) => {
   return (
-    <div className="canvas-container"> {/* Asegúrate de aplicar la clase aquí */}
-      <Canvas
-        camera={{ position: [0, 1, 6] }} // Ajusta la posición de la cámara aquí
-      >
+    <div className="canvas-container">
+      <Canvas camera={{ position: [0, 3, 15] }}>
         <Suspense fallback={null}>
           <ambientLight intensity={0.5} />
-          <Globe />
+          <Gaiam />
           <OrbitControls enableZoom={false} />
         </Suspense>
-        <Environment preset='sunset' />
+        <Environment preset="sunset" />
       </Canvas>
+      {/* Texto fijo en la esquina superior derecha */}
+      <div className="fixed-text">
+        {name}
+      </div>
     </div>
   );
 };
