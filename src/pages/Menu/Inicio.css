@@ -1,0 +1,10 @@
+.canvas-container {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 80vh; /* Ocupa el 80% de la pantalla */
+    margin: auto;
+    position: relative
+}

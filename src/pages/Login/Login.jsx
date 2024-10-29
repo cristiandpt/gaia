@@ -24,7 +24,7 @@ const Login = () => {
         photo: user.photoURL,
       };
       UserDAO.createUser(newUser);
-      navigate("/Cinnamoroll");
+      navigate("/Inicio");
     }
   }, [user, navigate]);
 
