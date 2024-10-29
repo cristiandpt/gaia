@@ -6,15 +6,15 @@ import { Canvas } from "@react-three/fiber";
 import Gaia from "../../Modelos3D/Gaia";
 import "./Inicio.css"
 
-const Menu = () => {
+const Inicio = () => {
     return (
         <>
             <Navbar/>
             <div className="canvas-container">
-                <Gaia />
+                <Gaia name={"Inicio"} />
             </div>
         </>
     );
 };
 
-export default Menu;
+export default Inicio;

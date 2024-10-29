@@ -4,6 +4,7 @@ import Login from './pages/Login/Login'; // Asegúrate de que la ruta sea correc
 import Cinnamoroll from './pages/Cinnamoroll/Cinnamoroll'; // Importa tu componente Cinnamoroll
 import Navbar from './pages/Componenetes/Navbar'; // Importa tu componente Navbar
 import Menu from './pages/Menu/Inicio'; // Asegúrate de que la ruta sea correcta
+import Erosion from './pages/Componenetes/Erosion'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/Cinnamoroll" element={<Cinnamoroll />} />
         <Route path="/menu" element={<Navbar />} />
         <Route path="/menu2" element={<Menu />} />
+        <Route path="/erosion" element={<Erosion/>} />
       </Routes>
     </Router>
   );
