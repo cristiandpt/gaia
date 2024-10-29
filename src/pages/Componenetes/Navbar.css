@@ -8,26 +8,15 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 100px;
+    height: 50px;
     padding: 0 20px;
-    background-color: #004400; /* Verde oscuro */
+    background-color: #247224; /* Verde oscuro */
     color: white;
   }
   
-  /* Contenedor del logo (ajustado al lado izquierdo) */
-  .logo-container {
-    display: flex;
-    align-items: center;
-    justify-content: center; /* Centra el contenido del contenedor */
-    background-color: white; /* Color de fondo blanco */
-    border-radius: 50%; /* Hace el fondo redondo */
-    width: 100px; /* Ajusta el ancho del contenedor */
-    height: 100px; /* Ajusta la altura del contenedor */
-    overflow: hidden; /* Asegura que el logo no se salga del contenedor */
-  }
   
   .logo-image {
-    width: 100px; /* Ajusta el ancho del logo */
+    width: 50px; /* Ajusta el ancho del logo */
   }
   
   /* Icono de menú (ajustado a la derecha) */
@@ -54,7 +43,7 @@
     top: 60px;
     left: 0;
     width: 250px;
-    background-color: #006600;
+    background-color: #43a343;
     border: 1px solid #ccc;
     border-radius: 10px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
