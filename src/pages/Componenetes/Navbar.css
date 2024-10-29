@@ -1,0 +1,95 @@
+/* Contenedor principal de la barra */
+.navbar-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    padding: 0 20px;
+    background-color: #004400; /* Verde oscuro */
+    color: white;
+  }
+  
+  /* Contenedor del logo (ajustado al lado izquierdo) */
+  .logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centra el contenido del contenedor */
+    background-color: white; /* Color de fondo blanco */
+    border-radius: 50%; /* Hace el fondo redondo */
+    width: 100px; /* Ajusta el ancho del contenedor */
+    height: 100px; /* Ajusta la altura del contenedor */
+    overflow: hidden; /* Asegura que el logo no se salga del contenedor */
+  }
+  
+  .logo-image {
+    width: 100px; /* Ajusta el ancho del logo */
+  }
+  
+  /* Icono de menú (ajustado a la derecha) */
+  .menu-icon {
+    font-size: 30px; /* Aumenta el tamaño del icono */
+    cursor: pointer;
+    color: #f0f0f0;
+    transition: color 0.3s, transform 0.3s; /* Añade transición para transformación */
+    display: flex; /* Asegura que ocupe espacio adecuado */
+    justify-content: center;
+    align-items: center;
+    width: 50px; /* Ajusta el tamaño del contenedor del ícono */
+    height: 50px; /* Ajusta el tamaño del contenedor del ícono */
+  }
+  
+  /* Cambia el color del ícono al abrir el menú */
+  .menu-icon.open {
+    color: #22B8CF; /* Cambia a un color diferente cuando está abierto */
+  }
+  
+  /* Estilo del submenú */
+  .sub-menu {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 250px;
+    background-color: #006600;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    transform: translateY(0);
+    transition: transform 0.2s ease;
+  }
+  
+  .sub-menu-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 14px;
+    cursor: pointer;
+    color: #f0f0f0;
+    font-size: 14px;
+    transition: background-color 0.2s ease;
+  }
+  
+  .sub-menu-item:hover {
+    background-color: #22B8CF;
+  }
+  
+  .sub-menu-item span {
+    margin-left: 10px;
+  }
+  
+  /* Estilo de ícono */
+  .sub-menu-item svg {
+    margin-right: 10px;
+    font-size: 18px;
+  }
+  
+  /* Clase de resaltar opción */
+  .highlight {
+    background-color: #22B8CF;
+    color: #fff;
+  }
+  
