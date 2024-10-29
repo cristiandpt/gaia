@@ -7,9 +7,7 @@ const Erosion = () => {
     return (
         <>
             <Navbar />
-            <h1 className="title">Deforestación</h1>
             <div className="canvas-container">
-                {/* Pasa el nombre "Deforestación" a Gaia */}
                 <Gaia name="Erosion" />
             </div>
         </>
