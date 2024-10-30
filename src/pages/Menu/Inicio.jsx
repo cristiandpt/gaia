@@ -4,7 +4,6 @@ import {Navbar} from "../Componenetes/Navbar"; // Asegúrate de que la ruta sea 
 import Cinnamoroll from "../Cinnamoroll/Cinnamoroll"; // Asegúrate de que la ruta sea correcta
 import { Canvas } from "@react-three/fiber";
 import Gaia from "../../Modelos3D/home/Gaia-inicio";
-import Lights from "../../pages/lights/Lights";
 import Text from "./Text"
 import Gates from "../../Modelos3D/home/Gates"
 import "./Inicio.css"
