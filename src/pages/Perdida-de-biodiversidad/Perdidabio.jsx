@@ -14,7 +14,7 @@ const Perdidabio = () => {
             <div className="canvas-container">
                 <ElephantIland name='Perdidad de Biodiversidad' />
                 <BirdModel />
-               
+                <Gaia />
                 <Text1 />
             </div>
         </>
