@@ -6,13 +6,14 @@ import { Canvas } from "@react-three/fiber";
 import Gaia from "../../Modelos3D/Gaia";
 import Lights from "../../pages/lights/Lights";
 import "./Inicio.css"
+import Gates from "../../Modelos3D/Maingates";
 
 const Inicio = () => {
     return (
         <>
             <Navbar/>
             <div className="canvas-container">
-                <Gaia name={"Inicio"} />
+                <Gates/>
             </div>
         </>
     );
