@@ -1,0 +1,28 @@
+.title {
+  position: absolute;
+  top: 50px;   /* Separación desde la parte superior */
+  left: 50px;  /* Separación desde la izquierda */
+  width: 40%;  /* Ajusta el ancho del texto */
+  padding: 10px;
+  font-family: 'Arial', sans-serif;
+  font-size: 26px;
+  font-weight: bold;
+  color: rgb(0, 82, 14);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);  /* Sombra para resaltar */
+  margin: 0;  /* Elimina márgenes innecesarios */
+}
+
+.info-text {
+    position: absolute;
+    top: 110px;   /* Separación desde la parte superior */
+    left: 60px;  /* Separación desde la izquierda */
+    width: 30%;  /* Ajusta el ancho del texto */
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.6); /* Fondo semitransparente */
+    color: white; /* Texto blanco para contraste */
+    font-size: 14px; /* Tamaño del texto */
+    font-family: 'Arial', sans-serif; /* Fuente legible */
+    border-radius: 5px; /* Bordes redondeados */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Sombra para resaltar */
+  }
+  
