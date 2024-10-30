@@ -8,7 +8,7 @@ import Home from './pages/Home/Home.jsx';
 import Inicio from './pages/Menu/Inicio.jsx';
 import Perdidabio from './pages/Perdida-de-biodiversidad/Perdidabio.jsx';
 import Erosion from './pages/Erosion/Erosion.jsx';
-import Deforestacion from './pages/Deforestacion/Deforestacion.jsx';
+import Deforestacion from './pages/Dseforestacion/Desforestacion.jsx';
 import Registrar from './pages/Registro/Registrar.jsx';
 import Iniciar_seccion from './pages/Login/Login.jsx'
 

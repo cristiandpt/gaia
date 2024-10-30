@@ -5,13 +5,15 @@ body,
 #root {
   width: 100%;
   height: 100%;
-  background: #77670a; /* Color de fondo */
+  background: #fff9c4; /* Fondo amarillo pastel */
 }
 
 canvas {
-  touch-action: none; /* Deshabilitar acciones táctiles */
+  touch-action: none;
+  background: #fff9c4; /* Fondo amarillo pastel en el canvas */
 }
 
+/* Ajustes adicionales para otros elementos */
 .fixed-text {
   position: absolute;
   top: 100px;
@@ -19,10 +21,4 @@ canvas {
   color: white;
   font-size: 1.5rem;
   z-index: 10;
-}
-
-/* Configura sombras del canvas */
-canvas {
-  display: block;
-  background: #77670a;
 }
