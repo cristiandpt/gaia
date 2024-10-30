@@ -3,7 +3,7 @@ import { OrbitControls, useGLTF } from '@react-three/drei';
 
 function Model() {
   // Carga del modelo GLB
-  const { scene } = useGLTF('3D-models/biodiversity/IslaElefante.glb');
+  const { scene } = useGLTF('3D-models/biodiversity/Bird-top.glb');
 
   // Activamos las sombras en cada mesh del modelo
   scene.traverse((node) => {
@@ -13,10 +13,10 @@ function Model() {
     }
   });
 
-  return <primitive object={scene} scale={[5, 5, 5]} position={[7, -18, -20]} />;
+  return <primitive object={scene} scale={[3, 3, 3]} position={[5, 8, -18]} />;
 }
 
-export default function ElephantIland() {
+export default function BirdModel() {
     return (
       <Canvas
         shadows={{ type: 'soft' }} // Habilitar sombras suaves
