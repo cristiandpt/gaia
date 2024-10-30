@@ -14,7 +14,7 @@ const Cinnamoroll = () => {
     return (
         <>
         {/* Title displayed above the canvas */}
-        <h1 className="title">Cinnamoroll</h1>
+        <h1 className="title">Cnamoroll</h1>
         
         {/* Canvas where the 3D scene is rendered */}
         <Canvas
