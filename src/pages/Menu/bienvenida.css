@@ -4,6 +4,7 @@
     text-align: center; /* Centrar texto */
     border-radius: 10px; /* Bordes redondeados */
     margin: 20px; /* Margen alrededor del contenedor */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra para efecto de profundidad */
   }
   
   .bienvenida-container h1 {
