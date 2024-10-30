@@ -1,60 +1,62 @@
-// src/components/Login.jsx
-import "./Login.css";
-import { useCallback, useEffect } from "react";
-import useAuthStore from "../../stores/use-auth-store";
-import UserDAO from "../../daos/user-DAO";
-import { useNavigate } from "react-router-dom";
-import logo from '../../../Imagenes/a1.jpeg'; // Importa tu imagen aquí
+import React, { useState } from 'react';
+import UserDAO from "../../daos/user-DAO"; 
+import { useNavigate } from 'react-router-dom';
+import './Login.css'; 
 
-const Login = () => {
-  const { user, loginGoogleWithPopUp, logout, observeAuthState, loading } =
-    useAuthStore();
+const Ingreso = () => { // Cambia el nombre del componente a Ingreso
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState(null);
+    const navigate = useNavigate();
 
-  const navigate = useNavigate();
+    const handleLogin = async (e) => {
+        e.preventDefault();
+        setError(null);
 
-  useEffect(() => {
-    observeAuthState();
-  }, [observeAuthState]);
+        try {
+            // Cambia aquí la lógica para verificar el login
+            const user = await UserDAO.login({ email, password });
+            if (user) {
+                navigate('/Inicio'); // Redirige a la página de inicio si las credenciales son correctas
+            } else {
+                setError("Credenciales incorrectas. Intenta nuevamente."); // Manejo de error
+            }
+        } catch (error) {
+            console.error("Error en el inicio de sesión:", error);
+            setError("No se pudo iniciar sesión. Intenta nuevamente.");
+        }
+    };
 
-  useEffect(() => {
-    if (user) {
-      const newUser = {
-        email: user.email,
-        name: user.displayName,
-        photo: user.photoURL,
-      };
-      UserDAO.createUser(newUser);
-      navigate("/Inicio");
-    }
-  }, [user, navigate]);
-
-  const handleLogin = useCallback(() => {
-    loginGoogleWithPopUp();
-  }, [loginGoogleWithPopUp]);
-
-  const handleLogout = useCallback(() => {
-    logout();
-  }, [logout]);
-
-  if (loading) {
-    return <p className="loading-text">Cargando...</p>;
-  }
-
-  return (
-    <div className="container-login">
-      <img src={logo} alt="Logo" className="logo" />
-      {user ? (
-        <>
-          <p className="welcome-text">Bienvenido, {user.displayName}</p>
-          <button className="button-logout" onClick={handleLogout}>
-            Cerrar sesión
-          </button>
-        </>
-      ) : (
-        <button onClick={handleLogin}>Iniciar sesión con Google</button>
-      )}
-    </div>
-  );
+    return (
+        <div className="perfil-container">
+            <div className="perfil-card">
+                <h2>Iniciar Sesión</h2> {/* Cambia el encabezado a Iniciar Sesión */}
+                <form onSubmit={handleLogin} className="form"> {/* Cambia la función a handleLogin */}
+                    <div className="form-group">
+                        <label>Correo Electrónico</label>
+                        <input
+                            type="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label>Contraseña</label>
+                        <input
+                            type="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                        />
+                    </div>
+                    {error && <p className="error-text">{error}</p>}
+                    <button type="submit" className="button">Iniciar Sesión</button> {/* Cambia el texto del botón */}
+                </form>
+                <h1>Gaia</h1> 
+            </div>
+        </div>
+    );
 };
 
-export default Login;
+export default Ingreso; // Asegúrate de exportar el componente actualizado
