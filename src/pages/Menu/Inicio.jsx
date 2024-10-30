@@ -1,20 +1,20 @@
-/* eslint-disable react/no-unknown-property */
 import React from "react";
-import {Navbar} from "../Componenetes/Navbar"; // Asegúrate de que la ruta sea correcta
+import { Navbar } from "../Componenetes/Navbar"; // Asegúrate de que la ruta sea correcta
 import Cinnamoroll from "../Cinnamoroll/Cinnamoroll"; // Asegúrate de que la ruta sea correcta
-import { Canvas } from "@react-three/fiber";
-import Gaia from "../../Modelos3D/Gaia";
-import Lights from "../../pages/lights/Lights";
-import "./Inicio.css"
 import Gates from "../../Modelos3D/Maingates";
+import Bienvenida from "./bienvenida"; // Asegúrate de que la ruta sea correcta
+import CuidadoMedioAmbiente from "./cuidado"; // Asegúrate de que la ruta sea correcta
+import "./Inicio.css"
 
 const Inicio = () => {
     return (
         <>
-            <Navbar/>
+            <Navbar />
             <div className="canvas-container">
-                <Gates/>
+                <Gates />
             </div>
+            <Bienvenida />
+            <CuidadoMedioAmbiente />
         </>
     );
 };

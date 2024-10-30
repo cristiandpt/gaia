@@ -1,0 +1,18 @@
+.cuidado-medio-container {
+    background-color: #fff8dc; /* Color de fondo suave */
+    padding: 20px;
+    border-radius: 10px; /* Bordes redondeados */
+    margin: 20px; /* Margen alrededor del contenedor */
+  }
+  
+  .cuidado-medio-container h2 {
+    font-size: 2.2em; /* Tamaño de fuente grande */
+    color: #d2691e; /* Color marrón */
+  }
+  
+  .cuidado-medio-container p {
+    font-size: 1.1em; /* Tamaño de fuente */
+    color: #444; /* Color del texto */
+    line-height: 1.6; /* Espaciado entre líneas */
+  }
+  
