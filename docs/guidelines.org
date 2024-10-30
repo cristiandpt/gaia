@@ -1,0 +1,145 @@
+#+AUTHOR: CRISTIAN DAVID PACHECO TORRES
+#+DATE: 2024-10-22
+#+KEYWORDS: UI SCRUM STORY SPRINT BACKLOG ADVICES
+#+TITLE: INTEGRATOR PROJECT GUIDELINES
+
+** General comments
+By Fabián Stiven Valencia
+
+#+BEGIN_QUOTE
+Por otro lado, a la persona que subió la tarea le deje los comentarios personalizados, los cuales  a modo general son los siguientes:
++ Utilizar un máximo de dos fuentes sin serifas. Pueden descargarlas de Google Fonts, DaFont, u otras plataformas similares.
++ Generar una paleta de colores consistente usando herramientas como Adobe Color.
++ La consistencia en el diseño es clave. Mantén uniformidad en los títulos, párrafos, botones, imágenes, y otros elementos, asegurándose de que el tamaño, padding, margin, espaciado de líneas, entre otros, sean iguales en todo el sitio web.
++ Si utiliza imágenes de fondo con texto encima, es recomendable agregar un contenedor semi transparente detrás del texto para mejorar su legibilidad.
++ Asegurense de que haya un buen contraste entre los colores de fondo y el texto. Por ejemplo, una combinación de fondo azul con texto negro puede dificultar la lectura.
++ Evitar párrafos largos. Resumirlos para que el contenido sea más fácil de leer.
++ Añadir íconos a los botones mejora la usabilidad. Por ejemplo, usen íconos representativos para acciones como cerrar sesión o activar/desactivar el sonido.
++ Aplicar patrones de diseño de información como el Z layout, F pattern, card layout, hero image, menú hamburguesa, modal, entre otros.
++ Optar por un diseño minimalista. Esto reduce la carga cognitiva del usuario y mejora la experiencia.
++ Considerar implementar diseño responsive para mejorar la accesibilidad en diferentes dispositivos (opcional).
++ Usar "affordances" para guiar al usuario en las interacciones, como tooltips, el cambio del cursor a una mano, entre otros indicadores visuales que sugieren qué acción realizar.
+#+END_QUOTE
+
+** How to do an user story
+#+BEGIN_QUOTE
+Por favor tener en cuenta lo siguiente:
+
++ Asegurarse que el título de la historia de usuario no es la HU completa, debe ser algo que simbolice esa HU. 
++ Asegurarse que crean en cada HU los criterios de aceptación, definición de hecho, prioridad y estimación.
++ Las historias de usuario son funcionalidades que van dirigida a un usuario final, no al desarrollador, el UX designer, el QA, equipo de desarrollo, etc para este proyecto en concreto.  Las funcionalidades que harán en la página web deben quedar conforme a lo que se calificará en la rúbrica, lo cual cada sprint debe tener HUs que contemplen lo siguiente:
+
+*Sprint 1*
+
+-  Modelos 3D con texturas y materiales PBR
+- Iluminaciones
+-  Sombras,
+- La introducción en la página de inicio
+- La introducción de los problemas medioambientales de cada estudiante.
+
+*Sprint 2*
+
+- Eventos de mouse y teclado
+-  HTML 3D, puesta en escena
+-  La navegación interactiva en la página de inicio
+- La sensibilización de los problemas medioambientales de cada estudiante.
+
+*Sprint 3*
+
+-  Texto 2D/3D
+- Animaciones
+- Físicas
+- El resumen de los problemas medioambientales en la página de inicio
+-  Las soluciones de los problemas medioambientales de cada estudiante.
+
+*Sprint 4*
+
+-  Multimedia
+- Postprocesado
+- Quiz.
+- Gestión de usuario del quiz para guardar estados
+-  Recompensas
+- Sistema de puntuaciones
+
+Las historias de usuario que sean de requerimientos no funcionales, como rendimiento, colores, carga de la página, optimización no son una historia de usuario.
+#+END_QUOTE
+
+** About of the sprint
+
+#+BEGIN_QUOTE
+Teniendo en cuenta que haremos unos sprints incrementales, amablemente les informo que realice 4 rúbricas diferentes para cada sprint (envío en adjunto el excel), donde en cada Sprint lo que está en negrita es lo que va a tener más puntuación en la calificación, de forma que vayan trabajando de forma incremental y no tengamos atrasos.
+
+Por lo anterior, es importante que en su product backlog, release backlog, y sprint backlog ese producto mínimo viable que desarrollarán contemple lo que se pide en la rúbrica. La tarea 3 la estaré revisando y dejando comentarios de que les faltaría en cada sprint o que podrían modificar.
+#+END_QUOTE
+
+** TO DO
+
+#+begin_quote
+Amablemente le informo que el rol de las historiqa de usuario van *centrada a un cliente*, no a ustedes como desarrolladores, por ende corregir el como desarrollador
+
+Asegurarse que en todas las historias de usuarios deben ser escritas de la siguiente manera: *COMO... QUIERO... PARA*. Los roles no son los desarrolladores para este proyecto.
+
+Asegurarse que el título de la *historia de usuario no es la HU completa*, debe ser algo que simbolice esa HU.
+
+Asegurarse que crean en cada HU los criterios de *aceptación, definición de hecho, prioridad y estimación*.
+
+Organizar los Sprints de esta manera (nombro las historias de acuerdo con su código que está en mayúscula completo y se generan las claves por defecto).
+
+*Sprint 1: HUs: 15, 18, 41, 34, 9, 53, 54,*
++  Verificar que hay HUs sobre:
+- Modelos 3D con texturas y materiales PBR
+- Iluminaciones
+- Sombras,
+-  La introducción en la página de inicio
+-  La introducción de los problemas medioambientales de cada estudiante.
+
+*Sprint 2: HUs: 40, 43, 55, 56, 35,*
++ Verificar que hay HUs sobre:
+- Eventos de mouse y teclado
+- HTML 3D, puesta en escena
+- La navegación interactiva en la página de inicio
+- La sensibilización de los problemas medioambientales de cada estudiante.
+
+*Sprint 3: HUs:*
++ Verificar que hay HUs sobre:
+- Texto 2D/3D
+- Animaciones
+- Físicas
+- El resumen de los problemas medioambientales en la página de inicio
+- Las soluciones de los problemas medioambientales de cada estudiante.
+
+
+*Sprint 4: HUs: 39, 51, 59 (que sea del quiz)*
++ Verificar que hay HUs sobre:
+- Multimedia
+- Postprocesado
+- Quiz.
+- Gestión de usuario del quiz para guardar estados
+- Recompensas
+- Sistema de puntuaciones
+
+Eliminar HUs: 21(RNF), 25(RNF), 30(RNF), 37(RNF) (el alcance del proyecto no contempla accesibilidad), 33 (RNF), 49 y 60 (Es interna de ustedes), 50 y 42 (no se contempla en el alcance del proyecto)
+
+Recuerden que si en la prerevisión del Sprint 1 tienen todo corregido les otorgo un 0.5
+
+-----
+
+Natan que le fue bien en esa entrega me mando como le quedaban a el las historias de usuario por si les sirve de ejemplo: Nombre: Crear la navegación mediante scroll
+
+Descripción:
+
+Como usuario quiero poder moverme con el scroll del mouse por la pagina acercandome a las cosas mas importantes.
+
+Criterios de Aceptación:
+
+Al hacer scroll, los elementos importantes (como textos explicativos o secciones clave) deben acercarse al usuario de manera gradual y visible.
+La página debe tener secciones definidas (por ejemplo, "¿Qué es la deforestación?", "Causas de la deforestación") que se destaquen o se centren automáticamente cuando el usuario haga scroll.
+Durante el scroll, los objetos 3D relevantes en la página deben cambiar de tamaño, posición o enfoque para resaltar su importancia.
+
+Definición de hecho:
+
+El código ha sido revisado por al menos otro desarrollador para garantizar la calidad y la consistencia.
+Se ha probado el scroll con usuarios reales para verificar que la navegación es intuitiva y fácil de usar.
+La funcionalidad de scroll ha sido desplegada en un entorno de producción o preproducción, y se ha verificado su correcto funcionamiento.
+
+#+end_quote
