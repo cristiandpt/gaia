@@ -13,7 +13,7 @@ function Model() {
     }
   });
 
-  return <primitive object={scene} scale={[5, 5, 5]} position={[7, -18, -20]} />;
+  return <primitive object={scene} scale={[30, 30, 30]} position={[0, -10, 10]} />;
 }
 
 export default function Gaia() {

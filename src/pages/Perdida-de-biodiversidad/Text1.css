@@ -1,7 +1,7 @@
 .title {
   position: absolute;
   top: 50px;   /* Separación desde la parte superior */
-  left: 50px;  /* Separación desde la izquierda */
+  left: 10px;  /* Separación desde la izquierda */
   width: 40%;  /* Ajusta el ancho del texto */
   padding: 10px;
   font-family: 'Arial', sans-serif;
