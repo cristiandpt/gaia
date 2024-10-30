@@ -13,7 +13,7 @@ function Model() {
     }
   });
 
-  return <primitive object={scene} scale={[5.5, 5.5, 5.5]} position={[7, -13, -20]} />;
+  return <primitive object={scene} scale={[5, 5, 5]} position={[7, -18, -20]} />;
 }
 
 export default function ElephantIland() {

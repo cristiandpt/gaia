@@ -1,8 +1,8 @@
-/* eslint-disable react/no-unknown-property */
 import React from "react";
 import { Navbar } from "../Componenetes/Navbar";
-import { Canvas } from "@react-three/fiber";
 import ElephantIland from "../../Modelos3D/biodiversity/ElephantIsland";
+import Text1 from "../../pages/Perdida-de-biodiversidad/Text1";
+import "./Perdidabio.css"
 
 
 const Perdidabio = () => {
@@ -11,6 +11,8 @@ const Perdidabio = () => {
             <Navbar />
             <div className="canvas-container">
                 <ElephantIland name='Perdidad de Biodiversidad' />
+                
+                <Text1 />
             </div>
         </>
     );
