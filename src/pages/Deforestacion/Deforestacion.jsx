@@ -2,16 +2,17 @@
 import React from "react";
 import { Navbar } from "../Componenetes/Navbar";
 import Gaia from "../../Modelos3D/Gaia";
+import Desforestation from "../../Modelos3D/desforestation/Desforestation1.jsx"
 
-const Deforestacion = () => {
+const DeforestacionPage = () => {
     return (
         <>
             <Navbar />
             <div className="canvas-container">
-                <Gaia name="Deforestación" />
+                <Desforestation/>
             </div>
         </>
     );
 };
 
-export default Deforestacion;
+export default DeforestacionPage;
