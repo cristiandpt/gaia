@@ -1,5 +1,6 @@
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, useGLTF } from '@react-three/drei';
+import Lights from "../../pages/lights/Lights";
 
 function Model() {
   // Carga del modelo GLB
@@ -23,8 +24,8 @@ export default function ElephantIland() {
         camera={{ position: [30, 30, 0], fov: 50 }} // Ajustar la cámara
         style={{ height: '100vh', width: '100vw', position: 'absolute', top: 0, left: 0 }} // Tamaño pantalla completa
       >
-        {/* Luz ambiental para iluminación general */}
-        <ambientLight intensity={2} />
+      
+        <Lights />
   
         <Model />
   
