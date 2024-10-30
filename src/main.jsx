@@ -9,6 +9,8 @@ import Inicio from './pages/Menu/Inicio.jsx';
 import Perdidabio from './pages/Perdida-de-biodiversidad/Perdidabio.jsx';
 import Erosion from './pages/Erosion/Erosion.jsx';
 import Deforestacion from './pages/Deforestacion/Deforestacion.jsx';
+import Registrar from './pages/Registro/Registrar.jsx';
+import Iniciar_seccion from './pages/Login/Login.jsx'
 
 
 const router = createBrowserRouter([
@@ -18,9 +20,9 @@ const router = createBrowserRouter([
   { path: "/inicio", element: <Inicio />, },
   { path: "/perdidabio", element: <Perdidabio />, },
   { path: "/erosion", element: <Erosion/>, },
-  { path: "/desforestacion", element: <Deforestacion/>, }
-
-
+  { path: "/desforestacion", element: <Deforestacion/>, },
+  { path: "/registrar", element: <Registrar/>, },
+  { path: "/iniciar-sesion", element: <Iniciar_seccion/>, }
   
 ]);
 createRoot(document.getElementById("root")).render(

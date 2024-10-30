@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FaBars, FaTree, FaLeaf, FaMountain, FaGlobe, FaSignOutAlt, FaEdit, FaChartLine, FaHome, FaTimes } from 'react-icons/fa'; 
 import { useNavigate } from 'react-router-dom'; 
 import { useAuth } from "../../context/AuthContext"; 
-import logo from '../../assets/imagenes/Logo-Gaia.png'; 
+import logo from '/imagenes/Logo-Gaia.png'; 
 import './Navbar.css';
 
 export const Navbar = () => {
