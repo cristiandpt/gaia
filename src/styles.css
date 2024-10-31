@@ -1,0 +1,9 @@
+.canvas-container {
+    width: 80vw; /* 80% del ancho de la ventana */
+    height: 80vh; /* 80% de la altura de la ventana */
+    margin: 20px auto; /* Centra el contenedor y añade margen superior e inferior */
+    position: relative; /* Permite el posicionamiento de elementos dentro */
+    background-color: #f0f0f0; /* Color de fondo para visualización */
+    border-radius: 10px; /* Añade bordes redondeados si lo deseas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para un efecto de profundidad */
+}
