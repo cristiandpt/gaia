@@ -11,8 +11,11 @@ function Gaiam() {
 
 const Gaia = ({ name }) => {
   return (
-    <div className="canvas-container">
-      <Canvas camera={{ position: [0, 3, 15] }}>
+    <div className="h-screen w-screen">
+      <Canvas 
+        camera={{ position: [0, 3, 15] }}
+        className='bg-beige'
+        >
         <Suspense fallback={null}>
           <ambientLight intensity={0.5} />
           <Gaiam />
@@ -21,7 +24,7 @@ const Gaia = ({ name }) => {
         <Environment preset="sunset" />
       </Canvas>
       {/* Texto fijo en la esquina superior derecha */}
-      <div className="fixed-text">
+      <div className="fixed-text text-primary">
         {name}
       </div>
     </div>
