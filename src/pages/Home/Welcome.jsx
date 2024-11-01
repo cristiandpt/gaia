@@ -1,7 +1,7 @@
 import React from "react";
-import "./bienvenida.css"; // Asegúrate de que la ruta sea correcta
+import "./Welcome.css";
 
-const Bienvenida = () => {
+const Welcome = () => {
   return (
     <div className="bienvenida-container">
       <h1>¡Bienvenido a Gaia!</h1>
@@ -10,4 +10,4 @@ const Bienvenida = () => {
   );
 };
 
-export default Bienvenida;
+export default Welcome;

@@ -3,7 +3,7 @@ import React from "react";
 import { Navbar } from "../../components/Navbar.jsx";
 import Gaia from "../../Modelos3D/Gaia.jsx";
 import Desforestation from "../../Modelos3D/desforestation/Desforestation1.jsx";
-import './DesforestacionPage.css'; // CSS adicional para los textos fijos
+import './Deforest.css'; // CSS adicional para los textos fijos
 
 const DeforestacionPage = () => {
     return (

@@ -1,5 +1,5 @@
 import React from "react";
-import "./cuidado.css"; // Asegúrate de que la ruta sea correcta
+import "./EnvironmentalCare.css"; // Asegúrate de que la ruta sea correcta
 
 const CuidadoMedioAmbiente = () => {
   return (

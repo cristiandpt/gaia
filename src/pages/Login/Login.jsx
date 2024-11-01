@@ -24,7 +24,7 @@ import UserDAO from "../../daos/user-DAO";
 import { useNavigate } from 'react-router-dom';
 import './Login.css'; 
 
-const Ingreso = () => {
+const Signin = () => {
 	
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -81,4 +81,4 @@ const Ingreso = () => {
     );
 };
 
-export default Ingreso; // Asegúrate de exportar el componente actualizado
+export default Signin; // Asegúrate de exportar el componente actualizado

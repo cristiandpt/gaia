@@ -4,20 +4,23 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from "../context/AuthContext"; 
 import logo from '/imagenes/Logo-Gaia.png'; 
 import './Navbar.css';
+import useAuthStore from "../stores/use-auth-store";
+
 
 export const Navbar = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const auth = useAuth();
   const navigate = useNavigate();
+  const { logout } = useAuthStore();	
 
   const toggleDropdown = () => {
     setDropdownOpen(prevState => !prevState);
   };
 
   const handleLogout = async () => {
-    try {
-      await auth.logout();
-      navigate("/login");
+      try {
+		  await logout();
+         navigate("/login");
     } catch (error) {
       console.error("Error logging out:", error);
     }

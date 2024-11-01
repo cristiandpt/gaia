@@ -6,9 +6,9 @@ import useAuthStore from "../stores/use-auth-store";
 import UserDAO from "../daos/user-DAO";
 
 const PrivateRoutes = ({ element }) => {
-	//const { isAuthenticated } = useAuth();
 
-	const isAuthenticated = true;//UserDAO.getUserFromLocalStorage();
+	const { user } = useAuthStore();
+	const isAuthenticated = (user != null);
 
    return isAuthenticated ? <Outlet /> : <Navigate to="/unauthenticated/gaia" />;
 };
