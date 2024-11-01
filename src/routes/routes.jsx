@@ -1,68 +1,41 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Home from '../pages/Home/Home'; // Asegúrate de que la ruta sea correcta
-import Login from '../pages/Login/Login'; // Asegúrate de que la ruta sea correcta
-import Cinnamoroll from '../pages/Cinnamoroll/Cinnamoroll'; // Importa tu componente Cinnamoroll
-import Navbar from '../pages/Componenetes/Navbar'; // Importa tu componente Navbar
-import Menu from '../pages/Menu/Inicio'; // Asegúrate de que la ruta sea correcta
-import Erosion from '../pages/Erosion/Erosion';
-import NoAuthorizedLayout from "../shared/authentication/NoAuthorizedLayout";
-import PrivateRoutes from '../shared/PrivateRoutes';
-import Inicio from '../pages/Menu/Inicio.jsx';
-import Perdidabio from '../pages/Perdida-de-biodiversidad/Perdidabio.jsx';
-import Deforestacion from '../pages/Deforestacion/Deforestacion.jsx';
-import CreateAccountForm from "../pages/CreateAccount/CreateAccountPage";
+import getComponentByPath from './routes-components';
+import PrivateRoutes from '../shared/PrivateRoutes'
+import NoAuthorizedLayout from '../shared/authentication/NoAuthorizedLayout';
+import { Navigate } from 'react-router-dom';
+//** The authorized and unauthorized paths are defined here
+const AuthorizedPaths = [ "erosion", "home", "menu2", "menu", "loss-of-biodiversity",  "deforest"];
+const UnauthorizedPaths = [ "gaia", "login", "register", "google-signin", "signin" ];
 
+/** Get the routes associated to the  determinade routes mode
+*/
+const getPathsMapping = (pathArray) => {
+	return pathArray.map((path) => (
+		{
+			path: path,
+			element: getComponentByPath(path)
+		}
+	))
+}
 
+/** Application routes definitions
+ * Array that defined the authorized and aunathorized paths.
+  The corresponding components is wrrapped in a layout for routing management ouput.
+*/
 const routes = [
 	{
-		path: "/no-authorized",
+		path: "/unauthenticated",
 		element: <NoAuthorizedLayout />, // Layout for unauthorized access
-		children: [
-			{
-				path: "", // Example nested route
-				element: <Login />,
-			},
-			{
-				path: "register", // Another example nested route
-				element: <CreateAccountForm />,
-			},
-			{
-				path: "google-signin",
-				element: <Home />
-			}
-		],
+		children: getPathsMapping(UnauthorizedPaths),
 	},
 	{
 		path: "/",
-		element: (
-			<PrivateRoutes />
-		),
-		children: [
-			{
-				path: "",
-				element: <Inicio />,
-			},
-			{ 
-				path: "/erosion", 
-				element: <Erosion/>, },
-			{
-				path: "/cinnamoroll",
-				element: <Cinnamoroll />,
-			},
-			{
-				path: "/menu",
-				element: <Navbar />,
-			},
-			{
-				path: "/menu2",
-				element: <Menu />,
-			},
-			{
-				path: "/erosion",
-				element: <Erosion />,
-			},
-		],
+		element: <PrivateRoutes />,
+		children: getPathsMapping(AuthorizedPaths),
 	},
+	{
+		path: '*', 
+		element: <Navigate to="/" replace />, 
+   },
 ]
 
 export default routes;

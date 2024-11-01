@@ -8,9 +8,9 @@ import UserDAO from "../daos/user-DAO";
 const PrivateRoutes = ({ element }) => {
 	//const { isAuthenticated } = useAuth();
 
-	const isAuthenticated = true//UserDAO.getUserFromLocalStorage();
+	const isAuthenticated = true;//UserDAO.getUserFromLocalStorage();
 
-   return isAuthenticated ? <Outlet /> : <Navigate to="/no-authorized" />;
+   return isAuthenticated ? <Outlet /> : <Navigate to="/unauthenticated/gaia" />;
 };
 
 export default PrivateRoutes;

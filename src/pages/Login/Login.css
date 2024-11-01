@@ -1,11 +1,5 @@
-/* src/components/Home.css */
-body {
-    margin: 0;
-    font-family: 'Arial', sans-serif;
-    color: #333;
-  }
-  
-  .container-home {
+/* src/components/Home.css */  
+.container-home {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -68,10 +62,12 @@ body {
     transition: background-color 0.3s ease;
     margin: 10px;
   }
-  
-  .button:hover {
-    background-color: #45a049;
-  }
+
+  .button {
+  padding: 12px; /* Aumentar el padding */
+  background-color: #8bc34a; /* Cambiar a verde */
+  transition: background-color 0.3s;
+}
   
   .button-logout {
     background-color: #f44336;
@@ -96,3 +92,92 @@ body {
     text-decoration: underline;
   }
   
+.perfil-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #fff9c4; /* Amarillo pastel */
+}
+
+.perfil-card {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Aumentar el desenfoque de la sombra */
+  padding: 30px; /* Aumentar el padding */
+  width: 90%; /* Cambiar a porcentaje para mayor adaptabilidad */
+  max-width: 400px; /* Limitar el ancho máximo */
+}
+
+h2 {
+  margin-bottom: 25px; /* Aumentar el margen */
+  color: #333;
+  font-family: 'Arial', sans-serif;
+  text-align: center;
+  font-size: 1.8rem; /* Ajustar el tamaño de la fuente */
+}
+
+h1 {
+  font-size: 3.5rem; /* Ajustar tamaño de h1 para mejor proporción */
+  font-weight: bold;
+  color: #8bc34a;
+  margin-bottom: 20px; /* Aumentar el margen inferior */
+  text-align: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 20px; /* Aumentar el margen inferior */
+}
+
+label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+}
+
+input {
+  padding: 12px; /* Aumentar el padding */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px; /* Aumentar tamaño de fuente para mejor legibilidad */
+}
+
+input:focus {
+  border-color: #8bc34a; /* Cambiar el color del borde en focus */
+  outline: none;
+}
+
+.error-text {
+  color: red;
+  text-align: center;
+  margin-bottom: 15px; /* Aumentar el margen inferior */
+  font-size: 14px; /* Ajustar tamaño de fuente */
+}
+
+.button {
+  padding: 12px; /* Aumentar el padding */
+  border: none;
+  border-radius: 5px;
+  background-color: #8bc34a; /* Cambiar a verde */
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.button:hover {
+  background-color: #66bb6a; /* Color verde más claro al pasar el mouse */
+}
+
+/* Estilo de la barra verde */
+.bar {
+  height: 5px; /* Altura de la barra */
+  background-color: #4caf50; /* Color verde */
+  margin-top: 30px; /* Aumentar el margen superior */
+  border-radius: 2px; /* Agregar bordes redondeados a la barra */
+}

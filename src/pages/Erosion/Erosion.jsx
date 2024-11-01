@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unknown-property */
 import React, { Suspense, useEffect, useState } from "react";
-import { Navbar } from "../Componenetes/Navbar";
+import { Navbar } from "../../components/Navbar";
 import Gaia from "../../Modelos3D/Gaia";
 import ErosionPlane from "../../Modelos3D/ErosionPlane";
 import { Environment, Html, OrbitControls } from "@react-three/drei";
