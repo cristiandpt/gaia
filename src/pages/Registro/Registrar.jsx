@@ -17,7 +17,7 @@ const Registrar = () => {
         try {
             const newUser = { email, name, password };
             await UserDAO.createUser(newUser);
-            navigate('/Inicio');
+            navigate('/home');
         } catch (error) {
             console.error("Error en la creación del usuario:", error);
             setError("No se pudo registrar el usuario. Intenta nuevamente.");

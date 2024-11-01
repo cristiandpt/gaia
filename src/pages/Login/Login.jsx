@@ -1,9 +1,31 @@
+// import './Login.css';
+// import React from 'react';
+// import { Link } from 'react-router-dom';
+// import SignIn from '../../components/SignIn';
+
+// const Login = () => {
+//   return (
+//     <div className="container-home bg-beige relative">
+//       <div className='absolute z-11 b-0'>
+// 			</div>
+//       <div className="z-1000  t-0">
+//           <h1>Bienvenido a la GAIA</h1> 
+//           <SignIn />
+//       </div>	
+//       <footer className="footer">
+//         <p>
+//           &copy; 2024 Mi Aplicación. <Link to="/contact">Contáctanos</Link>
+//         </p>
+//       </footer>
+//     </div>
+//   );
 import React, { useState } from 'react';
 import UserDAO from "../../daos/user-DAO"; 
 import { useNavigate } from 'react-router-dom';
 import './Login.css'; 
 
-const Ingreso = () => { // Cambia el nombre del componente a Ingreso
+const Ingreso = () => {
+	
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
@@ -28,7 +50,7 @@ const Ingreso = () => { // Cambia el nombre del componente a Ingreso
     };
 
     return (
-        <div className="perfil-container">
+        <div className="perfil-container bg-beige">
             <div className="perfil-card">
                 <h2>Iniciar Sesión</h2> {/* Cambia el encabezado a Iniciar Sesión */}
                 <form onSubmit={handleLogin} className="form"> {/* Cambia la función a handleLogin */}

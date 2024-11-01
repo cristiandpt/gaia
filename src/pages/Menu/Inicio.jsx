@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar } from "../Componenetes/Navbar"; 
+import { Navbar } from "../../components/Navbar"; 
 import Gates from "../../Modelos3D/Maingates";
 import Bienvenida from "./bienvenida"; // Asegúrate de que la ruta sea correcta
 import "./Inicio.css"
