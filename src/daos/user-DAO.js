@@ -26,9 +26,6 @@ class UserDAO {
 		await getDoc(doc(this.collectionRef, id))
 			.then((userDoc) => {
 				if (userDoc.exists()) {
-					const { user, token } = userDoc.data();
-					localStorage.setItem('user', JSON.stringify(user)); // Save user data
-					localStorage.setItem('token', token); // Save token
 					return { sucess: true, data: userDoc.data() };
 				} else {
 					return { sucess: false, data: null };
