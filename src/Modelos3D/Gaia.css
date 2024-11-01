@@ -6,6 +6,7 @@ body,
   left: 0;
   width: 100vw;
   height: 100vh;
+  background: #fbf2bf;
 }
 canvas{
   touch-action: none;
