@@ -7,7 +7,7 @@ import {
   signInWithPopup,
   signOut,
   onAuthStateChanged,
-  fetchSignInMethodsForEmail // Importa esta función
+  fetchSignInMethodsForEmail, // Importa esta función
 } from "firebase/auth";
 
 /* Creating a context object. */
@@ -64,7 +64,11 @@ export function AuthProvider({ children }) {
     if (userExists) {
       throw new Error("User already exists. Please log in instead.");
     }
-    const response = await createUserWithEmailAndPassword(auth, email, password);
+    const response = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password,
+    );
     console.log(response);
   };
 
@@ -105,7 +109,7 @@ export function AuthProvider({ children }) {
         loginWithGoogle,
         logout,
         user,
-        checkUserExists // Agrega checkUserExists al contexto
+        checkUserExists, // Agrega checkUserExists al contexto
       }}
     >
       {children}

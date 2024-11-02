@@ -1,8 +1,7 @@
 import CreateForm from "../../components/CreateUserForm";
 
-
 const CreateAccountForm = () => {
-    return <CreateForm/>
-}
+  return <CreateForm />;
+};
 
 export default CreateAccountForm;

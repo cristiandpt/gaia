@@ -1,12 +1,12 @@
-import React, { useRef, useState } from 'react';
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls, useGLTF } from '@react-three/drei';
-import { useFrame } from '@react-three/fiber';
-import * as THREE from 'three'; // Asegúrate de importar THREE
-import './Gaia.css';
+import React, { useRef, useState } from "react";
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls, useGLTF } from "@react-three/drei";
+import { useFrame } from "@react-three/fiber";
+import * as THREE from "three"; // Asegúrate de importar THREE
+import "./Gaia.css";
 
 function GaiaModel() {
-  const { scene } = useGLTF('3D-models/Gaia4.glb');
+  const { scene } = useGLTF("3D-models/Gaia4.glb");
   const gaiaRef = useRef();
   const [canMove, setCanMove] = useState(true); // Estado para controlar el movimiento
 
@@ -16,7 +16,7 @@ function GaiaModel() {
   const floatFrequency = 2; // Frecuencia de oscilación
 
   // Guardar la posición inicial en el eje Y
-  const initialPositionY = -.85; // La posición inicial en Y de Gaia
+  const initialPositionY = -0.85; // La posición inicial en Y de Gaia
 
   // Movimiento de Gaia con teclas de flecha
   useFrame(() => {
@@ -24,23 +24,23 @@ function GaiaModel() {
       const rotationSpeed = 0.05; // Velocidad de rotación
       document.onkeydown = (e) => {
         switch (e.key) {
-          case 'ArrowLeft':
+          case "ArrowLeft":
             gaiaRef.current.position.x -= floatSpeed;
             break;
-          case 'ArrowRight':
+          case "ArrowRight":
             gaiaRef.current.position.x += floatSpeed;
             break;
-          case 'ArrowUp':
+          case "ArrowUp":
             gaiaRef.current.position.z -= floatSpeed;
             break;
-          case 'ArrowDown':
+          case "ArrowDown":
             gaiaRef.current.position.z += floatSpeed;
             break;
-          case 'a': // Girar a la izquierda
-            gaiaRef.current.rotation.y += rotationSpeed; 
+          case "a": // Girar a la izquierda
+            gaiaRef.current.rotation.y += rotationSpeed;
             break;
-          case 'd': // Girar a la derecha
-            gaiaRef.current.rotation.y -= rotationSpeed; 
+          case "d": // Girar a la derecha
+            gaiaRef.current.rotation.y -= rotationSpeed;
             break;
           default:
             break;
@@ -50,7 +50,9 @@ function GaiaModel() {
     }
 
     // Movimiento oscilatorio en el eje Y, usando la posición inicial
-    gaiaRef.current.position.y = initialPositionY + Math.sin(Date.now() * floatFrequency * 0.001) * floatHeight; // Movimiento oscilatorio
+    gaiaRef.current.position.y =
+      initialPositionY +
+      Math.sin(Date.now() * floatFrequency * 0.001) * floatHeight; // Movimiento oscilatorio
   });
 
   const checkCollision = () => {
@@ -59,9 +61,12 @@ function GaiaModel() {
     // Por simplicidad, vamos a considerar una colisión ficticia con MainGates.
     const gatesPosition = [0, -2.5, -2]; // Cambia esto con la posición real de MainGates
 
-    const distance = gaiaPosition.distanceTo(new THREE.Vector3(...gatesPosition));
+    const distance = gaiaPosition.distanceTo(
+      new THREE.Vector3(...gatesPosition),
+    );
 
-    if (distance < 1) { // Cambia el valor para ajustar la distancia de colisión
+    if (distance < 1) {
+      // Cambia el valor para ajustar la distancia de colisión
       setCanMove(false); // Detenemos el movimiento si hay colisión
     } else {
       setCanMove(true);
@@ -80,8 +85,15 @@ function GaiaModel() {
 }
 
 function MainGatesModel() {
-  const { scene } = useGLTF('3D-models/Main-gates.glb');
-  return <primitive object={scene} position={[0, -2.5, -2]} scale={[0.35, 0.4, 0.5]} rotation={[0, -Math.PI / 2, 0]} />;
+  const { scene } = useGLTF("3D-models/home/Main-gates.glb");
+  return (
+    <primitive
+      object={scene}
+      position={[0, -2.5, -2]}
+      scale={[0.35, 0.4, 0.5]}
+      rotation={[0, -Math.PI / 2, 0]}
+    />
+  );
 }
 
 const MainScene = () => {
@@ -90,12 +102,15 @@ const MainScene = () => {
       <Canvas camera={{ position: [0, -5, 20] }}>
         {/* Luz ambiental y sombras */}
         <ambientLight intensity={0.5} /> {/* Aumentada la intensidad */}
-        <directionalLight intensity={1.5} position={[10, 10, 10]} castShadow /> {/* Aumentada la intensidad */}
-        
+        <directionalLight
+          intensity={1.5}
+          position={[10, 10, 10]}
+          castShadow
+        />{" "}
+        {/* Aumentada la intensidad */}
         {/* Modelos de Gaia y MainGates */}
         <MainGatesModel />
         <GaiaModel />
-
         {/* Controles de la cámara */}
         <OrbitControls
           maxPolarAngle={Math.PI / 2} // Limita la rotación hacia abajo

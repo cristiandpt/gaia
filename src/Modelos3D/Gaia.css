@@ -1,6 +1,6 @@
 html,
 body,
-#root{
+#root {
   position: fixed;
   top: 20000;
   left: 0;
@@ -8,11 +8,11 @@ body,
   height: 100vh;
   background: #fbf2bf;
 }
-canvas{
+canvas {
   touch-action: none;
 }
 
-.title{
+.title {
   position: absolute;
   z-index: 1;
   color: rgb(252, 252, 252);

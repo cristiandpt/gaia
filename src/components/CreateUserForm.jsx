@@ -4,7 +4,10 @@ const CreateUserForm = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [bio, setBio] = useState("");
-  const [urls, setUrls] = useState(["https://shadcn.com", "http://twitter.com/shadcn"]);
+  const [urls, setUrls] = useState([
+    "https://shadcn.com",
+    "http://twitter.com/shadcn",
+  ]);
 
   const handleAddUrl = () => {
     setUrls([...urls, ""]);
@@ -104,7 +107,7 @@ const CreateUserForm = () => {
                 key={index}
                 onChange={(e) =>
                   setUrls(
-                    urls.map((u, i) => (i === index ? e.target.value : u))
+                    urls.map((u, i) => (i === index ? e.target.value : u)),
                   )
                 }
                 value={url}

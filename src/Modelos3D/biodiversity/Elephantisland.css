@@ -2,19 +2,18 @@
 
 /* Asegura que el contenedor ocupe solo la parte deseada de la página */
 .model-container {
-    position: absolute;
-    top: 20%;  /* Ajusta la distancia desde la parte superior */
-    left: 30%; /* Ajusta la distancia desde la izquierda */
-    width: 40%; /* Controla el ancho del modelo en la pantalla */
-    height: 50%; /* Controla el alto del modelo en la pantalla */
-    border: 2px solid #ffffff; /* Solo para visualizar el contenedor */
-    overflow: hidden; /* Evitar que el modelo se desborde */
-  }
-  
-  /* Opcional: Asegura que el modelo se adapte bien al contenedor */
-  canvas {
-    display: block;
-    width: 100%;
-    height: 100%;
-  }
-  
+  position: absolute;
+  top: 20%; /* Ajusta la distancia desde la parte superior */
+  left: 30%; /* Ajusta la distancia desde la izquierda */
+  width: 40%; /* Controla el ancho del modelo en la pantalla */
+  height: 50%; /* Controla el alto del modelo en la pantalla */
+  border: 2px solid #ffffff; /* Solo para visualizar el contenedor */
+  overflow: hidden; /* Evitar que el modelo se desborde */
+}
+
+/* Opcional: Asegura que el modelo se adapte bien al contenedor */
+canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}

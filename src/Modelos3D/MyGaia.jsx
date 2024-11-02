@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from "react";
 import { Suspense } from "react";
 import { useGLTF } from "@react-three/drei";
 import "./Gaia.css";
 
 function Gaiam() {
-  const gltf = useGLTF('3D-models/GAIA.glb'); 
-  
+  const gltf = useGLTF("3D-models/GAIA.glb");
+
   useEffect(() => {
     // Traverse each child mesh to enable casting and receiving shadows
     gltf.scene.traverse((child) => {
@@ -16,8 +16,15 @@ function Gaiam() {
     });
   }, [gltf]);
 
-  return <primitive castShadow receiveShadow object={gltf.scene} 
-  scale={4} position={[0, 0.5, 0]} />;
+  return (
+    <primitive
+      castShadow
+      receiveShadow
+      object={gltf.scene}
+      scale={4}
+      position={[0, 0.5, 0]}
+    />
+  );
 }
 
 const MyGaia = () => {

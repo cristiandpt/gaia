@@ -1,10 +1,9 @@
-
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls, useGLTF } from '@react-three/drei';
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls, useGLTF } from "@react-three/drei";
 
 function Model() {
   // Carga del modelo GLB
-  const { scene } = useGLTF('3D-models/Gaia4.glb');
+  const { scene } = useGLTF("3D-models/Gaia4.glb");
 
   // Activamos las sombras en cada mesh del modelo
   scene.traverse((node) => {
@@ -14,15 +13,23 @@ function Model() {
     }
   });
 
-  return <primitive object={scene} scale={[10, 10, 10]} position={[20, -3, -12]} />;
+  return (
+    <primitive object={scene} scale={[10, 10, 10]} position={[20, -3, -12]} />
+  );
 }
 
 export default function Gaia() {
   return (
     <Canvas
-      shadows={{ type: 'soft' }} // Habilitar sombras suaves
+      shadows={{ type: "soft" }} // Habilitar sombras suaves
       camera={{ position: [30, 30, 0], fov: 50 }} // Ajustar la cámara
-      style={{ height: '100vh', width: '100vw', position: 'absolute', top: 0, left: 0  }} // Tamaño pantalla completa
+      style={{
+        height: "100vh",
+        width: "100vw",
+        position: "absolute",
+        top: 0,
+        left: 0,
+      }} // Tamaño pantalla completa
     >
       {/* Luz ambiental para iluminación general */}
       <ambientLight intensity={1} />
