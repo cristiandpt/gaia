@@ -1,85 +1,85 @@
 .perfil-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #fff9c4; /* Amarillo pastel */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #fff9c4; /* Amarillo pastel */
 }
 
 .perfil-card {
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    width: 300px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 300px;
 }
 
 h2 {
-    margin-bottom: 20px;
-    color: #333;
-    font-family: 'Arial', sans-serif;
-    text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+  font-family: "Arial", sans-serif;
+  text-align: center;
 }
 
 h1 {
-    font-size: 4rem;
-    font-weight: bold;
-    color: #8bc34a;
-    margin-bottom: 10px;
-    text-align: center;
+  font-size: 4rem;
+  font-weight: bold;
+  color: #8bc34a;
+  margin-bottom: 10px;
+  text-align: center;
 }
 
 .form {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .form-group {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 label {
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #555;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
 }
 
 input {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 14px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
 }
 
 input:focus {
-    border-color: #007bff;
-    outline: none;
+  border-color: #007bff;
+  outline: none;
 }
 
 .error-text {
-    color: red;
-    text-align: center;
-    margin-bottom: 10px;
+  color: red;
+  text-align: center;
+  margin-bottom: 10px;
 }
 
 .button {
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    background-color: #007bff;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 .button:hover {
-    background-color: #0056b3;
+  background-color: #0056b3;
 }
 
 /* Estilo de la barra verde */
 .bar {
-    height: 5px; /* Altura de la barra */
-    background-color: #4caf50; /* Color verde */
-    margin-top: 20px; /* Espacio superior */
+  height: 5px; /* Altura de la barra */
+  background-color: #4caf50; /* Color verde */
+  margin-top: 20px; /* Espacio superior */
 }

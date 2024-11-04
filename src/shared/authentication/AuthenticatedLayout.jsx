@@ -1,13 +1,13 @@
-import React from 'react';
-import { Outlet } from 'react-router-dom';
+import React from "react";
+import { Outlet } from "react-router-dom";
 
 const AuthenticatedLayout = () => {
   return (
     <div>
       <div>Header</div>
-		<Outlet />
+      <Outlet />
       <div>Footer</div>
-	</div>
+    </div>
   );
 };
 

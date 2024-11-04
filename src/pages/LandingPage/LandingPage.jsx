@@ -54,16 +54,17 @@
 //       ) : (
 //         <SignIn />
 //       )}
-import './LandingPage.css';
-import React, { useCallback, useEffect } from 'react';
+import "./LandingPage.css";
+import React, { useCallback, useEffect } from "react";
 import useAuthStore from "../../stores/use-auth-store";
 import UserDAO from "../../daos/user-DAO";
 import { useNavigate } from "react-router-dom";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGoogle } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 
 const Home = () => {
-  const { user, loginGoogleWithPopUp, logout, observeAuthState, loading } = useAuthStore();
+  const { user, loginGoogleWithPopUp, logout, observeAuthState, loading } =
+    useAuthStore();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -77,8 +78,8 @@ const Home = () => {
         name: user.displayName,
         photo: user.photoURL,
       };
-		UserDAO.createUser(newUser);
-        navigate("/home");
+      UserDAO.createUser(newUser);
+      navigate("/home");
     }
   }, [user, navigate]);
 
@@ -116,9 +117,13 @@ const Home = () => {
           <button onClick={handleSignup} className="button signup-button">
             Crear cuenta
           </button>
-          <button onClick={handleIniciarSesion} className="button iniciar-sesion-button">
+          <button
+            onClick={handleIniciarSesion}
+            className="button iniciar-sesion-button"
+          >
             Iniciar Sesión
-          </button> {/* Botón de Iniciar Sesión */}
+          </button>{" "}
+          {/* Botón de Iniciar Sesión */}
         </div>
       </div>
     </div>
