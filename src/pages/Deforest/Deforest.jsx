@@ -2,7 +2,7 @@ import { Navbar } from "../../components/Navbar.jsx";
 import Gaia from "../../3D-models/Gaia.jsx";
 import {
 	DeforestationModel1,
-	DeforestationModel,
+	DeforestationModel2,
 } from "../../3D-models/deforestation/Deforestation.jsx";
 import "./Deforest.css"; // CSS adicional para los textos fijos
 import { useRef } from "react";

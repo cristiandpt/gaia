@@ -11,44 +11,44 @@ import Loader from "../../shared/3DModelLoader";
 import GaiaModel from "../../3D-models/biodiversity/Gaia-biodiversity.jsx";
 
 const LossOfDiversity = () => {
-	return (
-		<>
-			<Navbar />
-			<div className="">
-				<Canvas
-					shadows={{ type: "soft" }} // Habilitar sombras suaevs
-					gl={{ alpha: true }}
-					camera={{ position: [20, 20, 0], fov: 50 }} // Ajustar la cámara
-					style={{
-						height: "100vh",
-						width: "100vw",
-						position: "absolute",
-						top: 0,
-						left: 0,
-						background: "transparent",
-					}} // Tamaño pantalla completa
-				>
-					<Lights />
+  return (
+    <>
+      <Navbar />
+      <div className="">
+        <Canvas
+          shadows={{ type: "soft" }} // Habilitar sombras suaevs
+          gl={{ alpha: true }}
+          camera={{ position: [20, 20, 0], fov: 50 }} // Ajustar la cámara
+          style={{
+            height: "100vh",
+            width: "100vw",
+            position: "absolute",
+            top: 0,
+            left: 0,
+            background: "transparent",
+          }} // Tamaño pantalla completa
+        >
+          <Lights />
 
-					<Suspense fallback={<Loader />}>
-						<group receiveShadow castShadow position={[0, 0, 0]}>
-							<BirdModel />
-							<GaiaModel />
-							<ElephantIlandModel />
-						</group>
-					</Suspense>
-					{/* OrbitControls con movimiento solo horizontal */}
-					<OrbitControls
-						enableZoom={false}
-						enablePan={false}
-						minPolarAngle={Math.PI / 2}
-						maxPolarAngle={Math.PI / 2}
-					/>
-				</Canvas>
-				<Text1 />
-			</div>
-		</>
-	);
+          <Suspense fallback={<Loader />}>
+            <group receiveShadow castShadow position={[0, 0, 0]}>
+              <BirdModel />
+              <GaiaModel />
+              <ElephantIlandModel />
+            </group>
+          </Suspense>
+          {/* OrbitControls con movimiento solo horizontal */}
+          <OrbitControls
+            enableZoom={false}
+            enablePan={false}
+            minPolarAngle={Math.PI / 2}
+            maxPolarAngle={Math.PI / 2}
+          />
+        </Canvas>
+        <Text1 />
+      </div>
+    </>
+  );
 };
 
 export default LossOfDiversity;
