@@ -1,7 +1,0 @@
-.parent {
-  color: blue; /* Set the text color for the parent */
-}
-
-.parent * {
-  background: inherit; /* All children will inherit the text color */
-}

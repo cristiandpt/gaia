@@ -1,0 +1,27 @@
+html,
+body,
+#root {
+  position: fixed;
+  top: 20000;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #fbf2bf;
+}
+canvas {
+  touch-action: none;
+}
+
+.title {
+  position: absolute;
+  z-index: 1;
+  color: rgb(252, 252, 252);
+}
+.fixed-text {
+  position: absolute;
+  top: 100px; /* Ajusta según sea necesario */
+  right: 10px; /* Ajusta según sea necesario */
+  color: white; /* Cambia el color según tus preferencias */
+  font-size: 1.5rem; /* Ajusta el tamaño de la fuente según tus preferencias */
+  z-index: 10; /* Asegúrate de que esté por encima del canvas */
+}
