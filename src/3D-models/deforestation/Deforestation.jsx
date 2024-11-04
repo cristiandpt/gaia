@@ -39,5 +39,4 @@ function DeforestationModel2() {
   );
 }
 
-
 export { DeforestationModel1, DeforestationModel2 };
