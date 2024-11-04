@@ -6,16 +6,16 @@ import "./Home.css";
 import EnvironmentalCare from "./EnvironmentalCare";
 
 const LandingPage = () => {
-	return (
-		<>
-			<Navbar />
-			<div className="canvas-container">
-				<Gates />
-			</div>
-			<Welcome />
-			<EnvironmentalCare />
-		</>
-	);
+  return (
+    <>
+      <Navbar />
+      <div className="canvas-container">
+        <Gates />
+      </div>
+      <Welcome />
+      <EnvironmentalCare />
+    </>
+  );
 };
 
 export default LandingPage;
