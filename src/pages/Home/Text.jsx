@@ -1,3 +1,4 @@
+import "./Text.css";
 export default function Text() {
 	return (
 		<>
