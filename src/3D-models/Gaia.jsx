@@ -14,7 +14,6 @@ const Gaia = ({ name }) => {
     <div className="h-screen w-screen">
       <Canvas camera={{ position: [0, 3, 15] }} className="bg-beige">
         <Suspense fallback={null}>
-          <ambientLight intensity={0.5} />
           <Gaiam />
           <OrbitControls enableZoom={false} />
         </Suspense>

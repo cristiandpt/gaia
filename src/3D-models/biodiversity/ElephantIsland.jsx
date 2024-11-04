@@ -1,6 +1,5 @@
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
-import Lights from "../../pages/lights/Lights";
 
 const ElephantIlandModel = (props) => {
   // Carga del modelo GLB
