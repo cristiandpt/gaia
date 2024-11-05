@@ -11,9 +11,9 @@ const LandingPage = () => {
       <Navbar />
       <div className="canvas-container">
         <Gates />
+        <EnvironmentalCare />
       </div>
       <Welcome />
-      <EnvironmentalCare />
     </>
   );
 };

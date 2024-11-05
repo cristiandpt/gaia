@@ -1,18 +1,22 @@
 .cuidado-medio-container {
+  position: absolute;
+  top: 70px; /* Ajusta según la distancia deseada desde la parte superior */
+  left: 20px; /* Ajusta según la distancia deseada desde el lado izquierdo */
   background-color: #fff8dc; /* Color de fondo suave */
   padding: 20px;
   border-radius: 10px; /* Bordes redondeados */
-  margin: 20px; /* Margen alrededor del contenedor */
+  width: 300px; /* Ajusta el ancho para que se acomode en la esquina */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra para efecto de profundidad */
+  z-index: 10; /* Asegura que el contenido esté encima del modelo 3D */
 }
 
 .cuidado-medio-container h2 {
-  font-size: 2.2em; /* Tamaño de fuente grande */
-  color: #d2691e; /* Color marrón */
+  font-size: 1.8em; /* Tamaño de fuente ajustado */
+  color: #10702a; /* Color marrón */
 }
 
 .cuidado-medio-container p {
-  font-size: 1.1em; /* Tamaño de fuente */
+  font-size: 1em; /* Tamaño de fuente */
   color: #444; /* Color del texto */
   line-height: 1.6; /* Espaciado entre líneas */
 }

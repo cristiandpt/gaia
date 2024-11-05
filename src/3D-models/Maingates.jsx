@@ -4,11 +4,19 @@ import { OrbitControls, useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three"; // Asegúrate de importar THREE
 import "./Gaia.css";
+import Lights from "../pages/lights/Inicio-lights.jsx";
 
 function GaiaModel() {
   const { scene } = useGLTF("3D-models/Gaia4.glb");
   const gaiaRef = useRef();
   const [canMove, setCanMove] = useState(true); // Estado para controlar el movimiento
+
+  scene.traverse((node) => {
+    if (node.isMesh) {
+      node.castShadow = true; // Proyecta sombra
+      node.receiveShadow = true; // Recibe sombra
+    }
+  });
 
   // Parámetros para el movimiento oscilatorio
   const floatSpeed = 0.02; // Velocidad de movimiento
@@ -86,6 +94,14 @@ function GaiaModel() {
 
 function MainGatesModel() {
   const { scene } = useGLTF("3D-models/home/Main-gates.glb");
+
+  scene.traverse((node) => {
+    if (node.isMesh) {
+      node.castShadow = true; // Proyecta sombra
+      node.receiveShadow = true; // Recibe sombra
+    }
+  });
+
   return (
     <primitive
       object={scene}
@@ -99,14 +115,8 @@ function MainGatesModel() {
 const MainScene = () => {
   return (
     <div className="canvas-container">
-      <Canvas camera={{ position: [0, -5, 20] }}>
-        {/* Luz ambiental y sombras */}
-        <ambientLight intensity={0.5} /> {/* Aumentada la intensidad */}
-        <directionalLight
-          intensity={1.5}
-          position={[10, 10, 10]}
-          castShadow
-        />{" "}
+      <Canvas camera={{ position: [0, -5, 20] }} shadows>
+        <Lights />
         {/* Aumentada la intensidad */}
         {/* Modelos de Gaia y MainGates */}
         <MainGatesModel />
