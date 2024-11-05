@@ -1,0 +1,18 @@
+.bienvenida-container {
+  background-color: #f0f8ff; /* Color de fondo suave */
+  padding: 20px;
+  text-align: center; /* Centrar texto */
+  border-radius: 10px; /* Bordes redondeados */
+  margin: 20px; /* Margen alrededor del contenedor */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra para efecto de profundidad */
+}
+
+.bienvenida-container h1 {
+  font-size: 2.5em; /* Tamaño de fuente grande */
+  color: #3b9c5e; /* Color verde */
+}
+
+.bienvenida-container p {
+  font-size: 1.2em; /* Tamaño de fuente */
+  color: #333; /* Color del texto */
+}
