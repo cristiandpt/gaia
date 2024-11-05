@@ -15,7 +15,12 @@ const GaiaModel = (props) => {
   });
 
   return (
-    <primitive object={scene} scale={[20, 20, 20]} position={[0, -5, 10]} rotation={[0,2*Math.PI,0]} />
+    <primitive
+      object={scene}
+      scale={[20, 20, 20]}
+      position={[0, -5, 10]}
+      rotation={[0, 2 * Math.PI, 0]}
+    />
   );
 };
 

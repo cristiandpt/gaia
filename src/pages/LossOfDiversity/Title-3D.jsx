@@ -5,7 +5,7 @@ const Title = () => {
     <Center position={[0, 13, 0]}>
       <Text3D
         font="public/fonts/Nostalgic Whispers-Regular.json"
-        rotation ={[0, Math.PI/2, 0]}
+        rotation={[0, Math.PI / 2, 0]}
         bevelEnabled
         bevelSize={0.02}
         bevelThickness={0.01}
@@ -15,10 +15,9 @@ const Title = () => {
         size={1.2}
       >
         PÉRDIDA DE BIODIVERSIDAD
-        <meshStandardMaterial color="green"/>
-      </Text3D> 
+        <meshStandardMaterial color="green" />
+      </Text3D>
     </Center>
-
   );
 };
 

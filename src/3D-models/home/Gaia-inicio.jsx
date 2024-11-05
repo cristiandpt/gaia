@@ -31,8 +31,6 @@ export default function Gaia() {
         left: 0,
       }} // Tamaño pantalla completa
     >
-      
-
       <Model />
 
       {/* OrbitControls con movimiento solo horizontal */}
