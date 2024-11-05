@@ -10,6 +10,7 @@ import { Suspense } from "react";
 import Loader from "../../shared/3DModelLoader";
 import GaiaModel from "../../3D-models/biodiversity/Gaia-biodiversity.jsx";
 import { BoxGeometry, Mesh } from "three";
+import Title from "./Title-3D.jsx";
 
 const LossOfDiversity = () => {
   return (
@@ -42,10 +43,12 @@ const LossOfDiversity = () => {
           <OrbitControls
             enableZoom
             enablePan={false}
-            //minPolarAngle={Math.PI / 2}
-            //maxPolarAngle={Math.PI / 2}
+          //minPolarAngle={Math.PI / 2}
+          //maxPolarAngle={Math.PI / 2}
           />
+          <Title />
         </Canvas>
+
         <Text1 />
       </div>
     </>
