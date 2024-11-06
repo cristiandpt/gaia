@@ -115,7 +115,7 @@ function MainGatesModel() {
 const MainScene = () => {
   return (
     <div className="canvas-container">
-      <Canvas camera={{ position: [0, -5, 20] }} shadows >
+      <Canvas camera={{ position: [0, -5, 20] }} shadows>
         <Lights />
         {/* Aumentada la intensidad */}
         {/* Modelos de Gaia y MainGates */}
