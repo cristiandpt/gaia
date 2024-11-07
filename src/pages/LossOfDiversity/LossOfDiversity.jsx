@@ -4,11 +4,13 @@ import Text1 from "./Text1";
 import "./LossOfDiversity.css";
 import BirdModel from "../../3D-models/biodiversity/Bird-top.jsx";
 import { Canvas } from "@react-three/fiber";
-import Lights from "../lights/Lights";
+import Lights from "../lights/Bio-lights.jsx";
 import { OrbitControls } from "@react-three/drei";
 import { Suspense } from "react";
 import Loader from "../../shared/3DModelLoader";
 import GaiaModel from "../../3D-models/biodiversity/Gaia-biodiversity.jsx";
+import { BoxGeometry, Mesh } from "three";
+import Title from "./Title-3D.jsx";
 
 const LossOfDiversity = () => {
   return (
@@ -16,9 +18,9 @@ const LossOfDiversity = () => {
       <Navbar />
       <div className="">
         <Canvas
-          shadows={{ type: "soft" }} // Habilitar sombras suaevs
+          shadows // Habilitar sombras suaevs
           gl={{ alpha: true }}
-          camera={{ position: [20, 20, 0], fov: 50 }} // Ajustar la cámara
+          camera={{ position: [40, 0, 0], fov: 50 }} // Ajustar la cámara
           style={{
             height: "100vh",
             width: "100vw",
@@ -39,12 +41,14 @@ const LossOfDiversity = () => {
           </Suspense>
           {/* OrbitControls con movimiento solo horizontal */}
           <OrbitControls
-            enableZoom={false}
+            enableZoom
             enablePan={false}
-            minPolarAngle={Math.PI / 2}
-            maxPolarAngle={Math.PI / 2}
+            //minPolarAngle={Math.PI / 2}
+            //maxPolarAngle={Math.PI / 2}
           />
+          <Title />
         </Canvas>
+
         <Text1 />
       </div>
     </>

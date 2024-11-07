@@ -31,20 +31,6 @@ export default function Gaia() {
         left: 0,
       }} // Tamaño pantalla completa
     >
-      {/* Luz ambiental para iluminación general */}
-      <ambientLight intensity={1} />
-
-      {/* Luz direccional encima del modelo con sombras habilitadas */}
-      <directionalLight
-        position={[0, 50, 0]} // Posición sobre el modelo
-        intensity={1.5}
-        castShadow // Activar proyección de sombras
-        shadow-mapSize-width={1024} // Resolución del mapa de sombras
-        shadow-mapSize-height={1024}
-        shadow-camera-far={100} // Rango de la cámara de sombras
-        shadow-camera-near={0.1}
-      />
-
       <Model />
 
       {/* OrbitControls con movimiento solo horizontal */}

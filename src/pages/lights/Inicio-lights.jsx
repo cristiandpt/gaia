@@ -6,7 +6,7 @@ const Lights = () => {
   const directionalLightRef = useRef();
 
   {
-    /*useHelper(directionalLightRef, DirectionalLightHelper, 10, "red");*/
+    /*useHelper(directionalLightRef, DirectionalLightHelper, 3, "red");*/
   }
 
   return (
@@ -15,14 +15,14 @@ const Lights = () => {
       <directionalLight
         ref={directionalLightRef}
         color={"white"}
-        position={[0, 50, 50]}
+        position={[0, 0, 5]}
         intensity={5}
         castShadow
         shadow-mapSize={[512, 512]} // Aumenta si necesitas más resolución de sombra
-        shadow-camera-left={-100}
-        shadow-camera-right={100}
-        shadow-camera-top={100}
-        shadow-camera-bottom={-100}
+        shadow-camera-left={-5}
+        shadow-camera-right={5}
+        shadow-camera-top={5}
+        shadow-camera-bottom={-5}
         shadow-camera-near={1}
       />
     </>
