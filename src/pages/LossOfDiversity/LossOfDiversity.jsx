@@ -36,8 +36,7 @@ const LossOfDiversity = () => {
             <group receiveShadow castShadow position={[0, 0, 0]}>
               <BirdModel />
               <GaiaModel />
-              <ElephantIlandModel /> 
-
+              <ElephantIlandModel />
             </group>
           </Suspense>
           {/* OrbitControls con movimiento solo horizontal */}
