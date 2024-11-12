@@ -172,7 +172,7 @@ const Erosion = () => {
             <ErosionScrollControl>
               <MyGaia />
               {isActive && <Soil position={[-3, 3, 1]}></Soil>}
-              <CherryTree position={[8, -5, -5]} />
+              <CherryTree position={[8, -5, 0]} />
             </ErosionScrollControl>
             <ErosionPlane /> <OrbitControls enableZoom={false} />
             {/* Posiciona el segundo modelo respecto al primero */}
