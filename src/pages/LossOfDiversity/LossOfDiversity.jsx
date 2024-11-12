@@ -38,10 +38,7 @@ const LossOfDiversity = () => {
               <ElephantIlandModel />
             </group>
           </Suspense>
-          <OrbitControls
-            enableZoom
-            enablePan={false}
-          />
+          <OrbitControls enableZoom enablePan={false} />
           <Title />
         </Canvas>
 
@@ -66,7 +63,8 @@ const CameraMovement = () => {
     const handleKeyDown = (event) => {
       if (event.key === "a" || event.key === "ArrowLeft") {
         // Mover a la posición anterior
-        currentPositionIndex = (currentPositionIndex - 1 + positions.length) % positions.length;
+        currentPositionIndex =
+          (currentPositionIndex - 1 + positions.length) % positions.length;
       }
       if (event.key === "d" || event.key === "ArrowRight") {
         // Mover a la siguiente posición
@@ -75,7 +73,7 @@ const CameraMovement = () => {
 
       // Cambiar la posición de la cámara
       camera.position.set(...positions[currentPositionIndex]);
-      
+
       // También puedes ajustar el zoom cambiando el 'fov' de la cámara
       camera.fov = 50; // Ajusta el zoom aquí
       camera.updateProjectionMatrix(); // Asegúrate de actualizar la proyección para que el cambio de fov surta efecto
