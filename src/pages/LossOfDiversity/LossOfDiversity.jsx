@@ -1,7 +1,7 @@
 import { Navbar } from "../../components/Navbar";
 import ElephantIlandModel from "../../3D-models/biodiversity/ElephantIsland";
 import Text1 from "./Text1";
-import "./LossOfDiversity.css";
+
 import BirdModel from "../../3D-models/biodiversity/Bird-top.jsx";
 import { Canvas, useThree } from "@react-three/fiber";
 import Lights from "../lights/Bio-lights.jsx";
@@ -10,6 +10,7 @@ import { Suspense, useEffect } from "react";
 import Loader from "../../shared/3DModelLoader";
 import GaiaModel from "../../3D-models/biodiversity/Gaia-biodiversity.jsx";
 import Title from "./Title-3D.jsx";
+import Staging from "../../3D-models/biodiversity/staging/Staging.jsx";
 
 const LossOfDiversity = () => {
   return (
@@ -29,6 +30,7 @@ const LossOfDiversity = () => {
             background: "transparent",
           }}
         >
+          <Staging />
           <Lights />
           <CameraMovement />
           <Suspense fallback={<Loader />}>
@@ -40,6 +42,7 @@ const LossOfDiversity = () => {
           </Suspense>
           <OrbitControls enableZoom enablePan={false} />
           <Title />
+          
         </Canvas>
 
         <Text1 />
