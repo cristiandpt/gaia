@@ -6,8 +6,8 @@ import {
 } from "../../3D-models/deforestation/Deforestation.jsx";
 import "./Deforest.css"; // CSS adicional para los textos fijos
 import { useRef } from "react";
-import { Canvas, useFrame , useThree } from "@react-three/fiber";
-import { Suspense , useEffect  } from "react";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import { Suspense, useEffect } from "react";
 import { Environment, OrbitControls, useGLTF } from "@react-three/drei";
 import Lights from "../lights/Desforest-light.jsx";
 import Staging from "../../3D-models/deforestation/staging/Staging.jsx";
@@ -26,14 +26,14 @@ const DeforestationPage = () => {
               intensity={0.7}
               castShadow
             />
-            <Staging/>
+            <Staging />
             <Lights />
             <CameraMovement />
             <Suspense fallback={null}>
               <group receiveShadow castShadow position={[0, 0, 0]}>
-              <GaiaModel />
-              <DeforestationModel1 />
-              <DeforestationModel2 />
+                <GaiaModel />
+                <DeforestationModel1 />
+                <DeforestationModel2 />
               </group>
               <OrbitControls enableZoom={false} />
             </Suspense>
@@ -64,7 +64,7 @@ const CameraMovement = () => {
     [0, 20, 30],
     [20, 0, 30],
     [-20, 0, 20],
-    [0, 0, 40]
+    [0, 0, 40],
   ]; // Definir las posiciones a las que se moverá la cámara
 
   let currentPositionIndex = 0; // Variable para llevar el control de la posición actual

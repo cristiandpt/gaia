@@ -41,7 +41,6 @@ const LossOfDiversity = () => {
           </Suspense>
           <OrbitControls enableZoom enablePan={false} />
           <Title />
-        
         </Canvas>
 
         <Text1 />
