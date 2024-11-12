@@ -7,7 +7,7 @@
   top: 90px;
   left: 30px;
   width: 30%;
-  height: 200px; /* Ajusta la altura para un tamaño fijo */
+  height: 240px; /* Ajusta la altura para un tamaño fijo */
   padding: 20px;
   background-color: rgb(55, 126, 64);
   color: white;
@@ -47,6 +47,6 @@ button:hover {
 }
 
 button:disabled {
-  background-color: rgb(200, 200, 200);
+  background-color: rgb(99, 63, 63);
   cursor: not-allowed;
 }

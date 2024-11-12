@@ -5,8 +5,10 @@ import { Html } from "@react-three/drei";
 export default function Text1() {
   const texts = [
     "La pérdida de biodiversidad es la disminución o extinción de especies, ecosistemas y recursos genéticos en un área determinada. Ocurre por causas como la deforestación, contaminación, cambio climático, caza excesiva, y la expansión urbana o agrícola, lo que fragmenta hábitats y reduce la capacidad de las especies para sobrevivir y reproducirse.",
-    "La deforestación es uno de los mayores causantes de la pérdida de biodiversidad, ya que destruye hábitats naturales de muchas especies. Las actividades humanas, como la agricultura y la urbanización, son las principales responsables de la deforestación.",
-    "El cambio climático también es una amenaza para la biodiversidad, ya que altera los hábitats y los patrones de migración, afectando la supervivencia de diversas especies.",
+    "Imagina un ecosistema como una cadena, donde cada eslabón es una especie. Cuando una especie se extingue, los eslabones de esa cadena se debilitan y el ecosistema entero comienza a desmoronarse. Esto afecta a todos. La pérdida de biodiversidad no es solo un problema de los animales y plantas, es un problema para todos, incluidos los humanos.",
+    "Este proceso de extinción masiva está siendo impulsado por actividades humanas como la deforestación, la contaminación y el cambio climático. Cada vez que un ecosistema es alterado, no solo desaparecen las especies que habitan allí, sino que se rompen los procesos naturales que ayudan a amntener el equilibrio en el planeta.",
+    "A medida que más especies desaparecen, también se pierde conocimiento invaluable sobre el mundo natural, y nos acercamos a un punto de no retorno. Si no actuamos ahora, las consecuencias serán irreversibles, y lo que alguna vez fue un mundo vibrante y diverso se convertirá en un lugar más vacío y frágil.",
+    "Proteger la biodiversidad es proteger el futuro de la humanidad. Cada esfuerzo por conservar un hábitat, reducir nuestra huella de carbono o apoyar políticas de protección ambiental es un paso hacia un mundo más saludable y equilibrado. La biodiversidad es una responsabilidad colectiva que debemos asumir para asegurar un futuro para todas las formas de vida.",
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
