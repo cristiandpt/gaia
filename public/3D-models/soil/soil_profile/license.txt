@@ -1,0 +1,11 @@
+Model Information:
+* title:	Soil Profile
+* source:	https://sketchfab.com/3d-models/soil-profile-84554828171243a8be5cef86ef284fcf
+* author:	Ipay (https://sketchfab.com/ipay)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Soil Profile" (https://sketchfab.com/3d-models/soil-profile-84554828171243a8be5cef86ef284fcf) by Ipay (https://sketchfab.com/ipay) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

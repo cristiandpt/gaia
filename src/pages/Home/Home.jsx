@@ -1,6 +1,5 @@
-import React from "react";
-import { Navbar } from "../../components/Navbar";
-import Gates from "../../3D-models/Maingates";
+import NavbarHome from "../../components/NavbarHome";
+import MainScene from "../../3D-models/scenes/MainScene";
 import Welcome from "./Welcome"; // Asegúrate de que la ruta sea correcta
 import "./Home.css";
 import EnvironmentalCare from "./EnvironmentalCare";
@@ -8,9 +7,9 @@ import EnvironmentalCare from "./EnvironmentalCare";
 const LandingPage = () => {
   return (
     <>
-      <Navbar />
+      <NavbarHome />
       <div className="canvas-container">
-        <Gates />
+        <MainScene />
         <EnvironmentalCare />
       </div>
       <Welcome />

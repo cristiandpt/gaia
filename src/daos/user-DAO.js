@@ -62,6 +62,17 @@ class UserDAO {
         console.error("Error removing document: ", error);
       });
   }
+
+  getUserData = () => {
+    const name = localStorage.getItem("name");
+    const email = localStorage.getItem("email");
+    const photoUrl = localStorage.getItem("photoUrl");
+    return {
+      name,
+      email,
+      photoUrl,
+    };
+  };
 }
 
 export default new UserDAO();
