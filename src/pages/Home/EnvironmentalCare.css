@@ -1,26 +1,26 @@
 .cuidado-medio-container {
-	position: absolute;
-	top: 70px; /* Ajusta según la distancia deseada desde la parte superior */
-	left: 20px; /* Ajusta según la distancia deseada desde el lado izquierdo */
-	background-color: rgba(
-		255,
-		248,
-		220,
-		0.2
-	); /*#fff8dc; /* Color de fondo suave */
-	padding: 20px;
-	border-radius: 10px; /* Bordes redondeados */
-	width: 320px; /* Ajusta el ancho para que se acomode en la esquina */
-	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra para efecto de profundidad */
-	z-index: 10; /* Asegura que el contenido esté encima del modelo 3D */
+  position: absolute;
+  top: 70px; /* Ajusta según la distancia deseada desde la parte superior */
+  left: 20px; /* Ajusta según la distancia deseada desde el lado izquierdo */
+  background-color: rgba(
+    255,
+    248,
+    220,
+    0.2
+  ); /*#fff8dc; /* Color de fondo suave */
+  padding: 20px;
+  border-radius: 10px; /* Bordes redondeados */
+  width: 320px; /* Ajusta el ancho para que se acomode en la esquina */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra para efecto de profundidad */
+  z-index: 10; /* Asegura que el contenido esté encima del modelo 3D */
 }
 
 .cuidado-medio-container h2 {
-	font-size: 1.8em; /* Tamaño de fuente ajustado */
-	color: #10702a; /* Color marrón */
+  font-size: 1.8em; /* Tamaño de fuente ajustado */
+  color: #10702a; /* Color marrón */
 }
 
 .cuidado-medio-container p {
-	font-size: 1em; /* Tamaño de fuente */
-	line-height: 1.6; /* Espaciado entre líneas */
+  font-size: 1em; /* Tamaño de fuente */
+  line-height: 1.6; /* Espaciado entre líneas */
 }

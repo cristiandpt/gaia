@@ -6,7 +6,7 @@ interface Props {
 
 const ErosionScrollControl = ({ children }: Props) => (
 	<ScrollControls pages={3} damping={0.25}>
-		<></>
+		{children}
 	</ScrollControls>
 );
 

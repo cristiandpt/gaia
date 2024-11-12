@@ -620,10 +620,6 @@ video {
   margin-top: 0.5rem;
 }
 
-.mt-24 {
-  margin-top: 6rem;
-}
-
 .flex {
   display: flex;
 }
@@ -775,6 +771,10 @@ video {
 .bg-beige {
   --tw-bg-opacity: 1;
   background-color: rgb(233 231 206 / var(--tw-bg-opacity));
+}
+
+.bg-black\/\[0\.5\] {
+  background-color: rgb(0 0 0 / 0.5);
 }
 
 .bg-green-600 {

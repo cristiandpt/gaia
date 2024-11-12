@@ -1,3 +1,8 @@
+// Credits:
+/*
+  "Cherry tree" (https://skfb.ly/6ZIBu) by matousekfoto is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+ */
+
 import { useRef, useState, useEffect, useCallback } from "react";
 import { Canvas } from "@react-three/fiber";
 import { useGLTF, Environment } from "@react-three/drei";
@@ -12,7 +17,7 @@ import GaiaDialog from "../../components/GaiaDialog";
 import Say from "react-say";
 
 const gaiaDialogs = [
-	"Hola, soy Gaia: La Tierra progenitora, fecunda y antepasada común de todos los dioses, hombres y seres vivos: Soy la  «madre universal», «madre de todos» o «gran madre». Seré tu acompañante en este viaje",
+	"Hola, soy Gaia: La Tierra progenitora, fecunda y antepasada común de todos los dioses, hombres y seres vivos: Soy la  «madre universal», «madre de todos» o «gran madre». Seré tu acompañante en este viaje del cuidado",
 	"Voy a cantar a la Tierra, madre universal, de sólidos cimientos, la más augusta, que nutre en su suelo todo cuanto existe. Cuanto camina por la divina tierra o por el ponto, o cuanto vuela, se nutre de tu exuberancia. Por ti se vuelven prolíficos y fructíferos, soberana, de ti depende dar la vida o quitársela a los hombres mortales»​",
 ];
 
@@ -173,7 +178,7 @@ const MainScene = () => {
 					<MainSceneControl />
 					{/*<Floor />*/}
 				</Physics>
-				<GaiaDialog say={gaiaDialogs[0]} />
+				<GaiaDialog say={gaiaDialogs[0]} position={[3, 1, 0]} />
 				<Say
 					pitch={1.1}
 					rate={1.5}

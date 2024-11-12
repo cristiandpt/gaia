@@ -1,84 +1,84 @@
 /* Contenedor principal de la barra */
 .nav-container {
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	z-index: 1000;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	height: 50px;
-	padding: 0 20px;
-	background-color: transparent; /* Verde oscuro */
-	color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  padding: 0 20px;
+  background-color: transparent; /* Verde oscuro */
+  color: white;
 }
 
 .logo-image {
-	width: 50px; /* Ajusta el ancho del logo */
+  width: 50px; /* Ajusta el ancho del logo */
 }
 
 /* Icono de menú (ajustado a la derecha) */
 .menu-icon {
-	font-size: 30px; /* Aumenta el tamaño del icono */
-	cursor: pointer;
-	color: #f0f0f0;
-	transition:
-		color 0.3s,
-		transform 0.3s; /* Añade transición para transformación */
-	display: flex; /* Asegura que ocupe espacio adecuado */
-	justify-content: center;
-	align-items: center;
-	width: 50px; /* Ajusta el tamaño del contenedor del ícono */
-	height: 50px; /* Ajusta el tamaño del contenedor del ícono */
+  font-size: 30px; /* Aumenta el tamaño del icono */
+  cursor: pointer;
+  color: #f0f0f0;
+  transition:
+    color 0.3s,
+    transform 0.3s; /* Añade transición para transformación */
+  display: flex; /* Asegura que ocupe espacio adecuado */
+  justify-content: center;
+  align-items: center;
+  width: 50px; /* Ajusta el tamaño del contenedor del ícono */
+  height: 50px; /* Ajusta el tamaño del contenedor del ícono */
 }
 
 /* Cambia el color del ícono al abrir el menú */
 .menu-icon.open {
-	color: sienna; /* Cambia a un color diferente cuando está abierto */
+  color: sienna; /* Cambia a un color diferente cuando está abierto */
 }
 
 /* Estilo del submenú */
 .sub-menu {
-	position: absolute;
-	top: 60px;
-	left: 0;
-	width: 250px;
-	background-color: rgba(67, 163, 67, 0.25);
-	border: 1px solid #ccc;
-	border-radius: 10px;
-	box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-	z-index: 1000;
-	transform: translateY(0);
-	transition: transform 0.2s ease;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 250px;
+  background-color: rgba(67, 163, 67, 0.25);
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  transform: translateY(0);
+  transition: transform 0.2s ease;
 }
 
 .sub-menu-item {
-	display: flex;
-	align-items: center;
-	padding: 10px 14px;
-	cursor: pointer;
-	color: #f0f0f0;
-	font-size: 14px;
-	transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  padding: 10px 14px;
+  cursor: pointer;
+  color: #f0f0f0;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
 }
 
 .sub-menu-item:hover {
-	background-color: #22b8cf;
+  background-color: #22b8cf;
 }
 
 .sub-menu-item span {
-	margin-left: 10px;
+  margin-left: 10px;
 }
 
 /* Estilo de ícono */
 .sub-menu-item svg {
-	margin-right: 10px;
-	font-size: 18px;
+  margin-right: 10px;
+  font-size: 18px;
 }
 
 /* Clase de resaltar opción */
 .highlight {
-	background-color: #22b8cf;
-	color: #fff;
+  background-color: #22b8cf;
+  color: #fff;
 }

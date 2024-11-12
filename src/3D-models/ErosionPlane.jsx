@@ -3,7 +3,7 @@ import { Suspense } from "react";
 import { useGLTF } from "@react-three/drei";
 
 function ErosionLoader() {
-  const gltf = useGLTF("3D-models/desert.glb");
+  const gltf = useGLTF("3D-models/erosion/ground/ground.glb");
 
   useEffect(() => {
     // Ensure all child meshes receive shadows
@@ -19,7 +19,7 @@ function ErosionLoader() {
       receiveShadow
       object={gltf.scene}
       scale={20}
-      position={[-40, 0, 0]}
+      position={[0,-5, 0]}
     >
       <shadowMaterial opacity={0.7} />
     </primitive>
