@@ -19,7 +19,7 @@ function ErosionLoader() {
       receiveShadow
       object={gltf.scene}
       scale={20}
-      position={[0,-5, 0]}
+      position={[0, -5, 0]}
     >
       <shadowMaterial opacity={0.7} />
     </primitive>

@@ -6,15 +6,17 @@ Source: https://sketchfab.com/3d-models/soil-profile-84554828171243a8be5cef86ef2
 Title: Soil Profile
 */
 
-import React, { useRef } from 'react'
-import { useGLTF } from '@react-three/drei'
-import { useFrame } from '@react-three/fiber';
-import * as THREE from 'three';
+import React, { useRef } from "react";
+import { useGLTF } from "@react-three/drei";
+import { useFrame } from "@react-three/fiber";
+import * as THREE from "three";
 
 //useGLTF('3D-models/soil/soil_profile/scene.gltf')
 
 export function Soil(props) {
-  const { nodes, materials } = useGLTF('3D-models/soil/soil_profile/scene.gltf')
+  const { nodes, materials } = useGLTF(
+    "3D-models/soil/soil_profile/scene.gltf",
+  );
 
   const groupRef = useRef(null); // Create a ref for the group
 
@@ -26,52 +28,50 @@ export function Soil(props) {
   });
 
   return (
-    <group
-    ref={groupRef}
-    {...props} dispose={null}>
+    <group ref={groupRef} {...props} dispose={null}>
       <group position={[-0.241, 1.772, 0]}>
         <mesh
           castShadow
           receiveShadow
           geometry={nodes.Object_4.geometry}
-          material={materials['Material.034']}
+          material={materials["Material.034"]}
         />
         <mesh
           castShadow
           receiveShadow
           geometry={nodes.Object_5.geometry}
-          material={materials['Material.034']}
+          material={materials["Material.034"]}
         />
         <mesh
           castShadow
           receiveShadow
           geometry={nodes.Object_6.geometry}
-          material={materials['Material.034']}
+          material={materials["Material.034"]}
         />
         <mesh
           castShadow
           receiveShadow
           geometry={nodes.Object_7.geometry}
-          material={materials['Material.034']}
+          material={materials["Material.034"]}
         />
         <mesh
           castShadow
           receiveShadow
           geometry={nodes.Object_8.geometry}
-          material={materials['Material.033']}
+          material={materials["Material.033"]}
         />
         <mesh
           castShadow
           receiveShadow
           geometry={nodes.Object_9.geometry}
-          material={materials['Material.033']}
+          material={materials["Material.033"]}
         />
       </group>
       <mesh
         castShadow
         receiveShadow
         geometry={nodes.Object_11.geometry}
-        material={materials['Material.036']}
+        material={materials["Material.036"]}
         position={[3, 2, 0]}
       />
       <mesh
@@ -85,14 +85,14 @@ export function Soil(props) {
         castShadow
         receiveShadow
         geometry={nodes.Object_15.geometry}
-        material={materials['Material.001']}
+        material={materials["Material.001"]}
         position={[0.007, 0.02, 0]}
       />
       <mesh
         castShadow
         receiveShadow
         geometry={nodes.Object_17.geometry}
-        material={materials['Material.002']}
+        material={materials["Material.002"]}
         position={[0.007, 2.028, 0]}
       />
       <mesh
@@ -114,9 +114,9 @@ export function Soil(props) {
         castShadow
         receiveShadow
         geometry={nodes.Object_23.geometry}
-        material={materials['Material.005']}
+        material={materials["Material.005"]}
         position={[0.007, 2.021, 0]}
       />
     </group>
-  )
+  );
 }
