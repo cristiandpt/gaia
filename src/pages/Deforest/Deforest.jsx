@@ -6,9 +6,12 @@ import {
 } from "../../3D-models/deforestation/Deforestation.jsx";
 import "./Deforest.css"; // CSS adicional para los textos fijos
 import { useRef } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { Suspense } from "react";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import { Suspense, useEffect } from "react";
 import { Environment, OrbitControls, useGLTF } from "@react-three/drei";
+import Lights from "../lights/Desforest-light.jsx";
+import Staging from "../../3D-models/deforestation/staging/Staging.jsx";
+import GaiaModel from "../../3D-models/deforestation/Gaia-desforest.jsx";
 
 const DeforestationPage = () => {
   return (
@@ -23,9 +26,15 @@ const DeforestationPage = () => {
               intensity={0.7}
               castShadow
             />
+            <Staging />
+            <Lights />
+            <CameraMovement />
             <Suspense fallback={null}>
-              <DeforestationModel1 />
-              <DeforestationModel2 />
+              <group receiveShadow castShadow position={[0, 0, 0]}>
+                <GaiaModel />
+                <DeforestationModel1 />
+                <DeforestationModel2 />
+              </group>
               <OrbitControls enableZoom={false} />
             </Suspense>
             <Environment preset="sunset" />
@@ -46,6 +55,45 @@ const DeforestationPage = () => {
       </div>
     </>
   );
+};
+
+const CameraMovement = () => {
+  const { camera } = useThree(); // Accede a la cámara dentro del Canvas
+
+  const positions = [
+    [0, 20, 30],
+    [20, 0, 30],
+    [-20, 0, 20],
+    [0, 0, 40],
+  ]; // Definir las posiciones a las que se moverá la cámara
+
+  let currentPositionIndex = 0; // Variable para llevar el control de la posición actual
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === "a" || event.key === "ArrowLeft") {
+        // Mover a la posición anterior
+        currentPositionIndex =
+          (currentPositionIndex - 1 + positions.length) % positions.length;
+      }
+      if (event.key === "d" || event.key === "ArrowRight") {
+        // Mover a la siguiente posición
+        currentPositionIndex = (currentPositionIndex + 1) % positions.length;
+      }
+
+      // Cambiar la posición de la cámara
+      camera.position.set(...positions[currentPositionIndex]);
+
+      // También puedes ajustar el zoom cambiando el 'fov' de la cámara
+      camera.fov = 50; // Ajusta el zoom aquí
+      camera.updateProjectionMatrix(); // Asegúrate de actualizar la proyección para que el cambio de fov surta efecto
+    };
+
+    window.addEventListener("keydown", handleKeyDown); // Escuchar eventos de teclado
+    return () => window.removeEventListener("keydown", handleKeyDown); // Limpiar al desmontar
+  }, [camera]);
+
+  return null; // Este componente no renderiza nada, solo maneja la lógica de la cámara
 };
 
 export default DeforestationPage;
