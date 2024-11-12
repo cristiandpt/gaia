@@ -14,7 +14,7 @@ const ElephantIlandModel = (props) => {
   });
 
   return (
-    <primitive object={scene} scale={[4, 4, 4]} position={[0, -12, -20]} />
+    <primitive object={scene} scale={[5, 5, 5]} position={[0, -15, -20]} />
   );
 };
 
