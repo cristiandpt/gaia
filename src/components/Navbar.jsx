@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   FaBars,
   FaTree,
@@ -16,12 +16,22 @@ import { useAuth } from "../context/AuthContext";
 import logo from "/imagenes/Logo-Gaia.png";
 import "./Navbar.css";
 import useAuthStore from "../stores/use-auth-store";
+import userDao from "../daos/user-DAO.js";
 
 export const Navbar = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const auth = useAuth();
   const navigate = useNavigate();
   const { logout } = useAuthStore();
+  const [userName, setUserName] = useState("");
+  const [userEmail, setEmail] = useState("");
+  const [userPhotoUrl, setPhotoUrl] = useState("");
+
+  useEffect(() => {
+    const user = userDao.getUserData();
+    setUserName(user.name);
+    setEmail(user.email);
+  }, []);
 
   const toggleDropdown = () => {
     setDropdownOpen((prevState) => !prevState);
@@ -47,10 +57,13 @@ export const Navbar = () => {
       </div>
 
       {/* Logo */}
-      <div>
+      <div className="flex">
+        <div className="flex flex-col align-center justify-center">
+          <p className="p-0 m-0 leading-tight">{userName}</p>
+          <p className="p-0 m-0 leading-tight">{userEmail}</p>
+        </div>
         <img src={logo} alt="Project Logo" className="logo-image" />
       </div>
-
       {dropdownOpen && (
         <div className="sub-menu">
           {/* Opciones de menú usando navigate */}

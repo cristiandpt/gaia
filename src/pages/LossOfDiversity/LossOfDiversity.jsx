@@ -1,7 +1,6 @@
 import { Navbar } from "../../components/Navbar";
 import ElephantIlandModel from "../../3D-models/biodiversity/ElephantIsland";
 import Text1 from "./Text1";
-
 import BirdModel from "../../3D-models/biodiversity/Bird-top.jsx";
 import { Canvas, useThree } from "@react-three/fiber";
 import Lights from "../lights/Bio-lights.jsx";
@@ -42,7 +41,6 @@ const LossOfDiversity = () => {
           </Suspense>
           <OrbitControls enableZoom enablePan={false} />
           <Title />
-          
         </Canvas>
 
         <Text1 />
