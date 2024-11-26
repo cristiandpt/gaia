@@ -11,7 +11,6 @@ import { useFrame, useThree } from "@react-three/fiber";
 import { easing } from "maath";
 import { ReactNode, useEffect, useRef, useState } from "react";
 import * as THREE from "three";
-import ParticlesEffect from "./particles/ParticlesEffect";
 import SpackDust from "./particles-v1/Particles";
 import { Sparks } from "./particles-v1/Sparks";
 
@@ -89,9 +88,16 @@ const PortalStage: React.FC<Props> = ({
 					<Environment preset="sunset" />
 					<mesh>
 						<sphereGeometry args={[1.4, 24, 24]} />
-						<meshBasicMaterial color={"black"} side={THREE.BackSide} />
+						<meshBasicMaterial
+							color={new THREE.Color("#020305")}
+							side={THREE.BackSide}
+						/>
 						<SpackDust count={10000} />
-						<Sparks count={9} colors={colors.malevolentIllusion} />
+						<Sparks
+							count={10}
+							colors={colors.malevolentIllusion}
+							radius={0.75}
+						/>
 					</mesh>
 				</MeshPortalMaterial>
 			</RoundedBox>

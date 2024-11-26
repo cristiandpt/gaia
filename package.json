@@ -29,7 +29,6 @@
     "react-router-dom": "^6.27.0",
     "react-say": "^2.1.0",
     "three": "^0.168.0",
-    "three.meshline": "^1.4.0",
     "threejs-meshline": "^2.0.12",
     "zustand": "^4.5.5"
   },

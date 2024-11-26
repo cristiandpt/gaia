@@ -1,10 +1,10 @@
 import * as THREE from "three";
-import React, { useRef, useMemo } from "react";
+import { useRef, useMemo } from "react";
 import { useFrame, extend } from "@react-three/fiber";
 import Random from "canvas-sketch-util/random";
-import { MeshLine, MeshLineMaterial } from "three.meshline";
+import { MeshLineGeometry, MeshLineMaterial } from "meshline";
 
-extend({ MeshLine, MeshLineMaterial });
+extend({ MeshLineGeometry, MeshLineMaterial });
 
 const radiusVariance = () => Random.range(0.3, 1);
 
@@ -17,11 +17,9 @@ function SparkLine({ curve, width, color, speed }) {
 		}
 	});
 
-	console.log("Lenght ", curve);
-
 	return (
 		<mesh>
-			<meshLine attach="geometry" points={curve} />
+			<meshLineGeometry points={curve} attach="geometry" />
 			<meshLineMaterial
 				ref={material}
 				transparent
@@ -29,7 +27,7 @@ function SparkLine({ curve, width, color, speed }) {
 				lineWidth={width}
 				color={color}
 				dashArray={0.1}
-				dashRatio={0.95}
+				dashRatio={0.25}
 			/>
 		</mesh>
 	);
@@ -57,19 +55,10 @@ export function Sparks({ count, colors, radius = 10 }) {
 						)
 						.clone();
 				});
-				if (points.length % 3 !== 0) {
-					console.error("Points array length is not valid:", points.length);
-				}
-				// Log points to check for NaN values
-				points.forEach((p, i) => {
-					if (isNaN(p.x) || isNaN(p.y) || isNaN(p.z)) {
-						console.error("Invalid point generated:", p);
-					}
-				});
 				const curve = new THREE.CatmullRomCurve3(points).getPoints(999);
 				return {
 					color: colors[parseInt(colors.length * Math.random(), 10)],
-					width: Math.max(0.1, (0.2 * index) / 10),
+					width: Math.max(0.1, (0.2 * index) / 10) / 10,
 					speed: Math.max(0.001, 0.004 * Math.random()),
 					curve,
 				};
