@@ -20,6 +20,7 @@ interface Props extends React.ComponentProps<typeof RoundedBox> {
 	texture: string;
 	name: string;
 	color: string;
+	colorPortal: string;
 	active: string | null; // Assuming active can be a string or null
 	setActive: (name: string | null) => void; // Function to set active state
 	hovered: string | null; // Assuming hovered can be a string or null
@@ -31,6 +32,7 @@ const PortalStage: React.FC<Props> = ({
 	texture,
 	name,
 	color,
+	colorPortal,
 	active,
 	setActive,
 	hovered,
@@ -89,7 +91,7 @@ const PortalStage: React.FC<Props> = ({
 					<mesh>
 						<sphereGeometry args={[1.4, 24, 24]} />
 						<meshBasicMaterial
-							color={new THREE.Color("#020305")}
+							color={new THREE.Color(colorPortal)}
 							side={THREE.BackSide}
 						/>
 						<SpackDust count={10000} />

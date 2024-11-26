@@ -98,6 +98,7 @@ const MainGates = ({ onEnterPortal, onExitPortal }: Props) => {
 				texture={"imagenes/near.hdr"}
 				name="Erosion"
 				color={"#df8d52"}
+				colorPortal="#2a0f09"
 				active={""}
 				setActive={(her) => console.log(her)}
 				hovered={""}
@@ -115,6 +116,7 @@ const MainGates = ({ onEnterPortal, onExitPortal }: Props) => {
 				texture={"imagenes/near.hdr"}
 				name="Bioversidad"
 				color={"#df8d52"}
+				colorPortal={"#1e2c01"}
 				active={""}
 				setActive={(her) => console.log(her)}
 				hovered={""}
@@ -132,6 +134,7 @@ const MainGates = ({ onEnterPortal, onExitPortal }: Props) => {
 				texture={"imagenes/near.hdr"}
 				name="Deforestación"
 				color={"#df8d52"}
+				colorPortal={"#3b2d37"}
 				active={""}
 				setActive={(her) => console.log(her)}
 				hovered={""}
@@ -149,6 +152,7 @@ const MainGates = ({ onEnterPortal, onExitPortal }: Props) => {
 				texture={"imagenes/near.hdr"}
 				name="Ayuda"
 				color={"#df8d52"}
+				colorPortal={"#23180f"}
 				active={""}
 				setActive={(her) => console.log(her)}
 				hovered={""}

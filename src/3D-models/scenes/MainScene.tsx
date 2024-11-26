@@ -193,6 +193,7 @@ const dialogFactory = (type: DialogType) => {
 
 const MainScene = () => {
 	const [isDialogVisible, setDialogVisible] = useState<boolean>(false);
+	const [isDialogGaiaVisible, setDialogGaiaVisible] = useState<boolean>(true);
 	const [dialogType, setDialogType] = useState<DialogType>(DialogType.HELP);
 	const [route, setRoute] = useState<string>("");
 	const navigate = useNavigate();
@@ -224,6 +225,16 @@ const MainScene = () => {
 	};
 
 	const dialogProps = dialogFactory(dialogType);
+
+	useEffect(() => {
+		if (isDialogGaiaVisible) {
+			const timer = setTimeout(() => {
+				setDialogGaiaVisible(false);
+			}, 10000);
+			return () => clearTimeout(timer);
+		}
+	}, []);
+
 	return (
 		<div className="canvas-container">
 			<Canvas camera={{ position: [0, 5, 20] }} shadows>
@@ -250,7 +261,9 @@ const MainScene = () => {
 						{/*<Floor />*/}
 					</Physics>
 				</Suspense>
-				<GaiaDialog say={gaiaDialogs[0]} position={[3, 1, 0]} />
+				{isDialogGaiaVisible && (
+					<GaiaDialog say={gaiaDialogs[0]} position={[3, 1, 0]} />
+				)}
 				{isDialogVisible && (
 					<MainDialog
 						title={dialogProps.title}
