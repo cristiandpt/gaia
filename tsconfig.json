@@ -2,15 +2,19 @@
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
+    "allowSyntheticDefaultImports": true,
     "lib": ["dom", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
-    "moduleResolution": "nodenext",
+    "moduleResolution": "node", // Change this line
     "esModuleInterop": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "allowNonTsExtensions": true,
   },
   "include": ["src/**/*"],
   "exclude": [
