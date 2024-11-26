@@ -11,6 +11,9 @@ import { useFrame, useThree } from "@react-three/fiber";
 import { easing } from "maath";
 import { ReactNode, useEffect, useRef, useState } from "react";
 import * as THREE from "three";
+import ParticlesEffect from "./particles/ParticlesEffect";
+import SpackDust from "./particles-v1/Particles";
+import { Sparks } from "./particles-v1/Sparks";
 
 interface Props extends React.ComponentProps<typeof RoundedBox> {
 	// Extend props from RoundedBox
@@ -49,6 +52,25 @@ const PortalStage: React.FC<Props> = ({
 		);
 	});
 
+	const colors = {
+		malevolentIllusion: [
+			"#c06995",
+			"#de77c7",
+			"#df86df",
+			"#d998ee",
+			"#ceadf4",
+			"#c6bff9",
+		],
+		sunnyRainbow: [
+			"#fbe555",
+			"#fb9224",
+			"#f45905",
+			"#be8abf",
+			"#ffeed0",
+			"#feff89",
+		],
+	};
+
 	return (
 		<group {...props}>
 			<Text fontSize={0.4} position={[0, 1.9, 0.051]} anchorY="bottom">
@@ -64,19 +86,13 @@ const PortalStage: React.FC<Props> = ({
 			>
 				<MeshPortalMaterial ref={portalMaterial} side={THREE.DoubleSide}>
 					<ambientLight intensity={1} />
-					<Environment
-						files="imagenes/near.hdr"
-						background
-						near={2}
-						far={10}
-						backgroundIntensity={1} // optional intensity factor
-						backgroundRotation={[0, Math.PI / 2, 0]} // optional rotation
-						environmentIntensity={1} // optional intensity factor (default: 1, only works with three 0.163 and up)
-						environmentRotation={[0, Math.PI / 2, 0]}
-						ground={{
-							scale: 0.05,
-						}}
-					/>
+					<Environment preset="sunset" />
+					<mesh>
+						<sphereGeometry args={[1.4, 24, 24]} />
+						<meshBasicMaterial color={"black"} side={THREE.BackSide} />
+						<SpackDust count={10000} />
+						<Sparks count={9} colors={colors.malevolentIllusion} />
+					</mesh>
 				</MeshPortalMaterial>
 			</RoundedBox>
 		</group>
