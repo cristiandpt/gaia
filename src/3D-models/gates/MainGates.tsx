@@ -1,15 +1,18 @@
 import { useGLTF } from "@react-three/drei";
 import { Euler, Vector3 } from "@react-three/fiber";
 import { CuboidCollider, RigidBody } from "@react-three/rapier";
+import { useNavigate } from "react-router-dom";
 import { Object3D } from "three";
 
 const MainGates = () => {
 	const { scene } = useGLTF("3D-models/home/Main-gates.glb");
 
 	scene.traverse((child: Object3D) => {
-		child.castShadow = true; // Proyecta sombra
-		child.receiveShadow = true; // Recibe sombra
+		child.castShadow = true;
+		child.receiveShadow = true;
 	});
+
+	const navigate = useNavigate();
 
 	const GenerateCuboideCollider = (
 		position: Vector3,
@@ -33,17 +36,23 @@ const MainGates = () => {
 		{
 			position: [2.9, -0.5, -3.8],
 			rotation: [0, -(Math.PI / 3), 0],
-			onEnteringHandler: () => console.log("Goal! 1"),
+			onEnteringHandler: () => {
+				navigate("/deforest");
+			},
 		},
 		{
 			position: [1.2, -0.5, -4.7],
 			rotation: [0, -(Math.PI / 18), 0],
-			onEnteringHandler: () => console.log("Goal! 2"),
+			onEnteringHandler: () => {
+				navigate("/loss - of - biodiversity");
+			},
 		},
 		{
 			position: [-1.1, -0.5, -4.6],
 			rotation: [0, Math.PI / 8, 0],
-			onEnteringHandler: () => console.log("Goal! 3"),
+			onEnteringHandler: () => {
+				navigate("/erosion");
+			},
 		},
 		{
 			position: [-2.25, -0.5, -3.3],
