@@ -5,13 +5,14 @@ import BirdModel from "../../3D-models/biodiversity/Bird-top.jsx";
 import Bird from "../../3D-models/biodiversity/Bird.jsx";
 import { Canvas, useThree } from "@react-three/fiber";
 import Lights from "../lights/Bio-lights.jsx";
-import { OrbitControls } from "@react-three/drei";
+import { Html, OrbitControls } from "@react-three/drei";
 import { Suspense, useEffect, useState } from "react";
 import Loader from "../../shared/3DModelLoader";
 import GaiaModel from "../../3D-models/biodiversity/Gaia-biodiversity.jsx";
 import Title from "./Title-3D.jsx";
 import Staging from "../../3D-models/biodiversity/staging/Staging.jsx";
 import { Physics, RigidBody } from "@react-three/rapier";
+import BubbleCanvas from "../Bubbles-Biodiversidad/BubblesCanvas.jsx";
 
 const LossOfDiversity = () => {
   const [ballDropped, setBallDropped] = useState(false); // Estado para controlar si ya cayó la bola
@@ -51,7 +52,11 @@ const LossOfDiversity = () => {
             <group receiveShadow castShadow position={[0, 0, 0]}>
               <BirdModel />
               <GaiaModel />
+              <Html position={[0, -12, 35]}>
+                  <BubbleCanvas />
+              </Html>
               <ElephantIlandModel />
+              
             </group>
           </Suspense>
           <OrbitControls enableZoom enablePan={false} />
