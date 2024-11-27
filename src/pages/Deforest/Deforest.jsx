@@ -1,51 +1,50 @@
 import { Navbar } from "../../components/Navbar.jsx";
-import Gaia from "../../3D-models/Gaia.jsx";
 import {
   DeforestationModel1,
   DeforestationModel2,
 } from "../../3D-models/deforestation/Deforestation.jsx";
-import "./Deforest.css"; // CSS adicional para los textos fijos
-import { useRef } from "react";
+import "./Deforest.css";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { Suspense, useEffect } from "react";
-import {Html, Environment, OrbitControls, useGLTF } from "@react-three/drei";
+import { Suspense, useRef } from "react";
+import { Html, Environment, OrbitControls } from "@react-three/drei";
+import { Physics, useBox, useSphere } from "@react-three/cannon";
 import Lights from "../lights/Desforest-light.jsx";
 import Staging from "../../3D-models/deforestation/staging/Staging.jsx";
 import GaiaModel from "../../3D-models/deforestation/Gaia-desforest.jsx";
-import BubbleCanvas from "../Bubbles/BubblesCanvas.jsx";
-
+import BubbleCanvas from "../Bubbles-Desforest/BubblesCanvas.jsx";
+import Title from "./Title-3D.jsx";
 
 const DeforestationPage = () => {
   return (
     <>
       <Navbar />
       <div className="canvas-container">
-        <div className="canvas-container">
-          <Canvas shadows camera={{ position: [0, 0, 15] }}>
-            <ambientLight intensity={0.5} />
-            <directionalLight
-              position={[10, 10, 10]}
-              intensity={0.7}
-              castShadow
-            />
+        <Canvas shadows camera={{ position: [0, 0, 15] }}>
+          <ambientLight intensity={0.5} />
+          <directionalLight
+            position={[10, 10, 10]}
+            intensity={0.7}
+            castShadow
+          />
+          <Physics gravity={[0, -9.8, 0]} allowSleep>
             <Staging />
             <Lights />
             <CameraMovement />
             <Suspense fallback={null}>
               <group receiveShadow castShadow position={[0, 0, 0]}>
-                <GaiaModel />
-                <DeforestationModel1 />
-                <DeforestationModel2 />
+                <Gaia />
+                <RigidDeforestationModel1 />
+                <RigidDeforestationModel2 />
                 <Html position={[0, -5, 5]}>
-                <BubbleCanvas />
+                  <BubbleCanvas />
                 </Html>
               </group>
               <OrbitControls enableZoom={false} />
             </Suspense>
-            <Environment preset="sunset" />
-          </Canvas>
-          <div className="fixed-text">{name}</div>
-        </div>
+          </Physics>
+          <Environment preset="sunset" />
+          <Title />
+        </Canvas>
         <div className="info-text">
           <h2>Impacto de la Deforestación</h2>
           <p>
@@ -62,43 +61,72 @@ const DeforestationPage = () => {
   );
 };
 
-const CameraMovement = () => {
-  const { camera } = useThree(); // Accede a la cámara dentro del Canvas
+// Componente para el modelo de Gaia con movimiento
+const Gaia = () => {
+  const [ref, api] = useSphere(() => ({
+    mass: 1,
+    position: [0, 0, 0],
+    args: [1],
+  }));
 
+  useFrame(({ clock }) => {
+    const time = clock.getElapsedTime();
+    api.position.set(Math.sin(time) * 2, Math.cos(time) * 2, 0);
+  });
+
+  return (
+    <mesh ref={ref} castShadow>
+      <GaiaModel />
+    </mesh>
+  );
+};
+
+// Modelo de Deforestación 1 con cuerpo rígido
+const RigidDeforestationModel1 = () => {
+  const [ref] = useBox(() => ({
+    mass: 0, // Estático
+    position: [-2, 0, 0],
+    args: [1, 1, 1],
+  }));
+
+  return (
+    <mesh ref={ref} castShadow>
+      <DeforestationModel1 />
+    </mesh>
+  );
+};
+
+// Modelo de Deforestación 2 con cuerpo rígido
+const RigidDeforestationModel2 = () => {
+  const [ref] = useBox(() => ({
+    mass: 0, // Estático
+    position: [2, 0, 0],
+    args: [1, 1, 1],
+  }));
+
+  return (
+    <mesh ref={ref} castShadow>
+      <DeforestationModel2 />
+    </mesh>
+  );
+};
+
+const CameraMovement = () => {
+  const { camera } = useThree();
   const positions = [
     [0, 20, 30],
     [20, 0, 30],
     [-20, 0, 20],
     [0, 0, 40],
-  ]; // Definir las posiciones a las que se moverá la cámara
+  ];
 
-  let currentPositionIndex = 0; // Variable para llevar el control de la posición actual
+  let currentPositionIndex = 0;
 
-  useEffect(() => {
-    const handleKeyDown = (event) => {
-      if (event.key === "a" || event.key === "ArrowLeft") {
-        // Mover a la posición anterior
-        currentPositionIndex =
-          (currentPositionIndex - 1 + positions.length) % positions.length;
-      }
-      if (event.key === "d" || event.key === "ArrowRight") {
-        // Mover a la siguiente posición
-        currentPositionIndex = (currentPositionIndex + 1) % positions.length;
-      }
+  useFrame(() => {
+    // Actualiza la posición de la cámara automáticamente si es necesario
+  });
 
-      // Cambiar la posición de la cámara
-      camera.position.set(...positions[currentPositionIndex]);
-
-      // También puedes ajustar el zoom cambiando el 'fov' de la cámara
-      camera.fov = 50; // Ajusta el zoom aquí
-      camera.updateProjectionMatrix(); // Asegúrate de actualizar la proyección para que el cambio de fov surta efecto
-    };
-
-    window.addEventListener("keydown", handleKeyDown); // Escuchar eventos de teclado
-    return () => window.removeEventListener("keydown", handleKeyDown); // Limpiar al desmontar
-  }, [camera]);
-
-  return null; // Este componente no renderiza nada, solo maneja la lógica de la cámara
+  return null;
 };
 
 export default DeforestationPage;
