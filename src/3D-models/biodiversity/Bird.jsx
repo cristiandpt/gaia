@@ -1,27 +1,46 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
 import { RigidBody } from "@react-three/rapier";
 
 export function Bird(props) {
-  const bird = useRef();
-  const { nodes, materials, animations } = useGLTF(
-    "3D-models/biodiversity/bird.glb",
-  );
+  const bird = useRef(); // Referencia al pájaro
+  const rigidBody = useRef(); // Referencia al cuerpo rígido
+  const { nodes, materials, animations } = useGLTF("3D-models/biodiversity/bird.glb");
   const { actions } = useAnimations(animations, bird);
+
+  const [isCollided, setIsCollided] = useState(false); // Estado de colisión
 
   useEffect(() => {
     if (actions) {
-      actions["Flying"]?.play();
+      actions["Flying"]?.play(); // Inicia la animación de vuelo
     }
   }, [actions]);
 
+  const handleCollision = (other) => {
+    if (other.rigidBodyObject?.name === "ball" && !isCollided) {
+      console.log("La bola golpeó al pájaro");
+      setIsCollided(true); // Actualiza el estado de colisión
+    }
+  };
+
+  useEffect(() => {
+    if (isCollided) {
+      // Habilitar gravedad y aplicar un impulso inicial
+      rigidBody.current?.api.setGravityScale(1); // Activa la gravedad
+      rigidBody.current?.api.applyImpulse({ x: 0, y: -5, z: 0 }); // Impulso hacia abajo
+    }
+  }, [isCollided]);
+
   return (
     <RigidBody
-      type="fixed" // Hace que el pájaro sea estático
-      colliders="cuboid" // Tipo de colisionador
-      name="bird" // Nombre para identificarlo en la colisión
+      ref={rigidBody}
+      type="dynamic" // Siempre dinámico
+      colliders="cuboid"
+      name="bird"
       position={[3, 0, 14]} // Posición inicial
+      gravityScale={0} // Gravedad desactivada inicialmente
       {...props}
+      onCollisionEnter={({ other }) => handleCollision(other)} // Manejar colisión
     >
       <group ref={bird} dispose={null}>
         <group name="Sketchfab_Scene">
