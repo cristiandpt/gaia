@@ -5,7 +5,9 @@ import { RigidBody } from "@react-three/rapier";
 export function Bird(props) {
   const bird = useRef(); // Referencia al pájaro
   const rigidBody = useRef(); // Referencia al cuerpo rígido
-  const { nodes, materials, animations } = useGLTF("3D-models/biodiversity/bird.glb");
+  const { nodes, materials, animations } = useGLTF(
+    "3D-models/biodiversity/bird.glb",
+  );
   const { actions } = useAnimations(animations, bird);
 
   const [isCollided, setIsCollided] = useState(false); // Estado de colisión
