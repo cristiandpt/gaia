@@ -45,7 +45,8 @@ const LossOfDiversity = () => {
             {ballDropped && <FallingBall position={[3, 10, 14]} />} {/* Bola */}
           </Physics>
           <Lights />
-          <CameraMovement onCameraAtTarget={handleBallDrop} /> {/* Detectar posición */}
+          <CameraMovement onCameraAtTarget={handleBallDrop} />{" "}
+          {/* Detectar posición */}
           <Suspense fallback={<Loader />}>
             <group receiveShadow castShadow position={[0, 0, 0]}>
               <BirdModel />
@@ -67,7 +68,7 @@ const CameraMovement = ({ onCameraAtTarget }) => {
 
   const positions = [
     [40, 0, 0],
-    [10, 0, -30], 
+    [10, 0, -30],
     [10, 20, -40],
     [10, 0, 30],
   ];
@@ -90,7 +91,10 @@ const CameraMovement = ({ onCameraAtTarget }) => {
       camera.updateProjectionMatrix();
 
       // Verificar si la cámara está en la posición objetivo [10, 0, 30]
-      if (positions[currentPositionIndex][0] === 10 && positions[currentPositionIndex][2] === 30) {
+      if (
+        positions[currentPositionIndex][0] === 10 &&
+        positions[currentPositionIndex][2] === 30
+      ) {
         onCameraAtTarget(); // Llamar a la función si se alcanza la posición
       }
     };
