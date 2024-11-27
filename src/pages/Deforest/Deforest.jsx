@@ -62,12 +62,10 @@ const DeforestationPage = () => {
             <OrbitControls enableZoom={false} enablePan={false} />
           </Suspense>
           <Environment preset="sunset" />
-          <Title />
+          {/*<Title />*/}
         </Canvas>
 
-        <div className="text1-container">
-         {/* <Text1 />*/}
-        </div>
+        <div className="text1-container">{/* <Text1 />*/}</div>
       </div>
     </>
   );
@@ -86,7 +84,7 @@ const CameraMovement = ({ onCameraAtTarget }) => {
   let currentPositionIndex = 0;
 
   useEffect(() => {
-    const handleKeyDown = (event) => { 
+    const handleKeyDown = (event) => {
       if (event.key === "a" || event.key === "ArrowLeft") {
         currentPositionIndex =
           (currentPositionIndex - 1 + positions.length) % positions.length;
