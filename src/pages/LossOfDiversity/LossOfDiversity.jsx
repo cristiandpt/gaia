@@ -6,14 +6,22 @@ import Bird from "../../3D-models/biodiversity/Bird.jsx";
 import { Canvas, useThree } from "@react-three/fiber";
 import Lights from "../lights/Bio-lights.jsx";
 import { OrbitControls } from "@react-three/drei";
-import { Suspense, useEffect } from "react";
+import { Suspense, useEffect, useState } from "react";
 import Loader from "../../shared/3DModelLoader";
 import GaiaModel from "../../3D-models/biodiversity/Gaia-biodiversity.jsx";
 import Title from "./Title-3D.jsx";
 import Staging from "../../3D-models/biodiversity/staging/Staging.jsx";
-import { Physics } from "@react-three/rapier";
+import { Physics, RigidBody } from "@react-three/rapier";
 
 const LossOfDiversity = () => {
+  const [ballDropped, setBallDropped] = useState(false); // Estado para controlar si ya cayó la bola
+
+  const handleBallDrop = () => {
+    if (!ballDropped) {
+      setBallDropped(true); // Cambiar estado para evitar múltiples bolas
+    }
+  };
+
   return (
     <>
       <Navbar />
@@ -34,10 +42,10 @@ const LossOfDiversity = () => {
           <Staging />
           <Physics>
             <Bird />
+            {ballDropped && <FallingBall position={[3, 10, 14]} />} {/* Bola */}
           </Physics>
-
           <Lights />
-          <CameraMovement />
+          <CameraMovement onCameraAtTarget={handleBallDrop} /> {/* Detectar posición */}
           <Suspense fallback={<Loader />}>
             <group receiveShadow castShadow position={[0, 0, 0]}>
               <BirdModel />
@@ -48,49 +56,61 @@ const LossOfDiversity = () => {
           <OrbitControls enableZoom enablePan={false} />
           <Title />
         </Canvas>
-
         <Text1 />
       </div>
     </>
   );
 };
 
-const CameraMovement = () => {
-  const { camera } = useThree(); // Accede a la cámara dentro del Canvas
+const CameraMovement = ({ onCameraAtTarget }) => {
+  const { camera } = useThree();
 
   const positions = [
     [40, 0, 0],
-    [10, 0, -30],
+    [10, 0, -30], 
     [10, 20, -40],
-  ]; // Definir las posiciones a las que se moverá la cámara
+    [10, 0, 30],
+  ];
 
-  let currentPositionIndex = 0; // Variable para llevar el control de la posición actual
+  let currentPositionIndex = 0;
 
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.key === "a" || event.key === "ArrowLeft") {
-        // Mover a la posición anterior
         currentPositionIndex =
           (currentPositionIndex - 1 + positions.length) % positions.length;
       }
       if (event.key === "d" || event.key === "ArrowRight") {
-        // Mover a la siguiente posición
         currentPositionIndex = (currentPositionIndex + 1) % positions.length;
       }
 
       // Cambiar la posición de la cámara
       camera.position.set(...positions[currentPositionIndex]);
+      camera.fov = 50;
+      camera.updateProjectionMatrix();
 
-      // También puedes ajustar el zoom cambiando el 'fov' de la cámara
-      camera.fov = 50; // Ajusta el zoom aquí
-      camera.updateProjectionMatrix(); // Asegúrate de actualizar la proyección para que el cambio de fov surta efecto
+      // Verificar si la cámara está en la posición objetivo [10, 0, 30]
+      if (positions[currentPositionIndex][0] === 10 && positions[currentPositionIndex][2] === 30) {
+        onCameraAtTarget(); // Llamar a la función si se alcanza la posición
+      }
     };
 
-    window.addEventListener("keydown", handleKeyDown); // Escuchar eventos de teclado
-    return () => window.removeEventListener("keydown", handleKeyDown); // Limpiar al desmontar
-  }, [camera]);
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [camera, onCameraAtTarget]);
 
-  return null; // Este componente no renderiza nada, solo maneja la lógica de la cámara
+  return null;
+};
+
+const FallingBall = ({ position }) => {
+  return (
+    <RigidBody colliders="ball" position={position}>
+      <mesh castShadow>
+        <sphereGeometry args={[0.5, 32, 32]} />
+        <meshStandardMaterial color="red" />
+      </mesh>
+    </RigidBody>
+  );
 };
 
 export default LossOfDiversity;
