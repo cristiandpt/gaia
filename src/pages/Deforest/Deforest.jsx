@@ -44,7 +44,7 @@ const DeforestationPage = () => {
               <OrbitControls enableZoom={false} />
             </Suspense>
             <Environment preset="sunset" />
-            <Title/>
+            <Title />
           </Canvas>
           <div className="fixed-text">{name}</div>
         </div>

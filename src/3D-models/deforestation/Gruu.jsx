@@ -6,26 +6,28 @@ Source: https://sketchfab.com/3d-models/tree-monster-c0589a92f58c456696b292dbae8
 Title: Tree Monster
 */
 
-import React, { useRef, useEffect, useState } from "react";
-import { useGLTF, useAnimations } from '@react-three/drei'
+import React, { useRef, useEffect, useState } from "react";
+import { useGLTF, useAnimations } from "@react-three/drei";
 
 export function Gruu(props) {
-  const gruu = useRef()
-  const { nodes, materials, animations } = useGLTF('3D-models/desforestation/tree_monster.glb')
-  const { actions } = useAnimations(animations, gruu)
+  const gruu = useRef();
+  const { nodes, materials, animations } = useGLTF(
+    "3D-models/desforestation/tree_monster.glb",
+  );
+  const { actions } = useAnimations(animations, gruu);
 
   console.log("Actions available: ", actions);
   useEffect(() => {
     if (actions) {
-      actions["idle"]?.play(); 
+      actions["idle"]?.play();
     }
-  }, [actions]);
+  }, [actions]);
 
   return (
-    <group 
-      ref={gruu} 
-      {...props} 
-      dispose={null} 
+    <group
+      ref={gruu}
+      {...props}
+      dispose={null}
       scale={[1, 1, 1]} // Escala para agrandar el modelo
       position={[0, -10, 0]} // Ajusta la posición para centrarlo mejor
       rotation={[0, 0, 0]} // Rotación para orientarlo adecuadamente
@@ -40,31 +42,31 @@ export function Gruu(props) {
                   <skinnedMesh
                     name="Object_7"
                     geometry={nodes.Object_7.geometry}
-                    material={materials['Material.003']}
+                    material={materials["Material.003"]}
                     skeleton={nodes.Object_7.skeleton}
                   />
                   <skinnedMesh
                     name="Object_9"
                     geometry={nodes.Object_9.geometry}
-                    material={materials['ShinyWhite.001']}
+                    material={materials["ShinyWhite.001"]}
                     skeleton={nodes.Object_9.skeleton}
                   />
                   <skinnedMesh
                     name="Object_11"
                     geometry={nodes.Object_11.geometry}
-                    material={materials['ShinyWhite.001']}
+                    material={materials["ShinyWhite.001"]}
                     skeleton={nodes.Object_11.skeleton}
                   />
                   <skinnedMesh
                     name="Object_13"
                     geometry={nodes.Object_13.geometry}
-                    material={materials['Material.004']}
+                    material={materials["Material.004"]}
                     skeleton={nodes.Object_13.skeleton}
                   />
                   <skinnedMesh
                     name="Object_15"
                     geometry={nodes.Object_15.geometry}
-                    material={materials['Material.004']}
+                    material={materials["Material.004"]}
                     skeleton={nodes.Object_15.skeleton}
                   />
                   <group name="body_63" />
@@ -79,9 +81,9 @@ export function Gruu(props) {
         </group>
       </group>
     </group>
-  )
+  );
 }
 
-useGLTF.preload('3D-models/desforestation/tree_monster.glb')
+useGLTF.preload("3D-models/desforestation/tree_monster.glb");
 
-export default Gruu
+export default Gruu;
