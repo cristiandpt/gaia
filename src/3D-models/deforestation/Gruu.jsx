@@ -19,7 +19,6 @@ export function Gruu(props) {
   const { actions } = useAnimations(animations, gruu);
   const [isCollided, setIsCollided] = useState(false); // Estado de colisión
 
-
   console.log("Actions available: ", actions);
   useEffect(() => {
     if (actions) {
@@ -36,72 +35,72 @@ export function Gruu(props) {
 
   return (
     <RigidBody
-    ref={rigidBody}
-    type="dynamic" // Siempre dinámico
-    colliders="cuboid"
-    name="gruu"
-    position={[7.5, -1.8, 2.6]} // Posición inicial
-    gravityScale={0} // Gravedad desactivada inicialmente
-    {...props}
-    onCollisionEnter={({ other }) => handleCollision(other)} // Manejar colisión
-  >
-    <group
-      ref={gruu}
+      ref={rigidBody}
+      type="dynamic" // Siempre dinámico
+      colliders="cuboid"
+      name="gruu"
+      position={[7.5, -1.8, 2.6]} // Posición inicial
+      gravityScale={0} // Gravedad desactivada inicialmente
       {...props}
-      dispose={null}
-      scale={0.2} // Escala para agrandar el modelo
-      position={[0, 0, 0]} // Ajusta la posición para centrarlo mejor
-      rotation={[0, 0, -0.17]} // Rotación para orientarlo adecuadamente
+      onCollisionEnter={({ other }) => handleCollision(other)} // Manejar colisión
     >
-      <group name="Sketchfab_Scene">
-        <group name="Sketchfab_model" rotation={[-Math.PI / 2, 0, 0]}>
-          <group name="root">
-            <group name="GLTF_SceneRootNode" rotation={[Math.PI / 2, 0, 0]}>
-              <group name="root_68">
-                <group name="GLTF_created_0">
-                  <primitive object={nodes.GLTF_created_0_rootJoint} />
-                  <skinnedMesh
-                    name="Object_7"
-                    geometry={nodes.Object_7.geometry}
-                    material={materials["Material.003"]}
-                    skeleton={nodes.Object_7.skeleton}
-                  />
-                  <skinnedMesh
-                    name="Object_9"
-                    geometry={nodes.Object_9.geometry}
-                    material={materials["ShinyWhite.001"]}
-                    skeleton={nodes.Object_9.skeleton}
-                  />
-                  <skinnedMesh
-                    name="Object_11"
-                    geometry={nodes.Object_11.geometry}
-                    material={materials["ShinyWhite.001"]}
-                    skeleton={nodes.Object_11.skeleton}
-                  />
-                  <skinnedMesh
-                    name="Object_13"
-                    geometry={nodes.Object_13.geometry}
-                    material={materials["Material.004"]}
-                    skeleton={nodes.Object_13.skeleton}
-                  />
-                  <skinnedMesh
-                    name="Object_15"
-                    geometry={nodes.Object_15.geometry}
-                    material={materials["Material.004"]}
-                    skeleton={nodes.Object_15.skeleton}
-                  />
-                  <group name="body_63" />
-                  <group name="Cube010_64" />
-                  <group name="Cube011_65" />
-                  <group name="EyeL_66" />
-                  <group name="EyeR_67" />
+      <group
+        ref={gruu}
+        {...props}
+        dispose={null}
+        scale={0.2} // Escala para agrandar el modelo
+        position={[0, 0, 0]} // Ajusta la posición para centrarlo mejor
+        rotation={[0, 0, -0.17]} // Rotación para orientarlo adecuadamente
+      >
+        <group name="Sketchfab_Scene">
+          <group name="Sketchfab_model" rotation={[-Math.PI / 2, 0, 0]}>
+            <group name="root">
+              <group name="GLTF_SceneRootNode" rotation={[Math.PI / 2, 0, 0]}>
+                <group name="root_68">
+                  <group name="GLTF_created_0">
+                    <primitive object={nodes.GLTF_created_0_rootJoint} />
+                    <skinnedMesh
+                      name="Object_7"
+                      geometry={nodes.Object_7.geometry}
+                      material={materials["Material.003"]}
+                      skeleton={nodes.Object_7.skeleton}
+                    />
+                    <skinnedMesh
+                      name="Object_9"
+                      geometry={nodes.Object_9.geometry}
+                      material={materials["ShinyWhite.001"]}
+                      skeleton={nodes.Object_9.skeleton}
+                    />
+                    <skinnedMesh
+                      name="Object_11"
+                      geometry={nodes.Object_11.geometry}
+                      material={materials["ShinyWhite.001"]}
+                      skeleton={nodes.Object_11.skeleton}
+                    />
+                    <skinnedMesh
+                      name="Object_13"
+                      geometry={nodes.Object_13.geometry}
+                      material={materials["Material.004"]}
+                      skeleton={nodes.Object_13.skeleton}
+                    />
+                    <skinnedMesh
+                      name="Object_15"
+                      geometry={nodes.Object_15.geometry}
+                      material={materials["Material.004"]}
+                      skeleton={nodes.Object_15.skeleton}
+                    />
+                    <group name="body_63" />
+                    <group name="Cube010_64" />
+                    <group name="Cube011_65" />
+                    <group name="EyeL_66" />
+                    <group name="EyeR_67" />
+                  </group>
                 </group>
               </group>
             </group>
           </group>
         </group>
       </group>
-    </group>
     </RigidBody>
   );
 }
