@@ -4,7 +4,7 @@ const Title = () => {
   return (
     <Center position={[0, 13, 0]}>
       <Text3D
-        font="public/fonts/Nostalgic Whispers-Regular.json"
+        font="fonts/Nostalgic Whispers-Regular.json"
         rotation={[0, Math.PI / 2, 0]}
         bevelEnabled
         bevelSize={0.02}
