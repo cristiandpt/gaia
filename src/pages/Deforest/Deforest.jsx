@@ -62,10 +62,10 @@ const DeforestationPage = () => {
             <OrbitControls enableZoom={false} enablePan={false} />
           </Suspense>
           <Environment preset="sunset" />
-          {/*<Title />*/}
+          <Title />
         </Canvas>
 
-        <div className="text1-container">{/* <Text1 />*/}</div>
+        <div className="text1-container"><Text1 /></div>
       </div>
     </>
   );
