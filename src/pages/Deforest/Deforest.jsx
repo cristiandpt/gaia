@@ -45,7 +45,8 @@ const DeforestationPage = () => {
           <Staging />
           <Physics>
             <Gruu />
-            {ballDropped && <FallingBall position={[7.5, 10, 2.5]} />} {/* Bola */}
+            {ballDropped && <FallingBall position={[7.5, 10, 2.5]} />}{" "}
+            {/* Bola */}
           </Physics>
           <Lights />
           <CameraMovement onCameraAtTarget={handleBallDrop} />
