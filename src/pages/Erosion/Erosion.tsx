@@ -6,6 +6,7 @@ import MyGaia from "../../3D-models/MyGaia.jsx";
 import CherryTree from "../../3D-models/cherry-tree/CherryTree.jsx";
 import Loader from "../../shared/3DModelLoader";
 import { useFrame } from "@react-three/fiber";
+import City from "../../3D-models/city/City";
 
 import {
   Box,
@@ -23,7 +24,13 @@ import Sand from "../../3D-models/sand/Sand.jsx";
 import Untitle from "../../3D-models/untitle/Untitle";
 import ErosionText from "../../components/Erosion3Dtext";
 import * as THREE from "three";
-import { Physics, RigidBody, TrimeshCollider } from "@react-three/rapier";
+import {
+  CuboidCollider,
+  Physics,
+  RigidBody,
+  TrimeshCollider,
+} from "@react-three/rapier";
+import { Leaves } from "../../components/leaf/Leaves.jsx";
 
 export const FLOOR_HEIGHT = 2.3;
 export const NB_FLOORS = 3;
@@ -139,6 +146,8 @@ const Erosion = () => {
   }, []);
 
   const [isActive, setIsActive] = useState<boolean>(false);
+  const [isCityActive, setIsCityActive] = useState<boolean>(false);
+  const [isTreeActive, setIsTreeActive] = useState<boolean>(false);
   const [intervalId, setIntervalId] = useState<NodeJS.Timeout | null>(null);
 
   const startPresentation = () => {
@@ -197,6 +206,43 @@ const Erosion = () => {
     const animationFrameId = requestAnimationFrame(updateParticles);
     return () => cancelAnimationFrame(animationFrameId);
   }, []);
+
+  const onEnteringHandler = () => {
+    setIsCityActive(true);
+  };
+  const onExitingHandler = () => {
+    setIsCityActive(false);
+  };
+
+  const onTreeEnteringHandler = () => {
+    setIsTreeActive(true);
+  };
+  const onTreeExitingHandler = () => {
+    setIsTreeActive(false);
+  };
+
+  const instanceData = [
+    { position: [10, 8, 10], scale: [0.1, 0.1, 0.1] },
+    { position: [12, 7, 11], scale: [0.1, 0.1, 0.1] },
+    { position: [9, 5, 10], scale: [0.1, 0.1, 0.1] },
+    { position: [7, 9, 12], scale: [0.05, 0.05, 0.05] },
+    { position: [10, 5, 10], scale: [0.5, 0.5, 0.5] },
+    { position: [11, 6, 13], scale: [0.4, 0.4, 0.4] },
+    { position: [8, 5, 16], scale: [0.3, 0.3, 0.3] },
+    { position: [9, 6, 17], scale: [0.1, 0.1, 0.1] },
+    { position: [10, 8, 8], scale: [0.2, 0.2, 0.2] },
+    { position: [12, 3, 10], scale: [0.2, 0.2, 0.2] },
+    { position: [14, 4, 9], scale: [0.4, 0.4, 0.4] },
+    { position: [10, 7, 10], scale: [0.2, 0.2, 0.2] },
+    { position: [11, 6, 7], scale: [0.1, 0.1, 0.1] },
+    { position: [12, 5, 13], scale: [0.3, 0.3, 0.3] },
+    { position: [10, 5, 12], scale: [0.3, 0.3, 0.3] },
+    { position: [10, 6, 8], scale: [0.1, 0.1, 0.1] },
+    { position: [11, 5.2, 13], scale: [0.1, 0.1, 0.1] },
+    { position: [15, 5, 15], scale: [0.2, 0.2, 0.2] },
+    { position: [7, 8, 11], scale: [0.2, 0.2, 0.2] },
+    { position: [13, 7, 9], scale: [0.1, 0.1, 0.1] },
+  ];
 
   return (
     <>
@@ -275,14 +321,54 @@ const Erosion = () => {
             {isActive && (
               <GaiaDialog say={erosionProblems[index]} position={[4, 5, 0]} />
             )}
-            <ErosionScrollControl>
+
+            <Physics gravity={[0, 0, 0]}>
+              {isCityActive && (
+                <GaiaDialog
+                  say={
+                    "La erosión del suelo, un problema cada vez más acuciante, no solo degrada nuestros campos y bosques, sino que también contamina el aire que respiramos. El viento, al arrastrar las partículas de suelo erosionado, las levanta y las dispersa en el aire, creando una neblina de polvo que se adentra en nuestras ciudades. Esta sedimentación no solo reduce la visibilidad y afecta la calidad de vida, sino que también representa un grave riesgo para nuestra salud.La inhalación de estas partículas finas puede provocar enfermedades respiratorias, alergias y afecciones cardiovasculares. Además, contaminan las fuentes de agua, dañan los cultivos y aceleran el desgaste de edificios e infraestructuras."
+                  }
+                  position={[-15, 12, -8]}
+                />
+              )}
+
+              <RigidBody type="fixed">
+                <City scale={0.05} />
+              </RigidBody>
               <MyGaia />
               {isActive && <Soil position={[-3, 3, 1]}></Soil>}
-              <CherryTree position={[8, -5, 0]} />
-              <Sand />
-              <Untitle />
-            </ErosionScrollControl>
-            <OrbitControls enableZoom={false} />
+              <RigidBody type="fixed">
+                <CherryTree position={[10, -2, 9]} />
+              </RigidBody>
+              <Leaves instances={instanceData} />
+              {isTreeActive && (
+                <GaiaDialog
+                  say={
+                    "La pérdida de nutrientes desencadena una reacción en cadena de consecuencias devastadoras. Al carecer de los elementos necesarios para su crecimiento y desarrollo, los árboles debilitados se vuelven más susceptibles a plagas, enfermedades y condiciones climáticas extremas. Sus hojas, que antes lucían vibrantes y saludables, comienzan a amarillear y marchitarse, cayendo prematuramente al suelo. La caída de las hojas acelera aún más el proceso de erosión, ya que la capa protectora que formaban sobre el suelo desaparece, exponiéndolo directamente a la acción del viento y el agua. Esto, a su vez, debilita aún más las raíces de los árboles supervivientes, creando un círculo vicioso que conduce a la desertificación y a la pérdida de biodiversidad."
+                  }
+                  position={[-15, 14, 0]}
+                />
+              )}
+              <CuboidCollider
+                args={[5, 2, 1]}
+                sensor
+                position={[5, 2, 12]}
+                rotation={[0, 0, 0]}
+                onIntersectionEnter={onTreeEnteringHandler}
+                onIntersectionExit={onTreeExitingHandler}
+              />
+              {/* <Sand /> */}
+              <CuboidCollider
+                args={[14, 2, 10]}
+                sensor
+                position={[-9, 2, -7]}
+                rotation={[0, 0, 0]}
+                onIntersectionEnter={onEnteringHandler}
+                onIntersectionExit={onExitingHandler}
+              />
+            </Physics>
+
+            {/* <OrbitControls enableZoom={false} /> */}
             <ErosionText refToModel={null} />
             {/* Posiciona el segundo modelo respecto al primero */}
           </group>
