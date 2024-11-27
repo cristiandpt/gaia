@@ -18,11 +18,9 @@ const BubbleCanvas = () => {
     },
     {
       text: "Uso sostenible de recursos",
-      hoverText:
-        "Promover prácticas agrícolas y pesqueras responsables.",
+      hoverText: "Promover prácticas agrícolas y pesqueras responsables.",
       link: "/climate-change",
     },
-
   ];
 
   return (

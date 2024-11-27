@@ -53,10 +53,9 @@ const LossOfDiversity = () => {
               <BirdModel />
               <GaiaModel />
               <Html position={[0, -12, 35]}>
-                  <BubbleCanvas />
+                <BubbleCanvas />
               </Html>
               <ElephantIlandModel />
-              
             </group>
           </Suspense>
           <OrbitControls enableZoom enablePan={false} />
