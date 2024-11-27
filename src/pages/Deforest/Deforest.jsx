@@ -65,9 +65,8 @@ const DeforestationPage = () => {
           <Title />
         </Canvas>
 
-        {/* Aquí agregamos Text1 con la clase para la parte superior izquierda */}
         <div className="text1-container">
-          <Text1 />
+         {/* <Text1 />*/}
         </div>
       </div>
     </>
@@ -78,16 +77,16 @@ const CameraMovement = ({ onCameraAtTarget }) => {
   const { camera } = useThree();
 
   const positions = [
-    [0, 20, 30],
-    [20, 0, 30],
-    [-20, 0, 20],
-    [0, 0, 40],
+    [0, 8, 25],
+    [20, 0, 25],
+    [-20, 0, 25],
+    [0, 0, 25],
   ];
 
   let currentPositionIndex = 0;
 
   useEffect(() => {
-    const handleKeyDown = (event) => {
+    const handleKeyDown = (event) => { 
       if (event.key === "a" || event.key === "ArrowLeft") {
         currentPositionIndex =
           (currentPositionIndex - 1 + positions.length) % positions.length;
