@@ -1,106 +1,137 @@
-import { Navbar } from "../../components/Navbar.jsx";
+import { Navbar } from "../../components/Navbar";
 import {
   DeforestationModel1,
   DeforestationModel2,
 } from "../../3D-models/deforestation/Deforestation.jsx";
-import "./Deforest.css"; // CSS adicional para los textos fijos
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { Suspense, useEffect } from "react";
-import { Html, Environment, OrbitControls, useGLTF } from "@react-three/drei";
+import GaiaModel from "../../3D-models/deforestation/Gaia-desforest.jsx";
+import Gruu from "../../3D-models/deforestation/Gruu.jsx";
 import Lights from "../lights/Desforest-light.jsx";
 import Staging from "../../3D-models/deforestation/staging/Staging.jsx";
-import GaiaModel from "../../3D-models/deforestation/Gaia-desforest.jsx";
-import BubbleCanvas from "../Bubbles-Desforest/BubblesCanvas.jsx";
 import Title from "./Title-3D.jsx";
-import Gruu from "../../3D-models/deforestation/Gruu.jsx";
+import BubbleCanvas from "../Bubbles-Desforest/BubblesCanvas.jsx";
+import { Canvas, useThree } from "@react-three/fiber";
+import { Html, OrbitControls, Environment } from "@react-three/drei";
+import { Suspense, useEffect, useState } from "react";
 import { Physics, RigidBody } from "@react-three/rapier";
+import "./Deforest.css";
+import Text1 from "./Text1";
 
 const DeforestationPage = () => {
+  const [ballDropped, setBallDropped] = useState(false);
+
+  const handleBallDrop = () => {
+    if (!ballDropped) {
+      setBallDropped(true);
+    }
+  };
+
   return (
     <>
       <Navbar />
       <div className="canvas-container">
-        <div className="canvas-container">
-          <Canvas shadows camera={{ position: [0, 0, 15] }}>
-            <ambientLight intensity={0.5} />
-            <directionalLight
-              position={[10, 10, 10]}
-              intensity={0.7}
-              castShadow
-            />
-            <Staging />
-            <Lights />
-            <CameraMovement />
-            <Suspense fallback={null}>
-              <group receiveShadow castShadow position={[0, 0, 0]}>
-                <GaiaModel />
-                <DeforestationModel1 />
-                <DeforestationModel2 />
-                <Gruu />
-                <Html position={[0, -5, 5]}>
-                  <BubbleCanvas />
-                </Html>
-              </group>
-              <OrbitControls enableZoom={false} />
-            </Suspense>
-            <Environment preset="sunset" />
-            <Title />
-          </Canvas>
-          <div className="fixed-text">{name}</div>
-        </div>
-        <div className="info-text">
-          <h2>Impacto de la Deforestación</h2>
-          <p>
-            La deforestación causa la pérdida de biodiversidad, el cambio
-            climático y la destrucción de hábitats esenciales.
-          </p>
-          <p>
-            Cada año, millones de hectáreas de bosques son taladas, amenazando
-            la vida de innumerables especies.
-          </p>
+        <Canvas
+          shadows
+          gl={{ alpha: true }}
+          camera={{ position: [0, 0, 25], fov: 50 }}
+          style={{
+            height: "100vh",
+            width: "100vw",
+            position: "absolute",
+            top: 0,
+            left: 0,
+            background: "transparent",
+          }}
+        >
+          <Staging />
+          <Physics>
+            <Gruu />
+            {ballDropped && <FallingBall position={[7.5, 10, 2.5]} />} {/* Bola */}
+          </Physics>
+          <Lights />
+          <CameraMovement onCameraAtTarget={handleBallDrop} />
+          <Suspense fallback={null}>
+            <group receiveShadow castShadow position={[0, 0, 0]}>
+              <GaiaModel />
+              <DeforestationModel1 />
+              <DeforestationModel2 />
+              <Html position={[0, -5, 5]}>
+                <BubbleCanvas />
+              </Html>
+            </group>
+            <OrbitControls enableZoom={false} enablePan={false} />
+          </Suspense>
+          <Environment preset="sunset" />
+          <Title />
+        </Canvas>
+
+        {/* Aquí agregamos Text1 con la clase para la parte superior izquierda */}
+        <div className="text1-container">
+          <Text1 />
         </div>
       </div>
     </>
   );
 };
 
-const CameraMovement = () => {
-  const { camera } = useThree(); // Accede a la cámara dentro del Canvas
+const CameraMovement = ({ onCameraAtTarget }) => {
+  const { camera } = useThree();
 
   const positions = [
     [0, 20, 30],
     [20, 0, 30],
     [-20, 0, 20],
     [0, 0, 40],
-  ]; // Definir las posiciones a las que se moverá la cámara
+  ];
 
-  let currentPositionIndex = 0; // Variable para llevar el control de la posición actual
+  let currentPositionIndex = 0;
 
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.key === "a" || event.key === "ArrowLeft") {
-        // Mover a la posición anterior
         currentPositionIndex =
           (currentPositionIndex - 1 + positions.length) % positions.length;
       }
       if (event.key === "d" || event.key === "ArrowRight") {
-        // Mover a la siguiente posición
         currentPositionIndex = (currentPositionIndex + 1) % positions.length;
       }
 
-      // Cambiar la posición de la cámara
       camera.position.set(...positions[currentPositionIndex]);
+      camera.fov = 50;
+      camera.updateProjectionMatrix();
 
-      // También puedes ajustar el zoom cambiando el 'fov' de la cámara
-      camera.fov = 50; // Ajusta el zoom aquí
-      camera.updateProjectionMatrix(); // Asegúrate de actualizar la proyección para que el cambio de fov surta efecto
+      if (
+        positions[currentPositionIndex][0] === 0 &&
+        positions[currentPositionIndex][2] === 40
+      ) {
+        onCameraAtTarget();
+      }
     };
 
-    window.addEventListener("keydown", handleKeyDown); // Escuchar eventos de teclado
-    return () => window.removeEventListener("keydown", handleKeyDown); // Limpiar al desmontar
-  }, [camera]);
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [camera, onCameraAtTarget]);
 
-  return null; // Este componente no renderiza nada, solo maneja la lógica de la cámara
+  return null;
+};
+
+const FallingBall = ({ position }) => {
+  return (
+    <RigidBody
+      colliders="ball"
+      position={position}
+      onCollisionEnter={({ other }) => {
+        if (other.rigidBodyObject?.name === "gru") {
+          console.log("Bola golpeó a Gruu");
+          other.rigidBodyObject?.applyImpulse({ x: 7.5, y: -1.8, z: 2.5 });
+        }
+      }}
+    >
+      <mesh>
+        <sphereGeometry args={[1, 32, 32]} />
+        <meshStandardMaterial color="red" />
+      </mesh>
+    </RigidBody>
+  );
 };
 
 export default DeforestationPage;

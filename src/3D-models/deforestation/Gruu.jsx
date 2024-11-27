@@ -8,13 +8,17 @@ Title: Tree Monster
 
 import React, { useRef, useEffect, useState } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
+import { RigidBody } from "@react-three/rapier";
 
 export function Gruu(props) {
   const gruu = useRef();
+  const rigidBody = useRef(); // Referencia al cuerpo rígido
   const { nodes, materials, animations } = useGLTF(
     "3D-models/desforestation/tree_monster.glb",
   );
   const { actions } = useAnimations(animations, gruu);
+  const [isCollided, setIsCollided] = useState(false); // Estado de colisión
+
 
   console.log("Actions available: ", actions);
   useEffect(() => {
@@ -23,14 +27,31 @@ export function Gruu(props) {
     }
   }, [actions]);
 
+  const handleCollision = (other) => {
+    if (other.rigidBodyObject?.name === "ball" && !isCollided) {
+      console.log("La bola golpeó al pájaro");
+      setIsCollided(true); // Actualiza el estado de colisión
+    }
+  };
+
   return (
+    <RigidBody
+    ref={rigidBody}
+    type="dynamic" // Siempre dinámico
+    colliders="cuboid"
+    name="gruu"
+    position={[7.5, -1.8, 2.6]} // Posición inicial
+    gravityScale={0} // Gravedad desactivada inicialmente
+    {...props}
+    onCollisionEnter={({ other }) => handleCollision(other)} // Manejar colisión
+  >
     <group
       ref={gruu}
       {...props}
       dispose={null}
-      scale={[1, 1, 1]} // Escala para agrandar el modelo
-      position={[0, -10, 0]} // Ajusta la posición para centrarlo mejor
-      rotation={[0, 0, 0]} // Rotación para orientarlo adecuadamente
+      scale={0.2} // Escala para agrandar el modelo
+      position={[0, 0, 0]} // Ajusta la posición para centrarlo mejor
+      rotation={[0, 0, -0.17]} // Rotación para orientarlo adecuadamente
     >
       <group name="Sketchfab_Scene">
         <group name="Sketchfab_model" rotation={[-Math.PI / 2, 0, 0]}>
@@ -81,6 +102,7 @@ export function Gruu(props) {
         </group>
       </group>
     </group>
+    </RigidBody>
   );
 }
 
