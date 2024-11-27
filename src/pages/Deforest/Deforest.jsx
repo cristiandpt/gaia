@@ -8,10 +8,12 @@ import "./Deforest.css"; // CSS adicional para los textos fijos
 import { useRef } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Suspense, useEffect } from "react";
-import { Environment, OrbitControls, useGLTF } from "@react-three/drei";
+import {Html, Environment, OrbitControls, useGLTF } from "@react-three/drei";
 import Lights from "../lights/Desforest-light.jsx";
 import Staging from "../../3D-models/deforestation/staging/Staging.jsx";
 import GaiaModel from "../../3D-models/deforestation/Gaia-desforest.jsx";
+import BubbleCanvas from "../Bubbles/BubblesCanvas.jsx";
+
 
 const DeforestationPage = () => {
   return (
@@ -34,6 +36,9 @@ const DeforestationPage = () => {
                 <GaiaModel />
                 <DeforestationModel1 />
                 <DeforestationModel2 />
+                <Html position={[0, -5, 5]}>
+                <BubbleCanvas />
+                </Html>
               </group>
               <OrbitControls enableZoom={false} />
             </Suspense>
