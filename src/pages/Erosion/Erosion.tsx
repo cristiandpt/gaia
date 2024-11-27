@@ -322,7 +322,7 @@ const Erosion = () => {
 							<GaiaDialog say={erosionProblems[index]} position={[4, 5, 0]} />
 						)}
 
-						<Physics gravity={[0, 0, 0]} debug>
+						<Physics gravity={[0, 0, 0]}>
 							{isCityActive && (
 								<GaiaDialog
 									say={

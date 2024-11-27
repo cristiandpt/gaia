@@ -8,21 +8,21 @@ import { noise } from "./noise.js";
 import texture from "./test-3.3.png";
 
 export function Points() {
-	const tex = useLoader(THREE.TextureLoader, texture);
-	tex.encoding = THREE.LinearEncoding;
-	const orb = useLoader(THREE.TextureLoader, download);
-	const pointsRef = useRef();
+  const tex = useLoader(THREE.TextureLoader, texture);
+  tex.encoding = THREE.LinearEncoding;
+  const orb = useLoader(THREE.TextureLoader, download);
+  const pointsRef = useRef();
 
-	const shader = {
-		uniforms: {
-			positions: {
-				value: tex,
-			},
-			orb: {
-				value: orb,
-			},
-		},
-		vertexShader: `
+  const shader = {
+    uniforms: {
+      positions: {
+        value: tex,
+      },
+      orb: {
+        value: orb,
+      },
+    },
+    vertexShader: `
     uniform sampler2D positions;
     varying vec2 vUv;
     varying vec3 vNormal;
@@ -76,7 +76,7 @@ export function Points() {
 
       }
     `,
-		fragmentShader: `
+    fragmentShader: `
     uniform sampler2D orb;
     varying vec2 vUv;
     varying vec3 vNormal;
@@ -165,99 +165,99 @@ export function Points() {
         gl_FragColor = vec4(outputColor, 1.0 * fadeFactor * gl_FragCoord.z);
       }
     `,
-	};
+  };
 
-	let [positions, indexs] = useMemo(() => {
-		let positions = [...Array(3072).fill(0)];
-		let index = [...Array(1024).keys()];
+  let [positions, indexs] = useMemo(() => {
+    let positions = [...Array(3072).fill(0)];
+    let index = [...Array(1024).keys()];
 
-		return [new Float32Array(positions), new Float32Array(index)]; //merupakan array yang sesuai dengan buffer
-	}, []);
+    return [new Float32Array(positions), new Float32Array(index)]; //merupakan array yang sesuai dengan buffer
+  }, []);
 
-	useEffect(() => {
-		if (pointsRef.current) {
-			console.log({ pointsRef });
-		}
-	}, []);
+  useEffect(() => {
+    if (pointsRef.current) {
+      console.log({ pointsRef });
+    }
+  }, []);
 
-	function fogBlendFunction(
-		srcColor,
-		dstColor,
-		distance,
-		fogStart,
-		fogEnd,
-		fogColor,
-	) {
-		let fogFactor = THREE.MathUtils.smoothstep(fogStart, fogEnd, distance);
+  function fogBlendFunction(
+    srcColor,
+    dstColor,
+    distance,
+    fogStart,
+    fogEnd,
+    fogColor,
+  ) {
+    let fogFactor = THREE.MathUtils.smoothstep(fogStart, fogEnd, distance);
 
-		let noiseFactor = 120.9;
-		let noise =
-			0.1 + (1.0 + THREE.MathUtils.noise(distance * noiseFactor)) * 0.5;
-		fogFactor *= noise;
+    let noiseFactor = 120.9;
+    let noise =
+      0.1 + (1.0 + THREE.MathUtils.noise(distance * noiseFactor)) * 0.5;
+    fogFactor *= noise;
 
-		let blendedColor = new THREE.Color();
-		blendedColor.r = THREE.MathUtils.lerp(srcColor.r, fogColor.r, fogFactor);
-		blendedColor.g = THREE.MathUtils.lerp(srcColor.g, fogColor.g, fogFactor);
-		blendedColor.b = THREE.MathUtils.lerp(srcColor.b, fogColor.b, fogFactor);
+    let blendedColor = new THREE.Color();
+    blendedColor.r = THREE.MathUtils.lerp(srcColor.r, fogColor.r, fogFactor);
+    blendedColor.g = THREE.MathUtils.lerp(srcColor.g, fogColor.g, fogFactor);
+    blendedColor.b = THREE.MathUtils.lerp(srcColor.b, fogColor.b, fogFactor);
 
-		let blendedAlpha = THREE.MathUtils.lerp(srcColor.a, dstColor.a, fogFactor);
+    let blendedAlpha = THREE.MathUtils.lerp(srcColor.a, dstColor.a, fogFactor);
 
-		return new THREE.Color(
-			blendedColor.r,
-			blendedColor.g,
-			blendedColor.b,
-			blendedAlpha,
-		);
-	}
+    return new THREE.Color(
+      blendedColor.r,
+      blendedColor.g,
+      blendedColor.b,
+      blendedAlpha,
+    );
+  }
 
-	return (
-		<points ref={pointsRef} scale={[30, 30, 30]} position={[-70, 80, -150]}>
-			<bufferGeometry attach="geometry" rotateX={Math.PI / 2}>
-				<bufferAttribute
-					attach="attributes-position"
-					array={positions}
-					count={positions.length / 3}
-					itemSize={3}
-				/>
-				<bufferAttribute
-					attach="attributes-index"
-					array={indexs}
-					count={indexs.length}
-					itemSize={1}
-				/>
-			</bufferGeometry>
-			<shaderMaterial
-				attach="material"
-				vertexShader={shader.vertexShader}
-				fragmentShader={shader.fragmentShader}
-				uniforms={shader.uniforms}
-				transparent
-				sizeAttenuation={true}
-				depthTest={true}
-				depthFunc={THREE.Lequal}
-				depthWrite={false}
-				blending={THREE.CustomBlending}
-				blendEquation={THREE.MultiplyOperation}
-				blendSrc={THREE.SrcAlphaFactor}
-				blendDst={THREE.OneMinusSrcAlphaFactor}
-				blendFunc={fogBlendFunction}
-				fog={true}
-			/>
-		</points>
-	);
+  return (
+    <points ref={pointsRef} scale={[30, 30, 30]} position={[-70, 80, -150]}>
+      <bufferGeometry attach="geometry" rotateX={Math.PI / 2}>
+        <bufferAttribute
+          attach="attributes-position"
+          array={positions}
+          count={positions.length / 3}
+          itemSize={3}
+        />
+        <bufferAttribute
+          attach="attributes-index"
+          array={indexs}
+          count={indexs.length}
+          itemSize={1}
+        />
+      </bufferGeometry>
+      <shaderMaterial
+        attach="material"
+        vertexShader={shader.vertexShader}
+        fragmentShader={shader.fragmentShader}
+        uniforms={shader.uniforms}
+        transparent
+        sizeAttenuation={true}
+        depthTest={true}
+        depthFunc={THREE.Lequal}
+        depthWrite={false}
+        blending={THREE.CustomBlending}
+        blendEquation={THREE.MultiplyOperation}
+        blendSrc={THREE.SrcAlphaFactor}
+        blendDst={THREE.OneMinusSrcAlphaFactor}
+        blendFunc={fogBlendFunction}
+        fog={true}
+      />
+    </points>
+  );
 }
 
 function AnimationCanvas() {
-	return (
-		<Canvas camera={{ position: [10, 10, 0], fov: 75, near: 0.01 }}>
-			<OrbitControls />
-			<gridHelper />
-			<Suspense fallback={"hello"}>
-				<Points />
-				<mesh>
-					<boxBufferGeometry attach="geometry" args={[2, 2, 2]} />
-				</mesh>
-			</Suspense>
-		</Canvas>
-	);
+  return (
+    <Canvas camera={{ position: [10, 10, 0], fov: 75, near: 0.01 }}>
+      <OrbitControls />
+      <gridHelper />
+      <Suspense fallback={"hello"}>
+        <Points />
+        <mesh>
+          <boxBufferGeometry attach="geometry" args={[2, 2, 2]} />
+        </mesh>
+      </Suspense>
+    </Canvas>
+  );
 }
