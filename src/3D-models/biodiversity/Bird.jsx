@@ -6,19 +6,20 @@ Source: https://sketchfab.com/3d-models/simple-bird-0257796e6a114739ab20339beb8c
 Title: Simple_Bird
 */
 
-import React, { useRef, useEffect } from 'react'
-import { useGLTF, useAnimations } from '@react-three/drei'
+import React, { useRef, useEffect } from "react";
+import { useGLTF, useAnimations } from "@react-three/drei";
 
 export function Bird(props) {
-  const bird = useRef()
-  const { nodes, materials, animations } = useGLTF("3D-models/biodiversity/bird.glb")
-  const { actions } = useAnimations(animations, bird)
+  const bird = useRef();
+  const { nodes, materials, animations } = useGLTF(
+    "3D-models/biodiversity/bird.glb",
+  );
+  const { actions } = useAnimations(animations, bird);
   console.log(actions);
 
   useEffect(() => {
-    
     if (actions) {
-      actions['Flying']?.play(); 
+      actions["Flying"]?.play();
     }
   }, [actions]);
 
@@ -32,7 +33,8 @@ export function Bird(props) {
                 name="Armature_62"
                 position={[3, 0, 14]}
                 rotation={[1.485, 0, 5]}
-                scale={0.4}>
+                scale={0.4}
+              >
                 <group name="GLTF_created_0">
                   <primitive object={nodes.GLTF_created_0_rootJoint} />
                   <skinnedMesh
@@ -67,14 +69,9 @@ export function Bird(props) {
         </group>
       </group>
     </group>
-  )
+  );
 }
 
-useGLTF.preload("3D-models/biodiversity/bird.glb")
+useGLTF.preload("3D-models/biodiversity/bird.glb");
 
-export default Bird
-
-
-
-
-
+export default Bird;
