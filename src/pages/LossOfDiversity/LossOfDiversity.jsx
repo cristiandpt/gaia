@@ -108,7 +108,16 @@ const CameraMovement = ({ onCameraAtTarget }) => {
 
 const FallingBall = ({ position }) => {
   return (
-    <RigidBody colliders="ball" position={position}>
+    <RigidBody
+      colliders="ball"
+      position={position}
+      onCollisionEnter={({ other }) => {
+        if (other.rigidBodyObject?.name === "bird") {
+          console.log("Bola golpeó al pájaro");
+          other.rigidBodyObject?.applyImpulse({ x: 0, y: -5, z: 0 }); // Simula caída
+        }
+      }}
+    >
       <mesh castShadow>
         <sphereGeometry args={[0.5, 32, 32]} />
         <meshStandardMaterial color="red" />
