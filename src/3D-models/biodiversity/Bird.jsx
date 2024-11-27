@@ -17,24 +17,23 @@ export function Bird(props) {
 
   return (
     <RigidBody
-     type="fixed" // Hace que el pájaro sea estático
+      type="fixed" // Hace que el pájaro sea estático
       colliders="cuboid" // Tipo de colisionador
       name="bird" // Nombre para identificarlo en la colisión
       position={[3, 0, 14]} // Posición inicial
       {...props}
     >
-
       <group ref={bird} dispose={null}>
         <group name="Sketchfab_Scene">
           <group name="Sketchfab_model" rotation={[-Math.PI / 2, 0, 0]}>
             <group name="root">
               <group name="GLTF_SceneRootNode" rotation={[Math.PI / 2, 0, 0]}>
-              <group
-                name="Armature_62"
-                position={[0, 0, 0]}
-                rotation={[1.485, 0, 5]}
-                scale={0.4}
-              >
+                <group
+                  name="Armature_62"
+                  position={[0, 0, 0]}
+                  rotation={[1.485, 0, 5]}
+                  scale={0.4}
+                >
                   <group name="GLTF_created_0">
                     <primitive object={nodes.GLTF_created_0_rootJoint} />
                     <skinnedMesh

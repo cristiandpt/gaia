@@ -126,5 +126,4 @@ const FallingBall = ({ position }) => {
   );
 };
 
-
 export default LossOfDiversity;
