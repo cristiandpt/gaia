@@ -4,28 +4,29 @@ import NoAuthorizedLayout from "../shared/authentication/NoAuthorizedLayout";
 import { Navigate } from "react-router-dom";
 //** The authorized and unauthorized paths are defined here
 const AuthorizedPaths = [
-  "erosion",
-  "home",
-  "menu2",
-  "menu",
-  "loss-of-biodiversity",
-  "deforest",
+	"erosion",
+	"home",
+	"menu2",
+	"menu",
+	"loss-of-biodiversity",
+	"deforest",
+	"quiz",
 ];
 const UnauthorizedPaths = [
-  "gaia",
-  "login",
-  "register",
-  "google-signin",
-  "signin",
+	"gaia",
+	"login",
+	"register",
+	"google-signin",
+	"signin",
 ];
 
 /** Get the routes associated to the  determinade routes mode
  */
 const getPathsMapping = (pathArray) => {
-  return pathArray.map((path) => ({
-    path: path,
-    element: getComponentByPath(path),
-  }));
+	return pathArray.map((path) => ({
+		path: path,
+		element: getComponentByPath(path),
+	}));
 };
 
 /** Application routes definitions
@@ -33,20 +34,20 @@ const getPathsMapping = (pathArray) => {
   The corresponding components is wrrapped in a layout for routing management ouput.
 */
 const routes = [
-  {
-    path: "/unauthenticated",
-    element: <NoAuthorizedLayout />, // Layout for unauthorized access
-    children: getPathsMapping(UnauthorizedPaths),
-  },
-  {
-    path: "/",
-    element: <PrivateRoutes />,
-    children: getPathsMapping(AuthorizedPaths),
-  },
-  {
-    path: "*",
-    element: <Navigate to="/" replace />,
-  },
+	{
+		path: "/unauthenticated",
+		element: <NoAuthorizedLayout />, // Layout for unauthorized access
+		children: getPathsMapping(UnauthorizedPaths),
+	},
+	{
+		path: "/",
+		element: <PrivateRoutes />,
+		children: getPathsMapping(AuthorizedPaths),
+	},
+	{
+		path: "*",
+		element: <Navigate to="/" replace />,
+	},
 ];
 
 export default routes;
