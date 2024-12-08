@@ -6,126 +6,126 @@ import { GroupProps } from "@react-three/fiber";
 import { useState } from "react";
 
 enum SoilType {
-	Lower = "Lower",
-	Upper = "Upper",
+  Lower = "Lower",
+  Upper = "Upper",
 }
 
 interface SoilLayersProps extends GroupProps {
-	// You can add any additional props here if needed
-	onHover: (payload: { [key: string]: string }) => void;
+  // You can add any additional props here if needed
+  onHover: (payload: { [key: string]: string }) => void;
 }
 
 export function SoilLayers(props: SoilLayersProps) {
-	const { nodes, materials } = useGLTF("/soil_layers.glb");
-	const [soil, setSoil] = useState<SoilType | null>(null);
-	const [tipPosition, setTipPosition] = useState<{
-		x: number;
-		y: number;
-		z: number;
-	}>({ x: 0, y: 0, z: 0 });
-	const [showTip, setShowTip] = useState(false);
-	// Handlers
-	const handleClick = (soil: SoilType) => {
-		setSoil(soil);
-	};
+  const { nodes, materials } = useGLTF("/soil_layers.glb");
+  const [soil, setSoil] = useState<SoilType | null>(null);
+  const [tipPosition, setTipPosition] = useState<{
+    x: number;
+    y: number;
+    z: number;
+  }>({ x: 0, y: 0, z: 0 });
+  const [showTip, setShowTip] = useState(false);
+  // Handlers
+  const handleClick = (soil: SoilType) => {
+    setSoil(soil);
+  };
 
-	const handleHover = (event: any, soilType: SoilType) => {
-		console.log("Hovering over Upper mesh");
-		event.stopPropagation(); // Prevents the event from bubbling up
-		document.body.style.cursor = "pointer"; // Change cursor to pointer
-		console.log(event.point);
-		setSoil(soilType);
-		setTipPosition({
-			x: event.point.x / 2.5,
-			y: event.point.y,
-			z: event.point.z,
-		});
-		setShowTip(true);
-		/* props.onHover({
+  const handleHover = (event: any, soilType: SoilType) => {
+    console.log("Hovering over Upper mesh");
+    event.stopPropagation(); // Prevents the event from bubbling up
+    document.body.style.cursor = "pointer"; // Change cursor to pointer
+    console.log(event.point);
+    setSoil(soilType);
+    setTipPosition({
+      x: event.point.x / 2.5,
+      y: event.point.y,
+      z: event.point.z,
+    });
+    setShowTip(true);
+    /* props.onHover({
 			soil: soil ?? "",
 			point: event.point,
 		}); */
-	};
+  };
 
-	const handlePointerOut = () => {
-		document.body.style.cursor = "auto"; // Reset cursor when not hovering
-		setShowTip(false);
-	};
+  const handlePointerOut = () => {
+    document.body.style.cursor = "auto"; // Reset cursor when not hovering
+    setShowTip(false);
+  };
 
-	return (
-		<group {...props} dispose={null}>
-			<Html wrapperClass="div" position={[0, 2.5, 0]} center>
-				<h1 style={styles.question}>
-					¿Cúal capa es la que se afecta durante la erosión?
-				</h1>
-			</Html>
-			<group position={[0, -1.5, 0]} scale={[2, 2, 2]}>
-				<mesh
-					castShadow
-					receiveShadow
-					geometry={nodes.layer_5.geometry}
-					material={materials.soil_layer_5}
-					position={[0, 0.116, 0]}
-					scale={[0.5, 0.11, 0.5]}
-				/>
-				<mesh
-					castShadow
-					receiveShadow
-					geometry={nodes.layer_4.geometry}
-					material={materials.soil_layer_4}
-					position={[0, 0.364, 0]}
-					scale={[0.5, 0.11, 0.5]}
-				/>
-				<mesh
-					castShadow
-					receiveShadow
-					geometry={nodes.layer_3.geometry}
-					material={materials.soil_layer_3}
-					position={[0, 0.609, 0]}
-					scale={[0.5, 0.11, 0.5]}
-				/>
-				<mesh
-					castShadow
-					receiveShadow
-					geometry={nodes.layer_2.geometry}
-					material={materials.layer_2_2}
-					position={[0, 0.852, 0]}
-					scale={[0.5, 0.11, 0.5]}
-				/>
-				<mesh
-					castShadow
-					receiveShadow
-					geometry={nodes.layer_1.geometry}
-					material={materials.soil_layer_1}
-					position={[0, 1.046, 0]}
-					scale={[0.5, 0.06, 0.5]}
-				/>
-			</group>
-			{showTip && (
-				<Html wrapperClass="div" position={[tipPosition.x, tipPosition.y, 0]}>
-					<div style={styles.container}>Capa superior</div>
-				</Html>
-			)}
-		</group>
-	);
+  return (
+    <group {...props} dispose={null}>
+      <Html wrapperClass="div" position={[0, 2.5, 0]} center>
+        <h1 style={styles.question}>
+          ¿Cúal capa es la que se afecta durante la erosión?
+        </h1>
+      </Html>
+      <group position={[0, -1.5, 0]} scale={[2, 2, 2]}>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.layer_5.geometry}
+          material={materials.soil_layer_5}
+          position={[0, 0.116, 0]}
+          scale={[0.5, 0.11, 0.5]}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.layer_4.geometry}
+          material={materials.soil_layer_4}
+          position={[0, 0.364, 0]}
+          scale={[0.5, 0.11, 0.5]}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.layer_3.geometry}
+          material={materials.soil_layer_3}
+          position={[0, 0.609, 0]}
+          scale={[0.5, 0.11, 0.5]}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.layer_2.geometry}
+          material={materials.layer_2_2}
+          position={[0, 0.852, 0]}
+          scale={[0.5, 0.11, 0.5]}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.layer_1.geometry}
+          material={materials.soil_layer_1}
+          position={[0, 1.046, 0]}
+          scale={[0.5, 0.06, 0.5]}
+        />
+      </group>
+      {showTip && (
+        <Html wrapperClass="div" position={[tipPosition.x, tipPosition.y, 0]}>
+          <div style={styles.container}>Capa superior</div>
+        </Html>
+      )}
+    </group>
+  );
 }
 
 const styles = {
-	container: {
-		width: "300px",
-		height: "auto",
-		backgroundColor: "rgba(0, 0, 0, 0.75)",
-		borderRadius: "8px",
-		overflow: "hidden",
-		position: "relative",
-		padding: "16px",
-	},
-	question: {
-		fontSize: "1.75rem",
-		color: "black",
-		width: "1000px",
-		fontEeight: "bold",
-	},
+  container: {
+    width: "300px",
+    height: "auto",
+    backgroundColor: "rgba(0, 0, 0, 0.75)",
+    borderRadius: "8px",
+    overflow: "hidden",
+    position: "relative",
+    padding: "16px",
+  },
+  question: {
+    fontSize: "1.75rem",
+    color: "black",
+    width: "1000px",
+    fontEeight: "bold",
+  },
 };
 
 useGLTF.preload("/tssting.glb");

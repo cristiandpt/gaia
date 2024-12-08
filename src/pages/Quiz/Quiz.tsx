@@ -11,6 +11,7 @@ import EmptyingProgressBar from "../../components/questions/EmptyProgressBar";
 import { SoilLayers } from "../../components/questions/SoilLayers";
 import QuestionControl from "../../components/questions/QuestionsControls";
 import { SoilTypes } from "../../components/questions/SoilTypes";
+import { CropsType } from "../../components/questions/CropsTypes";
 const SEL = "custom-section";
 const SECTION_SEL = `.${SEL}`;
 
@@ -59,7 +60,7 @@ const generateQuestion = (selectedQuestion: QuestionType) => {
 		case 2:
 			return <SoilTypes scale={2.5} />;
 		case 3:
-			return <div>jfinfioandijfn</div>;
+			return <CropsType rotation={[0, 0, 0.01]} position={[0, -2.5, 0]} />;
 	}
 };
 
@@ -79,7 +80,7 @@ const QuizFlow = () => {
 				<planeGeometry args={[500, 500]} />
 				<shadowMaterial opacity={0.7} />
 			</mesh>
-			<Suspense fallback={<Loader />}>{generateQuestion(1)}</Suspense>
+			<Suspense fallback={<Loader />}>{generateQuestion(3)}</Suspense>
 			<QuestionControl />
 			<Environment background files="imagenes/qwantani_dusk_2_2k.hdr" />
 			<Html wrapperClass="div" position={[0, -10, 0]} center>
