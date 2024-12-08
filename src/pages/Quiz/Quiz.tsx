@@ -43,7 +43,22 @@ const questions = [
 	},
 ];
 
-const generateQuestion = () => <div></div>;
+type QuestionType = 1 | 2 | 3;
+
+const generateQuestion = (selectedQuestion: QuestionType) => {
+	switch (selectedQuestion) {
+		case 1:
+			<SoilLayers
+				onHover={(payload) => console.log("")}
+				scale={3}
+				position={[0, 0, 0]}
+			/>;
+			break;
+		case 2:
+		case 3:
+			return <></>;
+	}
+};
 
 const QuizFlow = () => {
 	return (
@@ -61,13 +76,7 @@ const QuizFlow = () => {
 				<planeGeometry args={[500, 500]} />
 				<shadowMaterial opacity={0.7} />
 			</mesh>
-			<Suspense fallback={<Loader />}>
-				<SoilLayers
-					onHover={(payload) => console.log("")}
-					scale={3}
-					position={[0, 0, 0]}
-				/>
-			</Suspense>
+			<Suspense fallback={<Loader />}>{generateQuestion(1)}</Suspense>
 			<QuestionControl />
 			<Environment background files="imagenes/qwantani_dusk_2_2k.hdr" />
 			<Html wrapperClass="div" position={[0, -10, 0]} center>
