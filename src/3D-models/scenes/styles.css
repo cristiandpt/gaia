@@ -1,4 +1,4 @@
 .custom-focus-outline {
-	outline: 1px solid #ff6347; /* Customize the color and style */
-	outline-offset: 2px; /* Add some space between the element and the outline */
+  outline: 1px solid #ff6347; /* Customize the color and style */
+  outline-offset: 2px; /* Add some space between the element and the outline */
 }

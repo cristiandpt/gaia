@@ -10,21 +10,21 @@ import Navbar from "../components/Navbar";
 import Quiz from "../pages/Quiz/Quiz";
 
 const RouteComponentsRegister = {
-	login: <Login />,
-	gaia: <LandingPage />,
-	signin: <Signin />,
-	register: <Register />,
-	deforest: <Deforest />,
-	home: <Home />,
-	erosion: <Erosion />,
-	menu: <Navbar />,
-	"loss-of-biodiversity": <LossOfDiversity />,
-	quiz: <Quiz />,
+  login: <Login />,
+  gaia: <LandingPage />,
+  signin: <Signin />,
+  register: <Register />,
+  deforest: <Deforest />,
+  home: <Home />,
+  erosion: <Erosion />,
+  menu: <Navbar />,
+  "loss-of-biodiversity": <LossOfDiversity />,
+  quiz: <Quiz />,
 };
 
 const getComponentByPath = (path) => {
-	const foundComponent = RouteComponentsRegister[path];
-	return foundComponent ? foundComponent : <Home />;
+  const foundComponent = RouteComponentsRegister[path];
+  return foundComponent ? foundComponent : <Home />;
 };
 
 export default getComponentByPath;
