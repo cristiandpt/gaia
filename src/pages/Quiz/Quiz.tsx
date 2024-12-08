@@ -10,6 +10,7 @@ import { Canvas } from "@react-three/fiber";
 import EmptyingProgressBar from "../../components/questions/EmptyProgressBar";
 import { SoilLayers } from "../../components/questions/SoilLayers";
 import QuestionControl from "../../components/questions/QuestionsControls";
+import { SoilTypes } from "../../components/questions/SoilTypes";
 const SEL = "custom-section";
 const SECTION_SEL = `.${SEL}`;
 
@@ -56,7 +57,7 @@ const generateQuestion = (selectedQuestion: QuestionType) => {
 				/>
 			);
 		case 2:
-			return <Html>Soy una segunda pregunta</Html>;
+			return <SoilTypes scale={2.5} />;
 		case 3:
 			return <div>jfinfioandijfn</div>;
 	}
@@ -78,7 +79,7 @@ const QuizFlow = () => {
 				<planeGeometry args={[500, 500]} />
 				<shadowMaterial opacity={0.7} />
 			</mesh>
-			<Suspense fallback={<Loader />}>{generateQuestion(1)}</Suspense>
+			<Suspense fallback={<Loader />}>{generateQuestion(2)}</Suspense>
 			<QuestionControl />
 			<Environment background files="imagenes/qwantani_dusk_2_2k.hdr" />
 			<Html wrapperClass="div" position={[0, -10, 0]} center>

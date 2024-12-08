@@ -3,9 +3,9 @@ import routes from "./routes/routes";
 import QuizFlow from "./pages/Quiz/Quiz";
 
 function App() {
-	const router = createBrowserRouter(routes);
-	//return <RouterProvider router={router} />;
-	return <QuizFlow />;
+  const router = createBrowserRouter(routes);
+  //return <RouterProvider router={router} />;
+  return <QuizFlow />;
 }
 
 export default App;
