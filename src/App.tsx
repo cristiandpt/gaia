@@ -1,11 +1,11 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import routes from "./routes/routes";
-import Home from "./pages/LandingPage/LandingPage";
+import QuizFlow from "./pages/Quiz/Quiz";
 
 function App() {
-  const router = createBrowserRouter(routes);
-  //return <RouterProvider router={router} />;
-  <Home />;
+	const router = createBrowserRouter(routes);
+	//return <RouterProvider router={router} />;
+	return <QuizFlow />;
 }
 
 export default App;
