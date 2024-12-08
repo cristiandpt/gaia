@@ -79,7 +79,7 @@ const QuizFlow = () => {
 				<planeGeometry args={[500, 500]} />
 				<shadowMaterial opacity={0.7} />
 			</mesh>
-			<Suspense fallback={<Loader />}>{generateQuestion(2)}</Suspense>
+			<Suspense fallback={<Loader />}>{generateQuestion(1)}</Suspense>
 			<QuestionControl />
 			<Environment background files="imagenes/qwantani_dusk_2_2k.hdr" />
 			<Html wrapperClass="div" position={[0, -10, 0]} center>
