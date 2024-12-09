@@ -1,5 +1,5 @@
 interface QuestionProps {
-	question: string;
+  question: string;
 }
 
 export default QuestionProps;

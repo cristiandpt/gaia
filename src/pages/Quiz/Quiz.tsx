@@ -1,10 +1,9 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React, { Suspense, useEffect, useState } from "react";
 import ReactDOM from "react-dom";
-import ReactFullpage from "@fullpage/react-fullpage";
 
 import "./styles.css";
-import { Environment, Html, OrbitControls } from "@react-three/drei";
+import { Environment, Html } from "@react-three/drei";
 import Loader from "../../shared/3DModelLoader";
 import { Canvas } from "@react-three/fiber";
 import EmptyingProgressBar from "../../components/questions/EmptyProgressBar";
@@ -19,7 +18,7 @@ const SECTION_SEL = `.${SEL}`;
 
 const questions = [
 	{
-		text: "Pregunta 1: ¿Cuál de las siguientes prácticas agrícolas ayuda a prevenir la erosión del suelo?",
+		question: "¿Cúal capa es la que se afecta durante la erosión?",
 		options: [
 			"a) Aumenta la resiliencia de los ecosistemas",
 			"b) Disminuye la estabilidad y funcionalidad de los ecosistemas",
@@ -28,7 +27,7 @@ const questions = [
 		],
 	},
 	{
-		text: "Pregunta 2: ¿Cuál de las siguientes es una de las principales causas de la deforestación a nivel mundial?",
+		question: "Selecciona la esfera que corresponde a un terreno erosionado",
 		options: [
 			"a) Aumenta la resiliencia de los ecosistemas",
 			"b) Disminuye la estabilidad y funcionalidad de los ecosistemas",
@@ -37,7 +36,8 @@ const questions = [
 		],
 	},
 	{
-		text: "Pregunta 3: ¿Qué efecto tiene la pérdida de biodiversidad en los ecosistemas?",
+		question:
+			"Selecciona las actividades agrículas que ocasiona la erosión de la tierra",
 		options: [
 			"a) Aumenta la resiliencia de los ecosistemas",
 			"b) Disminuye la estabilidad y funcionalidad de los ecosistemas",
@@ -87,12 +87,35 @@ const QuizFlow = () => {
 				{generateQuestion(questionNumber)}
 			</Suspense>
 			<QuestionControl />
+			<Html wrapperClass="div" position={[0, 7, 0]} center>
+				<h1 style={styles.question}>
+					{questions[questionNumber - 1].question}
+				</h1>
+			</Html>
 			<Environment background files="imagenes/qwantani_dusk_2_2k.hdr" />
 			<Html wrapperClass="div" position={[0, -10, 0]} center>
 				<EmptyingProgressBar key={questionNumber} duration={10000} />
 			</Html>
 		</Canvas>
 	);
+};
+
+const styles = {
+	container: {
+		width: "300px",
+		height: "auto",
+		backgroundColor: "rgba(0, 0, 0, 0.75)",
+		borderRadius: "8px",
+		overflow: "hidden",
+		position: "relative",
+		padding: "16px",
+	},
+	question: {
+		fontSize: "1.75rem",
+		color: "black",
+		width: "1000px",
+		fontEeight: "bold",
+	},
 };
 
 export default QuizFlow;

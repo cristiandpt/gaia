@@ -55,9 +55,6 @@ export function SoilLayers(props: SoilLayersProps) {
 
 	return (
 		<group {...props} dispose={null}>
-			<Html wrapperClass="div" position={[0, 2.5, 0]} center>
-				<h1 style={styles.question}>{props.question}</h1>
-			</Html>
 			<group position={[0, -1.5, 0]} scale={[2, 2, 2]}>
 				<mesh
 					castShadow
