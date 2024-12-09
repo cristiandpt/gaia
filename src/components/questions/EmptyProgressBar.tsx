@@ -18,7 +18,7 @@ const EmptyingProgressBar: FC<EmptyingProgressBarProps> = ({ duration }) => {
 		const interval = setInterval(() => {
 			setProgress((prevProgress) => {
 				if (prevProgress <= 0) {
-					setTimeout(() => newQuestion(2), 500);
+					setTimeout(() => newQuestion(questionNumber + 1), 500);
 					clearInterval(interval); // Clear the interval when progress is 0
 					return 0; // Ensure progress doesn't go below 0
 				}
