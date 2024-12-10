@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unknown-property */
-import { Suspense, useEffect, useState, useLayoutEffect, useRef } from "react";
+import { Suspense, useEffect, useState, useLayoutEffect, useRef, useCallback } from "react";
 import ErosionPlane from "../../3D-models/ErosionPlane.jsx";
 import { Canvas } from "@react-three/fiber";
 import MyGaia from "../../3D-models/MyGaia.jsx";
@@ -15,6 +15,7 @@ import {
   OrbitControls,
   useGLTF,
   useScroll,
+  PositionalAudio,
 } from "@react-three/drei";
 import ErosionScrollControl from "../../controls/ErosionScrollControl.js";
 import { Soil } from "../../3D-models/soil/Soil.jsx";
@@ -244,12 +245,20 @@ const Erosion = () => {
     { position: [13, 7, 9], scale: [0.1, 0.1, 0.1] },
   ];
 
+  const audioRef = useRef();
+
+  const handleAudio = useCallback(() => {
+    audioRef.current.play();
+    audioRef.current.setVolume(3);
+  }, []);
+
   return (
     <>
       <NavbarHome />
       <Canvas
         className="h-screen w-screen"
         shadows
+        onClick={handleAudio}
         camera={{ position: [0, 5, 15] }}
       >
         <ambientLight intensity={0.3} />{" "}
@@ -373,6 +382,7 @@ const Erosion = () => {
             {/* Posiciona el segundo modelo respecto al primero */}
           </group>
         </Suspense>
+        
         <Environment
           ground={{
             height: 10,
@@ -383,6 +393,14 @@ const Erosion = () => {
           backgroundRotation={[0, Math.PI / 2, 0]} // optional rotation
           environmentIntensity={1} // optional intensity factor (default: 1, only works with three 0.163 and up)
         />
+        <group position={[0, 5, 0]}>
+            <PositionalAudio
+              ref={audioRef}
+              loop
+              url="/sound/desert.mp3"
+              distance={5}
+            />
+          </group>
       </Canvas>
     </>
   );
