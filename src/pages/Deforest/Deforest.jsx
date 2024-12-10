@@ -65,7 +65,9 @@ const DeforestationPage = () => {
           <Title />
         </Canvas>
 
-        <div className="text1-container"><Text1 /></div>
+        <div className="text1-container">
+          <Text1 />
+        </div>
       </div>
     </>
   );
