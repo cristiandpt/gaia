@@ -135,7 +135,7 @@ const CameraMovement = ({ onCameraAtTarget }) => {
   return null;
 };
 
-const FallingBall = ({ position }) => {
+export const FallingBall = ({ position }) => {
   return (
     <RigidBody
       colliders="ball"
