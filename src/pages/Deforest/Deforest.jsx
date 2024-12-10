@@ -34,7 +34,7 @@ const DeforestationPage = () => {
 
   const handleAudio = useCallback(() => {
     audioRef.current.play();
-    audioRef.current.setVolume(1);
+    audioRef.current.setVolume(10);
   }, []);
 
   return (
