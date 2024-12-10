@@ -10,18 +10,18 @@ import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 
 export function FlatRock(props) {
-	const { nodes, materials } = useGLTF("/flat__rock.glb");
-	return (
-		<group {...props} dispose={null}>
-			<mesh
-				castShadow
-				receiveShadow
-				geometry={nodes.Object_2.geometry}
-				material={materials.lambert3SG}
-				rotation={[-Math.PI / 2, 0, 0]}
-			/>
-		</group>
-	);
+  const { nodes, materials } = useGLTF("/flat__rock.glb");
+  return (
+    <group {...props} dispose={null}>
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Object_2.geometry}
+        material={materials.lambert3SG}
+        rotation={[-Math.PI / 2, 0, 0]}
+      />
+    </group>
+  );
 }
 
 useGLTF.preload("/flat__rock.glb");

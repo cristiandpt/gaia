@@ -6,17 +6,17 @@ import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 
 export function ErosionPlane(props) {
-	const { nodes, materials } = useGLTF("/erosi0n_plane.glb");
-	return (
-		<group {...props} dispose={null}>
-			<mesh
-				castShadow
-				receiveShadow
-				geometry={nodes.ground.geometry}
-				material={materials.Material}
-			/>
-		</group>
-	);
+  const { nodes, materials } = useGLTF("/erosi0n_plane.glb");
+  return (
+    <group {...props} dispose={null}>
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.ground.geometry}
+        material={materials.Material}
+      />
+    </group>
+  );
 }
 
 useGLTF.preload("/ersoin_plane.glb");

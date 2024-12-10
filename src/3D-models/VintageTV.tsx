@@ -10,69 +10,69 @@ import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 
 export function VintageTV(props) {
-	const { nodes, materials } = useGLTF("/vintage_tv.glb");
-	return (
-		<group {...props} dispose={null}>
-			<group scale={0.01}>
-				<mesh
-					castShadow
-					receiveShadow
-					geometry={nodes["tv-b_low_tv-retro_0"].geometry}
-					material={materials["tv-retro"]}
-					rotation={[-Math.PI / 2, 0, 0]}
-					scale={100}
-				/>
-				<mesh
-					castShadow
-					receiveShadow
-					geometry={nodes["top_low_tv-retro_0"].geometry}
-					material={materials["tv-retro"]}
-					rotation={[-Math.PI / 2, 0, 0]}
-					scale={100}
-				/>
-				<mesh
-					castShadow
-					receiveShadow
-					geometry={nodes["sign_low_tv-retro_0"].geometry}
-					material={materials["tv-retro"]}
-					rotation={[-Math.PI / 2, 0, 0]}
-					scale={100}
-				/>
-				<mesh
-					castShadow
-					receiveShadow
-					geometry={nodes["h1_low_tv-retro_0"].geometry}
-					material={materials["tv-retro"]}
-					rotation={[-Math.PI / 2, 0, 0]}
-					scale={100}
-				/>
-				<mesh
-					castShadow
-					receiveShadow
-					geometry={nodes["tv_low_tv-retro_0"].geometry}
-					material={materials["tv-retro"]}
-					rotation={[-Math.PI / 2, 0, 0]}
-					scale={100}
-				/>
-				<mesh
-					castShadow
-					receiveShadow
-					geometry={nodes["h3_low_tv-retro_0"].geometry}
-					material={materials["tv-retro"]}
-					rotation={[-Math.PI / 2, 0, 0]}
-					scale={100}
-				/>
-				<mesh
-					castShadow
-					receiveShadow
-					geometry={nodes["h2_low_tv-retro_0"].geometry}
-					material={materials["tv-retro"]}
-					rotation={[-Math.PI / 2, 0, 0]}
-					scale={100}
-				/>
-			</group>
-		</group>
-	);
+  const { nodes, materials } = useGLTF("/vintage_tv.glb");
+  return (
+    <group {...props} dispose={null}>
+      <group scale={0.01}>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes["tv-b_low_tv-retro_0"].geometry}
+          material={materials["tv-retro"]}
+          rotation={[-Math.PI / 2, 0, 0]}
+          scale={100}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes["top_low_tv-retro_0"].geometry}
+          material={materials["tv-retro"]}
+          rotation={[-Math.PI / 2, 0, 0]}
+          scale={100}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes["sign_low_tv-retro_0"].geometry}
+          material={materials["tv-retro"]}
+          rotation={[-Math.PI / 2, 0, 0]}
+          scale={100}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes["h1_low_tv-retro_0"].geometry}
+          material={materials["tv-retro"]}
+          rotation={[-Math.PI / 2, 0, 0]}
+          scale={100}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes["tv_low_tv-retro_0"].geometry}
+          material={materials["tv-retro"]}
+          rotation={[-Math.PI / 2, 0, 0]}
+          scale={100}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes["h3_low_tv-retro_0"].geometry}
+          material={materials["tv-retro"]}
+          rotation={[-Math.PI / 2, 0, 0]}
+          scale={100}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes["h2_low_tv-retro_0"].geometry}
+          material={materials["tv-retro"]}
+          rotation={[-Math.PI / 2, 0, 0]}
+          scale={100}
+        />
+      </group>
+    </group>
+  );
 }
 
 useGLTF.preload("/vintage_tv.glb");
