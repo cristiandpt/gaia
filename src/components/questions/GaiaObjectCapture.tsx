@@ -184,6 +184,7 @@ const GaiaObjectCapture = () => {
       } else {
         setLevel("Oro");
       }
+    }
   }, [gameOver, score]);
 
   const showAlert = async () => {
