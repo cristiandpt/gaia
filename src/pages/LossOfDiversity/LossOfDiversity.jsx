@@ -25,7 +25,7 @@ const LossOfDiversity = () => {
 
   const audioRef = useRef();
 
-  const handleAudio = useCallback (() => {
+  const handleAudio = useCallback(() => {
     audioRef.current.play();
     audioRef.current.setVolume(5);
   }, []);
@@ -68,7 +68,12 @@ const LossOfDiversity = () => {
           </Suspense>
           <OrbitControls enableZoom enablePan={false} />
           <group position={[0, 5, 0]}>
-              <PositionalAudio ref={audioRef} loop url="/sound/angelical.mp3" distance={5} />
+            <PositionalAudio
+              ref={audioRef}
+              loop
+              url="/sound/angelical.mp3"
+              distance={5}
+            />
           </group>
           <Title />
         </Canvas>
