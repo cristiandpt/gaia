@@ -13,9 +13,6 @@ import { SoilTypes } from "../../components/questions/SoilTypes";
 import { CropsType } from "../../components/questions/CropsTypes";
 import useQuizStore from "./quiz-store";
 
-const SEL = "custom-section";
-const SECTION_SEL = `.${SEL}`;
-
 const questions = [
 	{
 		question: "¿Cúal capa es la que se afecta durante la erosión?",
@@ -83,9 +80,7 @@ const QuizFlow = () => {
 				<planeGeometry args={[500, 500]} />
 				<shadowMaterial opacity={0.7} />
 			</mesh>
-			<Suspense fallback={<Loader />}>
-				{generateQuestion(questionNumber)}
-			</Suspense>
+			<Suspense fallback={<Loader />}>{generateQuestion(1)}</Suspense>
 			<QuestionControl />
 			<Html wrapperClass="div" position={[0, 7, 0]} center>
 				<h1 style={styles.question}>

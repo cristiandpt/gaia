@@ -8,11 +8,6 @@ import QuestionProps from "../types/IQuestion";
 import { Mesh } from "three";
 import "./SoilLayers.css";
 
-enum SoilType {
-	Lower = "Lower",
-	Upper = "Upper",
-}
-
 interface SoilLayersProps extends GroupProps, QuestionProps {
 	// You can add any additional props here if needed
 	onHover: (payload: { [key: string]: string }) => void;
@@ -20,30 +15,26 @@ interface SoilLayersProps extends GroupProps, QuestionProps {
 
 export function SoilLayers(props: SoilLayersProps) {
 	const { nodes, materials } = useGLTF("/soil_layers.glb");
-	const [soil, setSoil] = useState<SoilType | null>(null);
-	const [tipPosition, setTipPosition] = useState<{
-		x: number;
-		y: number;
-		z: number;
-	}>({ x: 0, y: 0, z: 0 });
-	const [showTip, setShowTip] = useState(false);
+	const [soil, setSoil] = useState<number | null>(null);
 	// Handlers
-	const handleClick = (soil: SoilType) => {
+	const handleClick = (soil: number) => {
 		setSoil(soil);
 	};
 
-	const handleHover = (event: any, soilType: SoilType) => {
+	const meshRefs = useRef<Mesh[]>([]);
+	const [showSoilInformation, setShowSoilInformation] = useState(false);
+	const { camera } = useThree();
+	const [htmlPositions, setHtmlPositions] = useState<
+		{ x: number; y: number }[]
+	>([]);
+
+	const handleHover = (event: any, soilType: number) => {
 		console.log("Hovering over Upper mesh");
 		event.stopPropagation(); // Prevents the event from bubbling up
 		document.body.style.cursor = "pointer"; // Change cursor to pointer
 		console.log(event.point);
 		setSoil(soilType);
-		setTipPosition({
-			x: event.point.x / 2.5,
-			y: event.point.y,
-			z: event.point.z,
-		});
-		setShowTip(true);
+		setShowSoilInformation(true);
 		/* props.onHover({
 			soil: soil ?? "",
 			point: event.point,
@@ -52,15 +43,8 @@ export function SoilLayers(props: SoilLayersProps) {
 
 	const handlePointerOut = () => {
 		document.body.style.cursor = "auto"; // Reset cursor when not hovering
-		setShowTip(false);
+		setShowSoilInformation(false);
 	};
-
-	const meshRefs = useRef<Mesh[]>([]);
-	const [position, setPosition] = useState([]);
-	const { camera } = useThree();
-	const [htmlPositions, setHtmlPositions] = useState<
-		{ x: number; y: number }[]
-	>([]);
 
 	useFrame(() => {
 		const newHtmlPositions = meshRefs.current.map((mesh, index) => {
@@ -83,6 +67,23 @@ export function SoilLayers(props: SoilLayersProps) {
 
 	return (
 		<group {...props} dispose={null}>
+			{showSoilInformation && (
+				<Html position={[0, 0, 0]} center>
+					<div
+						className="html-tag-0"
+						style={{
+							...styles.tag,
+							position: "absolute",
+							left: `${htmlPositions[0]?.x - 620}px`,
+							top: `${htmlPositions[0]?.y}px`,
+							transform: "translate(-50%, -50%)",
+							width: "300px",
+						}}
+					>
+						Rdfdafafaoca
+					</div>
+				</Html>
+			)}
 			<group position={[0, -1.5, 0]} scale={[2, 2, 2]}>
 				<mesh
 					ref={(el) => (meshRefs.current[0] = el)}
@@ -92,6 +93,8 @@ export function SoilLayers(props: SoilLayersProps) {
 					material={materials.soil_layer_5}
 					position={[0, 0.116, 0]}
 					scale={[0.5, 0.11, 0.5]}
+					onPointerEnter={(event) => handleHover(event, 5)}
+					onPointerOut={handlePointerOut}
 				>
 					<Html position={[0, 0, 0]} center>
 						<div
@@ -117,6 +120,8 @@ export function SoilLayers(props: SoilLayersProps) {
 					material={materials.soil_layer_4}
 					position={[0, 0.364, 0]}
 					scale={[0.5, 0.11, 0.5]}
+					onPointerEnter={(event) => handleHover(event, 4)}
+					onPointerOut={handlePointerOut}
 				>
 					<Html position={[0, 0, 0]} center>
 						<div
@@ -141,6 +146,8 @@ export function SoilLayers(props: SoilLayersProps) {
 					material={materials.soil_layer_3}
 					position={[0, 0.609, 0]}
 					scale={[0.5, 0.11, 0.5]}
+					onPointerEnter={(event) => handleHover(event, 3)}
+					onPointerOut={handlePointerOut}
 				>
 					<Html position={[0, 0, 0]} center>
 						<div
@@ -165,6 +172,8 @@ export function SoilLayers(props: SoilLayersProps) {
 					material={materials.layer_2_2}
 					position={[0, 0.852, 0]}
 					scale={[0.5, 0.11, 0.5]}
+					onPointerEnter={(event) => handleHover(event, 2)}
+					onPointerOut={handlePointerOut}
 				>
 					<Html position={[0, 0, 0]} center>
 						<div
@@ -189,6 +198,8 @@ export function SoilLayers(props: SoilLayersProps) {
 					material={materials.soil_layer_1}
 					position={[0, 1.046, 0]}
 					scale={[0.5, 0.06, 0.5]}
+					onPointerEnter={(event) => handleHover(event, 1)}
+					onPointerOut={handlePointerOut}
 				>
 					<Html position={[0, 0, 0]} center>
 						<div
