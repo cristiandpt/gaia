@@ -175,16 +175,16 @@ const GaiaObjectCapture = () => {
   }, [score]);
 
   useEffect(() => {
-      if (score < 600) {
-        setLevel("Principiante");
-      } else if (score < 900) {
-        setLevel("Cobre");
-      } else if (score < 1500) {
-        setLevel("Plata");
-      } else {
-        setLevel("Oro");
-      }
-    }, [gameOver, score]);
+    if (score < 600) {
+      setLevel("Principiante");
+    } else if (score < 900) {
+      setLevel("Cobre");
+    } else if (score < 1500) {
+      setLevel("Plata");
+    } else {
+      setLevel("Oro");
+    }
+  }, [gameOver, score]);
 
   const showAlert = async () => {
     const message = `Nombre: ${user ? user.displayName : "Desconocido"}\nPuntuación final: ${score}\nNivel alcanzado: ${level}\n\n¿Quieres jugar de nuevo o volver al inicio?`;
