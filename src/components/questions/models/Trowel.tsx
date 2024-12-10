@@ -6,17 +6,17 @@ import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 
 export function Trowel(props) {
-	const { nodes, materials } = useGLTF("trowel_01_2k.gltf/trowel_01_2k.gltf");
-	return (
-		<group {...props} dispose={null}>
-			<mesh
-				castShadow
-				receiveShadow
-				geometry={nodes.trowel_01.geometry}
-				material={materials.trowel_01}
-			/>
-		</group>
-	);
+  const { nodes, materials } = useGLTF("trowel_01_2k.gltf/trowel_01_2k.gltf");
+  return (
+    <group {...props} dispose={null}>
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.trowel_01.geometry}
+        material={materials.trowel_01}
+      />
+    </group>
+  );
 }
 
 useGLTF.preload("/trowel_01_2k.gltf");

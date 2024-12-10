@@ -6,19 +6,19 @@ import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 
 export function WaterCan(props) {
-	const { nodes, materials } = useGLTF(
-		"watering_can_metal_01_2k.gltf/watering_can_metal_01_2k.gltf",
-	);
-	return (
-		<group {...props} dispose={null}>
-			<mesh
-				castShadow
-				receiveShadow
-				geometry={nodes.watering_can_metal_01.geometry}
-				material={materials.watering_can_metal_01}
-			/>
-		</group>
-	);
+  const { nodes, materials } = useGLTF(
+    "watering_can_metal_01_2k.gltf/watering_can_metal_01_2k.gltf",
+  );
+  return (
+    <group {...props} dispose={null}>
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.watering_can_metal_01.geometry}
+        material={materials.watering_can_metal_01}
+      />
+    </group>
+  );
 }
 
 useGLTF.preload("/watering_can_metal_01_2k.gltf");
