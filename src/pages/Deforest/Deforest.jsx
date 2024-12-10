@@ -20,6 +20,7 @@ import { Suspense, useEffect, useState, useRef, useCallback } from "react";
 import { Physics, RigidBody } from "@react-three/rapier";
 import "./Deforest.css";
 import Text1 from "./Text1";
+import PostProcessing from "./PostProcessing.jsx";
 
 const DeforestationPage = () => {
   const [ballDropped, setBallDropped] = useState(false);
@@ -74,6 +75,7 @@ const DeforestationPage = () => {
             </group>
             <OrbitControls enableZoom={false} enablePan={false} />
           </Suspense>
+          <PostProcessing />
           <group position={[0, 5, 0]}>
             <PositionalAudio
               ref={audioRef}
