@@ -86,6 +86,7 @@ const DeforestationPage = () => {
           <Title />
         </Canvas>
 
+        {/* Aquí agregamos Text1 con la clase para la parte superior izquierda */}
         <div className="text1-container">
           <Text1 />
         </div>

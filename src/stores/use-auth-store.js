@@ -55,4 +55,5 @@ const useAuthStore = create((set) => ({
   },
 }));
 
+export { useAuthStore }; // Asegúrate de exportar correctamente
 export default useAuthStore;

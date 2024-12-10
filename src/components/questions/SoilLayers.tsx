@@ -11,267 +11,267 @@ import { EffectComposer, Outline } from "@react-three/postprocessing";
 import { BlendFunction, Resizer, KernelSize } from "postprocessing";
 
 interface SoilLayersProps extends GroupProps, QuestionProps {
-	// You can add any additional props here if needed
-	onHover: (payload: { [key: string]: string }) => void;
+  // You can add any additional props here if needed
+  onHover: (payload: { [key: string]: string }) => void;
 }
 
 export function SoilLayers(props: SoilLayersProps) {
-	const { nodes, materials } = useGLTF("/soil_layers.glb");
-	const [soil, setSoil] = useState<number | null>(null);
-	// Handlers
-	const handleClick = (soil: number) => {
-		setSoil(soil);
-	};
+  const { nodes, materials } = useGLTF("/soil_layers.glb");
+  const [soil, setSoil] = useState<number | null>(null);
+  // Handlers
+  const handleClick = (soil: number) => {
+    setSoil(soil);
+  };
 
-	const soilInformationTexts = [
-		"Mezcla de humus y minerales. Es donde se desarrolla la mayoría de la actividad biológica y es crucial para el crecimiento de las plantas.",
-		"Zona de lixiviación donde se lavan minerales y nutrientes, resultando en un suelo más claro",
-		"Acumula minerales y nutrientes que se han lavado desde las capas superiores. Puede ser rica en arcilla y otros minerales.",
-		"Compuesta por rocas y sedimentos parcialmente descompuestos. Proporciona los minerales básicos para la formación del suelo",
-		"Capa de roca sólida que se encuentra debajo del suelo. Es la fuente de los minerales que se descomponen para formar las capas superiores.",
-	];
+  const soilInformationTexts = [
+    "Mezcla de humus y minerales. Es donde se desarrolla la mayoría de la actividad biológica y es crucial para el crecimiento de las plantas.",
+    "Zona de lixiviación donde se lavan minerales y nutrientes, resultando en un suelo más claro",
+    "Acumula minerales y nutrientes que se han lavado desde las capas superiores. Puede ser rica en arcilla y otros minerales.",
+    "Compuesta por rocas y sedimentos parcialmente descompuestos. Proporciona los minerales básicos para la formación del suelo",
+    "Capa de roca sólida que se encuentra debajo del suelo. Es la fuente de los minerales que se descomponen para formar las capas superiores.",
+  ];
 
-	const meshRefs = useRef<Mesh[]>([]);
-	const [showSoilInformation, setShowSoilInformation] = useState(false);
-	const { camera } = useThree();
-	const [htmlPositions, setHtmlPositions] = useState<
-		{ x: number; y: number }[]
-	>([]);
+  const meshRefs = useRef<Mesh[]>([]);
+  const [showSoilInformation, setShowSoilInformation] = useState(false);
+  const { camera } = useThree();
+  const [htmlPositions, setHtmlPositions] = useState<
+    { x: number; y: number }[]
+  >([]);
 
-	const handleHover = (event: any, soilType: number) => {
-		console.log("Hovering over Upper mesh");
-		event.stopPropagation(); // Prevents the event from bubbling up
-		document.body.style.cursor = "pointer"; // Change cursor to pointer
-		console.log(event.point);
-		setSoil(soilType - 1);
-		setShowSoilInformation(true);
-		/* props.onHover({
+  const handleHover = (event: any, soilType: number) => {
+    console.log("Hovering over Upper mesh");
+    event.stopPropagation(); // Prevents the event from bubbling up
+    document.body.style.cursor = "pointer"; // Change cursor to pointer
+    console.log(event.point);
+    setSoil(soilType - 1);
+    setShowSoilInformation(true);
+    /* props.onHover({
 			soil: soil ?? "",
 			point: event.point,
 		}); */
-	};
+  };
 
-	const handlePointerOut = () => {
-		document.body.style.cursor = "auto"; // Reset cursor when not hovering
-		setShowSoilInformation(false);
-	};
+  const handlePointerOut = () => {
+    document.body.style.cursor = "auto"; // Reset cursor when not hovering
+    setShowSoilInformation(false);
+  };
 
-	useFrame(() => {
-		const newHtmlPositions = meshRefs.current.map((mesh, index) => {
-			if (mesh && camera) {
-				const meshPosition = mesh.position.clone();
-				const screenPosition = meshPosition.project(camera);
+  useFrame(() => {
+    const newHtmlPositions = meshRefs.current.map((mesh, index) => {
+      if (mesh && camera) {
+        const meshPosition = mesh.position.clone();
+        const screenPosition = meshPosition.project(camera);
 
-				const widthHalf = window.innerWidth / 5.75;
-				const heightHalf = -window.innerHeight / 100;
+        const widthHalf = window.innerWidth / 5.75;
+        const heightHalf = -window.innerHeight / 100;
 
-				const x = screenPosition.x * widthHalf + widthHalf;
-				const y = -(screenPosition.y * heightHalf * 0) + heightHalf;
+        const x = screenPosition.x * widthHalf + widthHalf;
+        const y = -(screenPosition.y * heightHalf * 0) + heightHalf;
 
-				return { x, y };
-			}
-			return { x: 0, y: 0 };
-		});
-		setHtmlPositions(newHtmlPositions);
-	});
+        return { x, y };
+      }
+      return { x: 0, y: 0 };
+    });
+    setHtmlPositions(newHtmlPositions);
+  });
 
-	return (
-		<group {...props} dispose={null}>
-			{false && (
-				<EffectComposer>
-					<Outline
-						selection={[meshRefs.current[0]]} // selection of objects that will be outlined
-						selectionLayer={10} // selection layer
-						blendFunction={BlendFunction.SCREEN} // set this to BlendFunct
-						patternTexture={null} // a pattern texture
-						edgeStrength={2.5} // the edge strength
-						pulseSpeed={0.0} // a pulse speed. A value of zero disables the pulse effect
-						visibleEdgeColor={0xf33fff} // the color of visible edges
-						hiddenEdgeColor={0x22090a} // the color of hidden edges
-						width={100} // render width
-						height={100} // render height
-						kernelSize={KernelSize.LARGE} // blur kernel size
-						blur={false} // whether the outline should be blurred
-						xRay={true} // indicates whether X-Ray outlines are enabled
-					/>
-				</EffectComposer>
-			)}
-			{showSoilInformation && (
-				<Html position={[0, 0, 0]} center>
-					<div
-						className="html-tag-0"
-						style={{
-							...styles.tag,
-							position: "absolute",
-							left: `${htmlPositions[0]?.x - 620}px`,
-							top: `${htmlPositions[0]?.y}px`,
-							transform: "translate(-50%, -50%)",
-							width: "300px",
-						}}
-					>
-						{soilInformationTexts[soil ?? 0]}
-					</div>
-				</Html>
-			)}
-			<group position={[0, -1.5, 0]} scale={[2, 2, 2]}>
-				<mesh
-					ref={(el) => (meshRefs.current[0] = el)}
-					castShadow
-					receiveShadow
-					geometry={nodes.layer_5.geometry}
-					material={materials.soil_layer_5}
-					position={[0, 0.116, 0]}
-					scale={[0.5, 0.11, 0.5]}
-					onPointerEnter={(event) => handleHover(event, 5)}
-					onPointerOut={handlePointerOut}
-				>
-					<Html position={[0, 0, 0]} center>
-						<div
-							className="html-tag-0"
-							style={{
-								...styles.tag,
-								position: "absolute",
-								left: `${htmlPositions[0]?.x}px`,
-								top: `${htmlPositions[0]?.y + 24}px`,
-								transform: "translate(-50%, -50%)",
-							}}
-						>
-							Roca
-						</div>
-					</Html>
-				</mesh>
+  return (
+    <group {...props} dispose={null}>
+      {false && (
+        <EffectComposer>
+          <Outline
+            selection={[meshRefs.current[0]]} // selection of objects that will be outlined
+            selectionLayer={10} // selection layer
+            blendFunction={BlendFunction.SCREEN} // set this to BlendFunct
+            patternTexture={null} // a pattern texture
+            edgeStrength={2.5} // the edge strength
+            pulseSpeed={0.0} // a pulse speed. A value of zero disables the pulse effect
+            visibleEdgeColor={0xf33fff} // the color of visible edges
+            hiddenEdgeColor={0x22090a} // the color of hidden edges
+            width={100} // render width
+            height={100} // render height
+            kernelSize={KernelSize.LARGE} // blur kernel size
+            blur={false} // whether the outline should be blurred
+            xRay={true} // indicates whether X-Ray outlines are enabled
+          />
+        </EffectComposer>
+      )}
+      {showSoilInformation && (
+        <Html position={[0, 0, 0]} center>
+          <div
+            className="html-tag-0"
+            style={{
+              ...styles.tag,
+              position: "absolute",
+              left: `${htmlPositions[0]?.x - 620}px`,
+              top: `${htmlPositions[0]?.y}px`,
+              transform: "translate(-50%, -50%)",
+              width: "300px",
+            }}
+          >
+            {soilInformationTexts[soil ?? 0]}
+          </div>
+        </Html>
+      )}
+      <group position={[0, -1.5, 0]} scale={[2, 2, 2]}>
+        <mesh
+          ref={(el) => (meshRefs.current[0] = el)}
+          castShadow
+          receiveShadow
+          geometry={nodes.layer_5.geometry}
+          material={materials.soil_layer_5}
+          position={[0, 0.116, 0]}
+          scale={[0.5, 0.11, 0.5]}
+          onPointerEnter={(event) => handleHover(event, 5)}
+          onPointerOut={handlePointerOut}
+        >
+          <Html position={[0, 0, 0]} center>
+            <div
+              className="html-tag-0"
+              style={{
+                ...styles.tag,
+                position: "absolute",
+                left: `${htmlPositions[0]?.x}px`,
+                top: `${htmlPositions[0]?.y + 24}px`,
+                transform: "translate(-50%, -50%)",
+              }}
+            >
+              Roca
+            </div>
+          </Html>
+        </mesh>
 
-				<mesh
-					ref={(el) => (meshRefs.current[1] = el)}
-					castShadow
-					receiveShadow
-					geometry={nodes.layer_4.geometry}
-					material={materials.soil_layer_4}
-					position={[0, 0.364, 0]}
-					scale={[0.5, 0.11, 0.5]}
-					onPointerEnter={(event) => handleHover(event, 4)}
-					onPointerOut={handlePointerOut}
-				>
-					<Html position={[0, 0, 0]} center>
-						<div
-							className="html-tag-1"
-							style={{
-								...styles.tag,
-								position: "absolute",
-								left: `${htmlPositions[1]?.x}px`,
-								top: `${htmlPositions[1]?.y + 16}px`,
-								transform: "translate(-50%, -50%)",
-							}}
-						>
-							Subsuelo
-						</div>
-					</Html>
-				</mesh>
-				<mesh
-					ref={(el) => (meshRefs.current[2] = el)}
-					castShadow
-					receiveShadow
-					geometry={nodes.layer_3.geometry}
-					material={materials.soil_layer_3}
-					position={[0, 0.609, 0]}
-					scale={[0.5, 0.11, 0.5]}
-					onPointerEnter={(event) => handleHover(event, 3)}
-					onPointerOut={handlePointerOut}
-				>
-					<Html position={[0, 0, 0]} center>
-						<div
-							className="html-tag-2"
-							style={{
-								...styles.tag,
-								position: "absolute",
-								left: `${htmlPositions[2]?.x}px`,
-								top: `${htmlPositions[2]?.y + 8}px`,
-								transform: "translate(-50%, -50%)",
-							}}
-						>
-							Capa eluvial
-						</div>
-					</Html>
-				</mesh>
-				<mesh
-					ref={(el) => (meshRefs.current[3] = el)}
-					castShadow
-					receiveShadow
-					geometry={nodes.layer_2.geometry}
-					material={materials.layer_2_2}
-					position={[0, 0.852, 0]}
-					scale={[0.5, 0.11, 0.5]}
-					onPointerEnter={(event) => handleHover(event, 2)}
-					onPointerOut={handlePointerOut}
-				>
-					<Html position={[0, 0, 0]} center>
-						<div
-							className="html-tag-3"
-							style={{
-								...styles.tag,
-								position: "absolute",
-								left: `${htmlPositions[3]?.x}px`,
-								top: `${htmlPositions[3]?.y + 4}px`,
-								transform: "translate(-50%, -50%)",
-							}}
-						>
-							Capa superficial
-						</div>
-					</Html>
-				</mesh>
-				<mesh
-					ref={(el) => (meshRefs.current[4] = el)}
-					castShadow
-					receiveShadow
-					geometry={nodes.layer_1.geometry}
-					material={materials.soil_layer_1}
-					position={[0, 1.046, 0]}
-					scale={[0.5, 0.06, 0.5]}
-					onPointerEnter={(event) => handleHover(event, 1)}
-					onPointerOut={handlePointerOut}
-				>
-					<Html position={[0, 0, 0]} center>
-						<div
-							className="html-tag-0"
-							style={{
-								...styles.tag,
-								position: "absolute",
-								left: `${htmlPositions[4]?.x}px`,
-								top: `${htmlPositions[4]?.y - 8}px`,
-								transform: "translate(-50%, -50%)",
-							}}
-						>
-							Capa orgánica
-						</div>
-					</Html>
-				</mesh>
-			</group>
-		</group>
-	);
+        <mesh
+          ref={(el) => (meshRefs.current[1] = el)}
+          castShadow
+          receiveShadow
+          geometry={nodes.layer_4.geometry}
+          material={materials.soil_layer_4}
+          position={[0, 0.364, 0]}
+          scale={[0.5, 0.11, 0.5]}
+          onPointerEnter={(event) => handleHover(event, 4)}
+          onPointerOut={handlePointerOut}
+        >
+          <Html position={[0, 0, 0]} center>
+            <div
+              className="html-tag-1"
+              style={{
+                ...styles.tag,
+                position: "absolute",
+                left: `${htmlPositions[1]?.x}px`,
+                top: `${htmlPositions[1]?.y + 16}px`,
+                transform: "translate(-50%, -50%)",
+              }}
+            >
+              Subsuelo
+            </div>
+          </Html>
+        </mesh>
+        <mesh
+          ref={(el) => (meshRefs.current[2] = el)}
+          castShadow
+          receiveShadow
+          geometry={nodes.layer_3.geometry}
+          material={materials.soil_layer_3}
+          position={[0, 0.609, 0]}
+          scale={[0.5, 0.11, 0.5]}
+          onPointerEnter={(event) => handleHover(event, 3)}
+          onPointerOut={handlePointerOut}
+        >
+          <Html position={[0, 0, 0]} center>
+            <div
+              className="html-tag-2"
+              style={{
+                ...styles.tag,
+                position: "absolute",
+                left: `${htmlPositions[2]?.x}px`,
+                top: `${htmlPositions[2]?.y + 8}px`,
+                transform: "translate(-50%, -50%)",
+              }}
+            >
+              Capa eluvial
+            </div>
+          </Html>
+        </mesh>
+        <mesh
+          ref={(el) => (meshRefs.current[3] = el)}
+          castShadow
+          receiveShadow
+          geometry={nodes.layer_2.geometry}
+          material={materials.layer_2_2}
+          position={[0, 0.852, 0]}
+          scale={[0.5, 0.11, 0.5]}
+          onPointerEnter={(event) => handleHover(event, 2)}
+          onPointerOut={handlePointerOut}
+        >
+          <Html position={[0, 0, 0]} center>
+            <div
+              className="html-tag-3"
+              style={{
+                ...styles.tag,
+                position: "absolute",
+                left: `${htmlPositions[3]?.x}px`,
+                top: `${htmlPositions[3]?.y + 4}px`,
+                transform: "translate(-50%, -50%)",
+              }}
+            >
+              Capa superficial
+            </div>
+          </Html>
+        </mesh>
+        <mesh
+          ref={(el) => (meshRefs.current[4] = el)}
+          castShadow
+          receiveShadow
+          geometry={nodes.layer_1.geometry}
+          material={materials.soil_layer_1}
+          position={[0, 1.046, 0]}
+          scale={[0.5, 0.06, 0.5]}
+          onPointerEnter={(event) => handleHover(event, 1)}
+          onPointerOut={handlePointerOut}
+        >
+          <Html position={[0, 0, 0]} center>
+            <div
+              className="html-tag-0"
+              style={{
+                ...styles.tag,
+                position: "absolute",
+                left: `${htmlPositions[4]?.x}px`,
+                top: `${htmlPositions[4]?.y - 8}px`,
+                transform: "translate(-50%, -50%)",
+              }}
+            >
+              Capa orgánica
+            </div>
+          </Html>
+        </mesh>
+      </group>
+    </group>
+  );
 }
 
 const styles = {
-	container: {
-		width: "300px",
-		height: "auto",
-		borderRadius: "8px",
-		overflow: "hidden",
-		position: "relative",
-		padding: "16px",
-	},
-	question: {
-		fontSize: "1.75rem",
-		color: "black",
-		width: "1000px",
-		fontWeight: "bold",
-	},
-	tag: {
-		fontSize: "1rem",
-		padding: "8px",
-		borderRadius: "8px",
-		width: "160px",
-		fontWeigth: "bold",
-	},
+  container: {
+    width: "300px",
+    height: "auto",
+    borderRadius: "8px",
+    overflow: "hidden",
+    position: "relative",
+    padding: "16px",
+  },
+  question: {
+    fontSize: "1.75rem",
+    color: "black",
+    width: "1000px",
+    fontWeight: "bold",
+  },
+  tag: {
+    fontSize: "1rem",
+    padding: "8px",
+    borderRadius: "8px",
+    width: "160px",
+    fontWeigth: "bold",
+  },
 };
 
 useGLTF.preload("/tssting.glb");
