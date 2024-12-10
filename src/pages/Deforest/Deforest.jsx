@@ -10,7 +10,12 @@ import Staging from "../../3D-models/deforestation/staging/Staging.jsx";
 import Title from "./Title-3D.jsx";
 import BubbleCanvas from "../Bubbles-Desforest/BubblesCanvas.jsx";
 import { Canvas, useThree } from "@react-three/fiber";
-import { Html, OrbitControls, Environment, PositionalAudio } from "@react-three/drei";
+import {
+  Html,
+  OrbitControls,
+  Environment,
+  PositionalAudio,
+} from "@react-three/drei";
 import { Suspense, useEffect, useState, useRef, useCallback } from "react";
 import { Physics, RigidBody } from "@react-three/rapier";
 import "./Deforest.css";

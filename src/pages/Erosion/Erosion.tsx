@@ -1,5 +1,12 @@
 /* eslint-disable react/no-unknown-property */
-import { Suspense, useEffect, useState, useLayoutEffect, useRef, useCallback } from "react";
+import {
+  Suspense,
+  useEffect,
+  useState,
+  useLayoutEffect,
+  useRef,
+  useCallback,
+} from "react";
 import ErosionPlane from "../../3D-models/ErosionPlane.jsx";
 import { Canvas } from "@react-three/fiber";
 import MyGaia from "../../3D-models/MyGaia.jsx";
@@ -382,7 +389,6 @@ const Erosion = () => {
             {/* Posiciona el segundo modelo respecto al primero */}
           </group>
         </Suspense>
-        
         <Environment
           ground={{
             height: 10,
@@ -394,13 +400,13 @@ const Erosion = () => {
           environmentIntensity={1} // optional intensity factor (default: 1, only works with three 0.163 and up)
         />
         <group position={[0, 5, 0]}>
-            <PositionalAudio
-              ref={audioRef}
-              loop
-              url="/sound/desert.mp3"
-              distance={5}
-            />
-          </group>
+          <PositionalAudio
+            ref={audioRef}
+            loop
+            url="/sound/desert.mp3"
+            distance={5}
+          />
+        </group>
       </Canvas>
     </>
   );
