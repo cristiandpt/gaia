@@ -13,6 +13,7 @@ import Title from "./Title-3D.jsx";
 import Staging from "../../3D-models/biodiversity/staging/Staging.jsx";
 import { Physics, RigidBody } from "@react-three/rapier";
 import BubbleCanvas from "../Bubbles-Biodiversidad/BubblesCanvas.jsx";
+import PostProcessing from "./PostProcessing.jsx";
 
 const LossOfDiversity = () => {
   const [ballDropped, setBallDropped] = useState(false); // Estado para controlar si ya cayó la bola
@@ -75,6 +76,7 @@ const LossOfDiversity = () => {
               distance={5}
             />
           </group>
+          <PostProcessing />
           <Title />
         </Canvas>
         <Text1 />
