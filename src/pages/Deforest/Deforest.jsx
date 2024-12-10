@@ -10,8 +10,13 @@ import Staging from "../../3D-models/deforestation/staging/Staging.jsx";
 import Title from "./Title-3D.jsx";
 import BubbleCanvas from "../Bubbles-Desforest/BubblesCanvas.jsx";
 import { Canvas, useThree } from "@react-three/fiber";
-import { Html, OrbitControls, Environment } from "@react-three/drei";
-import { Suspense, useEffect, useState } from "react";
+import {
+  Html,
+  OrbitControls,
+  Environment,
+  PositionalAudio,
+} from "@react-three/drei";
+import { Suspense, useEffect, useState, useRef, useCallback } from "react";
 import { Physics, RigidBody } from "@react-three/rapier";
 import "./Deforest.css";
 import Text1 from "./Text1";
@@ -25,6 +30,13 @@ const DeforestationPage = () => {
     }
   };
 
+  const audioRef = useRef();
+
+  const handleAudio = useCallback(() => {
+    audioRef.current.play();
+    audioRef.current.setVolume(1);
+  }, []);
+
   return (
     <>
       <Navbar />
@@ -32,6 +44,7 @@ const DeforestationPage = () => {
         <Canvas
           shadows
           gl={{ alpha: true }}
+          onClick={handleAudio}
           camera={{ position: [0, 0, 25], fov: 50 }}
           style={{
             height: "100vh",
@@ -61,6 +74,14 @@ const DeforestationPage = () => {
             </group>
             <OrbitControls enableZoom={false} enablePan={false} />
           </Suspense>
+          <group position={[0, 5, 0]}>
+            <PositionalAudio
+              ref={audioRef}
+              loop
+              url="/sound/forest.mp3"
+              distance={5}
+            />
+          </group>
           <Environment preset="sunset" />
           <Title />
         </Canvas>
