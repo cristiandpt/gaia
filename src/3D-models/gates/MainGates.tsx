@@ -43,7 +43,7 @@ const MainGates = ({ onEnterPortal, onExitPortal }: Props) => {
       position: [2.9, -0.5, -3.8],
       rotation: [0, -(Math.PI / 3), 0],
       onEnteringHandler: () => {
-        onEnterPortal("/deforest");
+        onEnterPortal("/loss-of-biodiversity");
       },
       onExitHandler: onExitPortal,
     },
@@ -51,7 +51,7 @@ const MainGates = ({ onEnterPortal, onExitPortal }: Props) => {
       position: [1.2, -0.5, -4.7],
       rotation: [0, -(Math.PI / 18), 0],
       onEnteringHandler: () => {
-        onEnterPortal("/loss-of-biodiversity");
+        onEnterPortal("/deforest");
       },
       onExitHandler: onExitPortal,
     },
@@ -96,7 +96,7 @@ const MainGates = ({ onEnterPortal, onExitPortal }: Props) => {
       </RigidBody>
       <PortalStage
         texture={"imagenes/near.hdr"}
-        name="Erosion"
+        name="Deforestacion"
         color={"#df8d52"}
         colorPortal="#2a0f09"
         active={""}
@@ -132,7 +132,7 @@ const MainGates = ({ onEnterPortal, onExitPortal }: Props) => {
       </PortalStage>
       <PortalStage
         texture={"imagenes/near.hdr"}
-        name="Deforestación"
+        name="Erosión"
         color={"#df8d52"}
         colorPortal={"#3b2d37"}
         active={""}

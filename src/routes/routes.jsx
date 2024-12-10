@@ -10,6 +10,7 @@ const AuthorizedPaths = [
   "menu",
   "loss-of-biodiversity",
   "deforest",
+  "quiz",
 ];
 const UnauthorizedPaths = [
   "gaia",

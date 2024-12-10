@@ -125,7 +125,12 @@ const MyGaia = () => {
 
   return (
     <Suspense fallback={null}>
-      <RigidBody ref={gaiaRef} type="dynamic" position={[0, 1, 18]}>
+      <RigidBody
+        enabledRotations={[false, false, false]}
+        ref={gaiaRef}
+        type="dynamic"
+        position={[0, 1, 18]}
+      >
         <Gaiam />
       </RigidBody>
     </Suspense>

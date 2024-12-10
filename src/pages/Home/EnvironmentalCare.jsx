@@ -2,7 +2,7 @@ import React from "react";
 import "./EnvironmentalCare.css"; // Asegúrate de que la ruta sea correcta
 
 const CuidadoMedioAmbiente = () => (
-  <div className="cuidado-medio-container w-96">
+  <div className="cuidado-medio-container w-80">
     <h2>Importancia de Cuidar el Medio Ambiente</h2>
     <p className="">
       Cuidar nuestro medio ambiente es crucial para garantizar la salud y

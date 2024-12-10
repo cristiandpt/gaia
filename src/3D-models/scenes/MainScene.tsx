@@ -4,12 +4,11 @@
  */
 import { useRef, useState, useEffect, useCallback, Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
-import { useGLTF, Environment } from "@react-three/drei";
+import { useGLTF, Environment, Html } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import "../Gaia.css";
 import Lights from "../../pages/lights/Inicio-lights.jsx";
 import MainGates from "../gates/MainGates";
-import Floor from "../Floor.jsx";
 import { Physics, RigidBody } from "@react-three/rapier";
 import MainSceneControl from "../../controls/MainSceneControl";
 import GaiaDialog from "../../components/GaiaDialog";
@@ -17,6 +16,7 @@ import Say from "react-say";
 import DialogType from "../../types/MainDialogs";
 import MainDialog from "../../components/main-dialog/MainDialog";
 import { useNavigate } from "react-router-dom";
+import "./styles.css";
 
 const gaiaDialogs = [
   "Hola, soy Gaia: La Tierra progenitora, fecunda y antepasada común de todos los dioses, hombres y seres vivos: Soy la  «madre universal», «madre de todos» o «gran madre». Seré tu acompañante en este viaje del cuidado",
@@ -142,6 +142,7 @@ function GaiaModel() {
       type="dynamic"
       gravityScale={0}
       friction={1.5}
+      enabledRotations={[false, false, false]}
       onCollisionEnter={({ manifold, target, other }) => {
         console.log("Collision point", manifold.solverContactPoint(0));
         console.log(target);
@@ -167,19 +168,19 @@ const dialogFactory = (type: DialogType) => {
         position: [0, 0, 0],
         route: "/erosion",
       };
-    case DialogType.BIOVERSITY:
+    case DialogType.DEFOREST:
       return {
         title: "Deforestación",
         say: "Vamos a explorar los problemas asociados a la deforestación",
         position: [1, 1, 0],
-        route: "/loss-of-biodiversity",
+        route: "/deforest",
       };
-    case DialogType.DEFOREST:
+    case DialogType.BIOVERSITY:
       return {
         title: "Pérdida de la bioversidad",
         say: "Vamos a explorar los problemas asociados a la pérdida de biodiversidad",
         position: [-1, -1, 0],
-        route: "/deforest",
+        route: "/loss-of-biodiversity",
       };
     default:
       return {
@@ -264,12 +265,41 @@ const MainScene = () => {
         {isDialogGaiaVisible && (
           <GaiaDialog say={gaiaDialogs[0]} position={[3, 1, 0]} />
         )}
+        {true && (
+          <Html
+            position={[1, 2.2, 0]}
+            wrapperClass="div"
+            style={{
+              position: "relative",
+            }}
+            center
+          >
+            <iframe
+              className="custom-focus-outline"
+              width="420"
+              height="240"
+              style={{
+                position: "absolute",
+                right: `${130}px`,
+                top: `${-100}px`,
+              }}
+              src={"videos/la_vida_del suelo.mp4"}
+              title="¡La vida del suelo! Cortometraje🌎 - FAO"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            ></iframe>
+          </Html>
+        )}
         {isDialogVisible && (
           <MainDialog
             title={dialogProps.title}
             say={dialogProps.say}
             position={dialogProps.position}
             onClickHandler={handleOnClickDialog}
+            style={{
+              backgroundColor: "rgba(255, 255, 255, 0.5)",
+            }}
           />
         )}
         <Say

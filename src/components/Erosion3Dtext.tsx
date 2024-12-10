@@ -9,7 +9,7 @@ const ErosionText = ({ refToModel }: Props) => {
   return (
     <Text3D
       ref={refToModel}
-      position={[-12, 6, 0]}
+      position={[-12, 7, 12]}
       font="fonts/Nostalgic Whispers-Regular.json"
       text="Erosion"
       fontSize={10}
