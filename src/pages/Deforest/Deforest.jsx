@@ -80,7 +80,7 @@ const CameraMovement = ({ onCameraAtTarget }) => {
     [0, 20, 30],
     [20, 0, 30],
     [-20, 0, 20],
-    [10, 0, 25]
+    [10, 0, 25],
   ];
 
   let currentPositionIndex = 0;
