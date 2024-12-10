@@ -4,10 +4,10 @@ import QuizFlow from "./pages/Quiz/Quiz";
 import GaiaObjectCapture from "./components/questions/GaiaObjectCapture";
 
 function App() {
-	const router = createBrowserRouter(routes);
-	//return <RouterProvider router={router} />;
-	//return <QuizFlow />;
-	return <GaiaObjectCapture />;
+  const router = createBrowserRouter(routes);
+  //return <RouterProvider router={router} />;
+  //return <QuizFlow />;
+  return <GaiaObjectCapture />;
 }
 
 export default App;

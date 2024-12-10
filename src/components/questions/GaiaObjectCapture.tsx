@@ -9,6 +9,7 @@ import DialogType from "../../types/MainDialogs";
 import { useNavigate } from "react-router-dom";
 import { FaArrowCircleLeft, FaArrowCircleRight } from "react-icons/fa";
 import { GaiaCapturePlane } from "./GaiaCapturePlane";
+import { Drop } from "./models/Drop";
 
 function GaiaModel() {
 	const { scene } = useGLTF("3D-models/Gaia4.glb");
@@ -176,6 +177,7 @@ const GaiaObjectCapture = () => {
 				/>
 				<Suspense fallback={null}>
 					<Physics>
+						<Drop />
 						<GaiaCapturePlane position={[0, -11, 2]} scale={[10, 10, 10]} />
 						<GaiaModel />
 					</Physics>
