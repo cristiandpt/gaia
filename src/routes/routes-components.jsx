@@ -8,6 +8,7 @@ import Register from "../pages/Register/Register";
 import Signin from "../pages/Login/Login";
 import Navbar from "../components/Navbar";
 import Quiz from "../pages/Quiz/Quiz";
+import GaiaObjectCapture from "../components/questions/GaiaObjectCapture"
 
 const RouteComponentsRegister = {
   login: <Login />,
@@ -19,7 +20,7 @@ const RouteComponentsRegister = {
   erosion: <Erosion />,
   menu: <Navbar />,
   "loss-of-biodiversity": <LossOfDiversity />,
-  quiz: <Quiz />,
+  quiz: <GaiaObjectCapture />,
 };
 
 const getComponentByPath = (path) => {
