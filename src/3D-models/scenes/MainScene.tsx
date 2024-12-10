@@ -142,6 +142,7 @@ function GaiaModel() {
       type="dynamic"
       gravityScale={0}
       friction={1.5}
+      enabledRotations={[false, false, false]}
       onCollisionEnter={({ manifold, target, other }) => {
         console.log("Collision point", manifold.solverContactPoint(0));
         console.log(target);
@@ -167,19 +168,19 @@ const dialogFactory = (type: DialogType) => {
         position: [0, 0, 0],
         route: "/erosion",
       };
-    case DialogType.BIOVERSITY:
+    case DialogType.DEFOREST:
       return {
         title: "Deforestación",
         say: "Vamos a explorar los problemas asociados a la deforestación",
         position: [1, 1, 0],
-        route: "/loss-of-biodiversity",
+        route: "/deforest",
       };
-    case DialogType.DEFOREST:
+    case DialogType.BIOVERSITY:
       return {
         title: "Pérdida de la bioversidad",
         say: "Vamos a explorar los problemas asociados a la pérdida de biodiversidad",
         position: [-1, -1, 0],
-        route: "/deforest",
+        route: "/loss-of-biodiversity",
       };
     default:
       return {
@@ -265,11 +266,23 @@ const MainScene = () => {
           <GaiaDialog say={gaiaDialogs[0]} position={[3, 1, 0]} />
         )}
         {true && (
-          <Html position={[1, 2.2, 0]}>
+          <Html
+            position={[1, 2.2, 0]}
+            wrapperClass="div"
+            style={{
+              position: "relative",
+            }}
+            center
+          >
             <iframe
               className="custom-focus-outline"
-              width="598"
-              height="336"
+              width="420"
+              height="240"
+              style={{
+                position: "absolute",
+                right: `${130}px`,
+                top: `${-100}px`,
+              }}
               src={"videos/la_vida_del suelo.mp4"}
               title="¡La vida del suelo! Cortometraje🌎 - FAO"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -284,6 +297,9 @@ const MainScene = () => {
             say={dialogProps.say}
             position={dialogProps.position}
             onClickHandler={handleOnClickDialog}
+            style={{
+              backgroundColor: "rgba(255, 255, 255, 0.5)",
+            }}
           />
         )}
         <Say

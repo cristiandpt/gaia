@@ -7,13 +7,14 @@ import {
   useRef,
   useCallback,
 } from "react";
-import ErosionPlane from "../../3D-models/ErosionPlane.jsx";
+import { ErosionPlane } from "../../3D-models/ErosionPlane";
 import { Canvas } from "@react-three/fiber";
 import MyGaia from "../../3D-models/MyGaia.jsx";
 import CherryTree from "../../3D-models/cherry-tree/CherryTree.jsx";
 import Loader from "../../shared/3DModelLoader";
 import { useFrame } from "@react-three/fiber";
 import City from "../../3D-models/city/City";
+import PostProcessing from "./PostProcessing.jsx";
 
 import {
   Box,
@@ -39,11 +40,54 @@ import {
   TrimeshCollider,
 } from "@react-three/rapier";
 import { Leaves } from "../../components/leaf/Leaves.jsx";
+import { FlatRock } from "../../3D-models/FlatRock";
+import { VintageTV } from "../../3D-models/VintageTV";
+import VideoTexture from "./ErosionVideo";
+import { useAspect, useVideoTexture, useTexture } from "@react-three/drei";
+
+function VideoMaterial(url: string) {
+  const texture = useVideoTexture(url);
+  return <meshBasicMaterial map={texture} toneMapped={false} />;
+}
+
+function FallbackMaterial(url: string) {
+  const texture = useTexture(url);
+  return <meshBasicMaterial map={texture} toneMapped={false} />;
+}
+
+function Scene() {
+  const size = useAspect(1800, 1000);
+  return (
+    <mesh scale={size}>
+      <planeGeometry />
+      <Suspense fallback={null}>
+        <VideoMaterial url="/videos/la_vida_del_suelo.mp4" />
+      </Suspense>
+    </mesh>
+  );
+}
 
 export const FLOOR_HEIGHT = 2.3;
 export const NB_FLOORS = 3;
 
 //useGLTF.preload("3D-models/cherry-tree/scene.gltf");
+
+const VideoTextureLocal = () => {
+  // Load the video texture
+  const texture = useVideoTexture("/videos/la_vida_del_suelo.mp4", {
+    muted: true,
+    loop: true,
+  }); // Ensure correct path to your video
+  const size = useAspect(1800, 1000);
+  return (
+    <mesh position={[0, 0, 0]} scale={size}>
+      <planeGeometry args={[16, 9]} /> {/* Aspect ratio of the video */}
+      <Suspense fallback={null}>
+        <meshBasicMaterial map={texture} toneMapped={false} />
+      </Suspense>
+    </mesh>
+  );
+};
 
 const Erosion = () => {
   const dialog = [
@@ -255,8 +299,8 @@ const Erosion = () => {
   const audioRef = useRef();
 
   const handleAudio = useCallback(() => {
-    audioRef.current.play();
-    audioRef.current.setVolume(3);
+    audioRef?.current.play();
+    audioRef?.current.setVolume(3);
   }, []);
 
   return (
@@ -335,24 +379,46 @@ const Erosion = () => {
               </Html>
             )}
             {isActive && (
-              <GaiaDialog say={erosionProblems[index]} position={[4, 5, 0]} />
+              <GaiaDialog
+                say={erosionProblems[index]}
+                position={[4, 5, 0]}
+                style={{
+                  width: "320px",
+                  color: "#7F664A",
+                  fontWeight: 500,
+                  backgroundColor: "rgba(255, 255, 255, 0.66)",
+                }}
+              />
             )}
 
             <Physics gravity={[0, 0, 0]}>
               {isCityActive && (
                 <GaiaDialog
                   say={
-                    "La erosión del suelo, un problema cada vez más acuciante, no solo degrada nuestros campos y bosques, sino que también contamina el aire que respiramos. El viento, al arrastrar las partículas de suelo erosionado, las levanta y las dispersa en el aire, creando una neblina de polvo que se adentra en nuestras ciudades. Esta sedimentación no solo reduce la visibilidad y afecta la calidad de vida, sino que también representa un grave riesgo para nuestra salud.La inhalación de estas partículas finas puede provocar enfermedades respiratorias, alergias y afecciones cardiovasculares. Además, contaminan las fuentes de agua, dañan los cultivos y aceleran el desgaste de edificios e infraestructuras."
+                    "La erosión del suelo, un problema cada vez más acuciante, no solo degrada nuestros campos y bosques, sino que también contamina el aire que respiramos. El viento, al arrastrar las partículas de suelo erosionado, las 1levanta y las dispersa en el aire, creando una neblina de polvo que se adentra en nuestras ciudades. Esta sedimentación no solo reduce la visibilidad y afecta la calidad de vida, sino que también representa un grave riesgo para nuestra salud.La inhalación de estas partículas finas puede provocar enfermedades respiratorias, alergias y afecciones cardiovasculares. Además, contaminan las fuentes de agua, dañan los cultivos y aceleran el desgaste de edificios e infraestructuras."
                   }
                   position={[-15, 12, -8]}
+                  style={{
+                    width: "320px",
+                    color: "#7F664A",
+                    fontWeight: 500,
+                    backgroundColor: "rgba(255, 255, 255, 0.66)",
+                  }}
                 />
               )}
+              <ErosionPlane scale={10} position={[0, -4.5, 1]} />
+              <RigidBody type="fixed">
+                <FlatRock scale={[0.35, 0.35, 0.2]} position={[-10, -6, 14]} />
+              </RigidBody>
+              <RigidBody type="fixed">
+                <VintageTV scale={1.1} position={[-8, 1, 14]} />
+              </RigidBody>
 
               <RigidBody type="fixed">
                 <City scale={0.05} />
               </RigidBody>
               <MyGaia />
-              {isActive && <Soil position={[-3, 3, 1]}></Soil>}
+              {isActive && <Soil position={[-3, 3, 20]}></Soil>}
               <RigidBody type="fixed">
                 <CherryTree position={[10, -2, 9]} />
               </RigidBody>
@@ -363,6 +429,12 @@ const Erosion = () => {
                     "La pérdida de nutrientes desencadena una reacción en cadena de consecuencias devastadoras. Al carecer de los elementos necesarios para su crecimiento y desarrollo, los árboles debilitados se vuelven más susceptibles a plagas, enfermedades y condiciones climáticas extremas. Sus hojas, que antes lucían vibrantes y saludables, comienzan a amarillear y marchitarse, cayendo prematuramente al suelo. La caída de las hojas acelera aún más el proceso de erosión, ya que la capa protectora que formaban sobre el suelo desaparece, exponiéndolo directamente a la acción del viento y el agua. Esto, a su vez, debilita aún más las raíces de los árboles supervivientes, creando un círculo vicioso que conduce a la desertificación y a la pérdida de biodiversidad."
                   }
                   position={[-15, 14, 0]}
+                  style={{
+                    width: "320px",
+                    color: "#7F664A",
+                    fontWeight: 500,
+                    backgroundColor: "rgba(255, 255, 255, 0.66)",
+                  }}
                 />
               )}
               <CuboidCollider
@@ -389,16 +461,7 @@ const Erosion = () => {
             {/* Posiciona el segundo modelo respecto al primero */}
           </group>
         </Suspense>
-        <Environment
-          ground={{
-            height: 10,
-          }}
-          files="/imagenes/qwantani_dusk_2_2k.hdr"
-          background
-          backgroundIntensity={1} // optional intensity factor
-          backgroundRotation={[0, Math.PI / 2, 0]} // optional rotation
-          environmentIntensity={1} // optional intensity factor (default: 1, only works with three 0.163 and up)
-        />
+        <Environment files="/imagenes/qwantani_dusk_2_2k.hdr" background />
         <group position={[0, 5, 0]}>
           <PositionalAudio
             ref={audioRef}
@@ -407,6 +470,7 @@ const Erosion = () => {
             distance={5}
           />
         </group>
+        <PostProcessing />
       </Canvas>
     </>
   );

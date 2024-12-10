@@ -1,7 +1,7 @@
 .cuidado-medio-container {
   position: absolute;
   top: 70px; /* Ajusta según la distancia deseada desde la parte superior */
-  left: 20px; /* Ajusta según la distancia deseada desde el lado izquierdo */
+  left: 32px; /* Ajusta según la distancia deseada desde el lado izquierdo */
   background-color: rgba(
     255,
     248,
@@ -17,7 +17,7 @@
 
 .cuidado-medio-container h2 {
   font-size: 1.8em; /* Tamaño de fuente ajustado */
-  color: #10702a; /* Color marrón */
+  color: #ffffe0; /* Color marrón */
 }
 
 .cuidado-medio-container p {
