@@ -175,7 +175,6 @@ const GaiaObjectCapture = () => {
   }, [score]);
 
   useEffect(() => {
-    if (gameOver) {
       if (score < 600) {
         setLevel("Principiante");
       } else if (score < 900) {
@@ -197,7 +196,7 @@ const GaiaObjectCapture = () => {
         const docRef = doc(db, "scores", user.uid); // Usar el UID del usuario como ID del documento
         await setDoc(docRef, {
           displayName: user.displayName || "Desconocido",
-          finalScore,
+          score,
           level,
           timestamp: new Date(),
         });
