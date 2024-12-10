@@ -8,19 +8,19 @@ Title: CC0 - Drops
 import { useGLTF } from "@react-three/drei";
 
 export function Drop(props) {
-	const { nodes, materials } = useGLTF("/cc0_-_drops.glb");
-	return (
-		<group {...props} dispose={null}>
-			<mesh
-				castShadow
-				receiveShadow
-				geometry={nodes.Drops_Drops_0.geometry}
-				material={materials.Drops}
-				rotation={[-Math.PI / 2, 0, 0]}
-				scale={0.025}
-			/>
-		</group>
-	);
+  const { nodes, materials } = useGLTF("/cc0_-_drops.glb");
+  return (
+    <group {...props} dispose={null}>
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Drops_Drops_0.geometry}
+        material={materials.Drops}
+        rotation={[-Math.PI / 2, 0, 0]}
+        scale={0.025}
+      />
+    </group>
+  );
 }
 
 useGLTF.preload("/cc0_-_drops.glb");

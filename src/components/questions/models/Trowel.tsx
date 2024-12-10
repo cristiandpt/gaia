@@ -6,7 +6,7 @@ import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 
 export function Trowel(props) {
-	const { nodes, materials } = useGLTF("/trowel_01_2k.gltf");
+	const { nodes, materials } = useGLTF("trowel_01_2k.gltf/trowel_01_2k.gltf");
 	return (
 		<group {...props} dispose={null}>
 			<mesh

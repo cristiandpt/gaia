@@ -6,7 +6,9 @@ import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 
 export function WaterCan(props) {
-	const { nodes, materials } = useGLTF("/watering_can_metal_01_2k.gltf");
+	const { nodes, materials } = useGLTF(
+		"watering_can_metal_01_2k.gltf/watering_can_metal_01_2k.gltf",
+	);
 	return (
 		<group {...props} dispose={null}>
 			<mesh

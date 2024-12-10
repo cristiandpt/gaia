@@ -6,7 +6,7 @@ import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 
 export function HatChet(props) {
-	const { nodes, materials } = useGLTF("/hatchet_2k.gltf");
+	const { nodes, materials } = useGLTF("hatchet_2k.gltf/hatchet_2k.gltf");
 	return (
 		<group {...props} dispose={null}>
 			<mesh
