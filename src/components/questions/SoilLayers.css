@@ -1,0 +1,43 @@
+.html-tag-0 {
+  background-color: rgba(0, 0, 0, 0.75);
+  transition: transform 0.3s ease;
+}
+
+.html-tag-0:hover {
+  background-color: rgba(60, 0, 0, 1);
+  cursor: pointer;
+  transform: scale(2);
+}
+
+.html-tag-1 {
+  background-color: rgba(0, 0, 0, 0.75);
+  transition: transform 0.3s ease;
+}
+
+.html-tag-1:hover {
+  background-color: rgba(60, 0, 0, 1);
+  cursor: pointer;
+  transform: scale(2);
+}
+
+.html-tag-2 {
+  background-color: rgba(0, 0, 0, 0.75);
+  transition: transform 0.3s ease;
+}
+
+.html-tag-2:hover {
+  background-color: rgba(60, 0, 0, 1);
+  cursor: pointer;
+  transform: scale(2);
+}
+
+.html-tag-3 {
+  background-color: rgba(0, 0, 0, 0.75);
+  transition: transform 0.3s ease;
+}
+
+.html-tag-3:hover {
+  background-color: rgba(60, 0, 0, 1);
+  cursor: pointer;
+  transform: scale(1.2);
+}

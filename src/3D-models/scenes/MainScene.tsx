@@ -4,12 +4,11 @@
  */
 import { useRef, useState, useEffect, useCallback, Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
-import { useGLTF, Environment } from "@react-three/drei";
+import { useGLTF, Environment, Html } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import "../Gaia.css";
 import Lights from "../../pages/lights/Inicio-lights.jsx";
 import MainGates from "../gates/MainGates";
-import Floor from "../Floor.jsx";
 import { Physics, RigidBody } from "@react-three/rapier";
 import MainSceneControl from "../../controls/MainSceneControl";
 import GaiaDialog from "../../components/GaiaDialog";
@@ -17,6 +16,7 @@ import Say from "react-say";
 import DialogType from "../../types/MainDialogs";
 import MainDialog from "../../components/main-dialog/MainDialog";
 import { useNavigate } from "react-router-dom";
+import "./styles.css";
 
 const gaiaDialogs = [
   "Hola, soy Gaia: La Tierra progenitora, fecunda y antepasada común de todos los dioses, hombres y seres vivos: Soy la  «madre universal», «madre de todos» o «gran madre». Seré tu acompañante en este viaje del cuidado",
@@ -263,6 +263,20 @@ const MainScene = () => {
         </Suspense>
         {isDialogGaiaVisible && (
           <GaiaDialog say={gaiaDialogs[0]} position={[3, 1, 0]} />
+        )}
+        {true && (
+          <Html position={[1, 2.2, 0]}>
+            <iframe
+              className="custom-focus-outline"
+              width="598"
+              height="336"
+              src={"videos/la_vida_del suelo.mp4"}
+              title="¡La vida del suelo! Cortometraje🌎 - FAO"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            ></iframe>
+          </Html>
         )}
         {isDialogVisible && (
           <MainDialog

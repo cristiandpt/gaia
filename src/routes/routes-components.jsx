@@ -7,6 +7,7 @@ import Deforest from "../pages/Deforest/Deforest";
 import Register from "../pages/Register/Register";
 import Signin from "../pages/Login/Login";
 import Navbar from "../components/Navbar";
+import Quiz from "../pages/Quiz/Quiz";
 
 const RouteComponentsRegister = {
   login: <Login />,
@@ -18,6 +19,7 @@ const RouteComponentsRegister = {
   erosion: <Erosion />,
   menu: <Navbar />,
   "loss-of-biodiversity": <LossOfDiversity />,
+  quiz: <Quiz />,
 };
 
 const getComponentByPath = (path) => {
