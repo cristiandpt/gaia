@@ -5,8 +5,8 @@ import BirdModel from "../../3D-models/biodiversity/Bird-top.jsx";
 import Bird from "../../3D-models/biodiversity/Bird.jsx";
 import { Canvas, useThree } from "@react-three/fiber";
 import Lights from "../lights/Bio-lights.jsx";
-import { Html, OrbitControls } from "@react-three/drei";
-import { Suspense, useEffect, useState } from "react";
+import { Html, OrbitControls, PositionalAudio } from "@react-three/drei";
+import { Suspense, useCallback, useEffect, useRef, useState } from "react";
 import Loader from "../../shared/3DModelLoader";
 import GaiaModel from "../../3D-models/biodiversity/Gaia-biodiversity.jsx";
 import Title from "./Title-3D.jsx";
@@ -23,6 +23,13 @@ const LossOfDiversity = () => {
     }
   };
 
+  const audioRef = useRef();
+
+  const handleAudio = useCallback (() => {
+    audioRef.current.play();
+    audioRef.current.setVolume(5);
+  }, []);
+
   return (
     <>
       <Navbar />
@@ -30,6 +37,7 @@ const LossOfDiversity = () => {
         <Canvas
           shadows
           gl={{ alpha: true }}
+          onClick={handleAudio}
           camera={{ position: [40, 0, 0], fov: 50 }}
           style={{
             height: "100vh",
@@ -59,6 +67,9 @@ const LossOfDiversity = () => {
             </group>
           </Suspense>
           <OrbitControls enableZoom enablePan={false} />
+          <group position={[0, 5, 0]}>
+              <PositionalAudio ref={audioRef} loop url="/sound/angelical.mp3" distance={5} />
+          </group>
           <Title />
         </Canvas>
         <Text1 />

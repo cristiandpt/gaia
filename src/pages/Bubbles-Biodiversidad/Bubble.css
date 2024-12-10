@@ -19,7 +19,7 @@
 
 /* Efecto hover para ampliar */
 .bubble:hover {
-  transform: scale(4);
+  transform: scale(2);
   z-index: 10;
 }
 
