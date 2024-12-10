@@ -8,7 +8,7 @@ import Register from "../pages/Register/Register";
 import Signin from "../pages/Login/Login";
 import Navbar from "../components/Navbar";
 import Quiz from "../pages/Quiz/Quiz";
-import GaiaObjectCapture from "../components/questions/GaiaObjectCapture"
+import GaiaObjectCapture from "../components/questions/GaiaObjectCapture";
 
 const RouteComponentsRegister = {
   login: <Login />,

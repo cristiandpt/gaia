@@ -175,15 +175,15 @@ const GaiaObjectCapture = () => {
   }, [score]);
 
   useEffect(() => {
-      if (score < 600) {
-        setLevel("Principiante");
-      } else if (score < 900) {
-        setLevel("Cobre");
-      } else if (score < 1500) {
-        setLevel("Plata");
-      } else {
-        setLevel("Oro");
-      }
+    if (score < 600) {
+      setLevel("Principiante");
+    } else if (score < 900) {
+      setLevel("Cobre");
+    } else if (score < 1500) {
+      setLevel("Plata");
+    } else {
+      setLevel("Oro");
+    }
   }, [gameOver, score]);
 
   const showAlert = async () => {

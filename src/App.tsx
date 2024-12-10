@@ -7,7 +7,7 @@ function App() {
   const router = createBrowserRouter(routes);
   return <RouterProvider router={router} />;
   //return <QuizFlow />;
- // return <GaiaObjectCapture />;
+  // return <GaiaObjectCapture />;
 }
 
 export default App;
