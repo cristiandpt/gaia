@@ -7,6 +7,8 @@ import { useEffect, useRef, useState } from "react";
 import QuestionProps from "../types/IQuestion";
 import { Mesh } from "three";
 import "./SoilLayers.css";
+import { EffectComposer, Outline } from "@react-three/postprocessing";
+import { BlendFunction, Resizer, KernelSize } from "postprocessing";
 
 interface SoilLayersProps extends GroupProps, QuestionProps {
 	// You can add any additional props here if needed
@@ -21,6 +23,14 @@ export function SoilLayers(props: SoilLayersProps) {
 		setSoil(soil);
 	};
 
+	const soilInformationTexts = [
+		"Mezcla de humus y minerales. Es donde se desarrolla la mayoría de la actividad biológica y es crucial para el crecimiento de las plantas.",
+		"Zona de lixiviación donde se lavan minerales y nutrientes, resultando en un suelo más claro",
+		"Acumula minerales y nutrientes que se han lavado desde las capas superiores. Puede ser rica en arcilla y otros minerales.",
+		"Compuesta por rocas y sedimentos parcialmente descompuestos. Proporciona los minerales básicos para la formación del suelo",
+		"Capa de roca sólida que se encuentra debajo del suelo. Es la fuente de los minerales que se descomponen para formar las capas superiores.",
+	];
+
 	const meshRefs = useRef<Mesh[]>([]);
 	const [showSoilInformation, setShowSoilInformation] = useState(false);
 	const { camera } = useThree();
@@ -33,7 +43,7 @@ export function SoilLayers(props: SoilLayersProps) {
 		event.stopPropagation(); // Prevents the event from bubbling up
 		document.body.style.cursor = "pointer"; // Change cursor to pointer
 		console.log(event.point);
-		setSoil(soilType);
+		setSoil(soilType - 1);
 		setShowSoilInformation(true);
 		/* props.onHover({
 			soil: soil ?? "",
@@ -67,6 +77,25 @@ export function SoilLayers(props: SoilLayersProps) {
 
 	return (
 		<group {...props} dispose={null}>
+			{false && (
+				<EffectComposer>
+					<Outline
+						selection={[meshRefs.current[0]]} // selection of objects that will be outlined
+						selectionLayer={10} // selection layer
+						blendFunction={BlendFunction.SCREEN} // set this to BlendFunct
+						patternTexture={null} // a pattern texture
+						edgeStrength={2.5} // the edge strength
+						pulseSpeed={0.0} // a pulse speed. A value of zero disables the pulse effect
+						visibleEdgeColor={0xf33fff} // the color of visible edges
+						hiddenEdgeColor={0x22090a} // the color of hidden edges
+						width={100} // render width
+						height={100} // render height
+						kernelSize={KernelSize.LARGE} // blur kernel size
+						blur={false} // whether the outline should be blurred
+						xRay={true} // indicates whether X-Ray outlines are enabled
+					/>
+				</EffectComposer>
+			)}
 			{showSoilInformation && (
 				<Html position={[0, 0, 0]} center>
 					<div
@@ -80,7 +109,7 @@ export function SoilLayers(props: SoilLayersProps) {
 							width: "300px",
 						}}
 					>
-						Rdfdafafaoca
+						{soilInformationTexts[soil ?? 0]}
 					</div>
 				</Html>
 			)}
