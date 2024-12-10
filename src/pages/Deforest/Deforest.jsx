@@ -77,10 +77,10 @@ const CameraMovement = ({ onCameraAtTarget }) => {
   const { camera } = useThree();
 
   const positions = [
-    [0, 8, 25],
-    [20, 0, 25],
-    [-20, 0, 25],
-    [0, 0, 25],
+    [0, 20, 30],
+    [20, 0, 30],
+    [-20, 0, 20],
+    [10, 0, 25]
   ];
 
   let currentPositionIndex = 0;
@@ -100,8 +100,8 @@ const CameraMovement = ({ onCameraAtTarget }) => {
       camera.updateProjectionMatrix();
 
       if (
-        positions[currentPositionIndex][0] === 0 &&
-        positions[currentPositionIndex][2] === 40
+        positions[currentPositionIndex][0] === 10 &&
+        positions[currentPositionIndex][2] === 25
       ) {
         onCameraAtTarget();
       }
